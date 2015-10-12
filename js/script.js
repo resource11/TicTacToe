@@ -1,70 +1,103 @@
+// begin scripts
+
 'use strict';
 
 $(document).ready(function() {
 
 // finds each box in the grid
-var boxGrid = $('#tic-tac-holder').children();
+  var boxGrid = $('#tic-tac-holder').children();
+  var box = $('.box');
 
+  var player01 = 'X';
+  var player02 = 'O';
+  var player = player01;
 
-var box = $('.box');
+// play the game
 
-var player01 = 0;
-var player02 = 1;
-var playerTurn = player01;
+// check for winner
+var getWinner = function getWinner() {
+  if (winnerIs('X')) {
+    console.log('X');
+    return 'The winner is X';
+  }
+  else if (winnerIs('O')) {
+    console.log('O');
+    return 'The winner is O';
+  } else if (fullBoard()) {
+    return 'Cat\'s game';
+  } else {
+    return null;
+  }
+}
+
+var winnerIs = function winnerIs(player) {
+  return winsRow(player) || winsColumn(player) || winsDiagonal(player);
+}
+
+var winsRow = function winsRow(player) {
+  return allThree(player, boxGrid[0], boxGrid[1], boxGrid[2]) ||
+         allThree(player, boxGrid[3], boxGrid[4], boxGrid[5]) ||
+         allThree(player, boxGrid[6], boxGrid[7], boxGrid[8]);
+}
+
+var winsColumn = function winsColumn(player) {
+  return allThree(player, boxGrid[0], boxGrid[3], boxGrid[6]) ||
+         allThree(player, boxGrid[1], boxGrid[4], boxGrid[7]) ||
+         allThree(player, boxGrid[2], boxGrid[5], boxGrid[8]);
+}
+
+var winsDiagonal = function winsDiagonal(player) {
+  return allThree(player, boxGrid[0], boxGrid[4], boxGrid[8]) ||
+         allThree(player, boxGrid[2], boxGrid[4], boxGrid[6]);
+}
+
+var allThree = function allThree(player, boxOne, boxTwo, boxThree) {
+  return (boxOne === player) && (boxTwo === player) && (boxThree === player);
+}
+
+// check for full board with no winner
+var fullBoard = function fullBoard() {
+  if (!winnerIs('X') && !winnerIs('O') && ($(boxGrid).text() !== '---------')) {
+    // console.log($(boxGrid).text());
+    console.log('full board, no winner');
+    console.log($(boxGrid).text());
+  }
+};
+
 
 // if playerTurn is player01
 //   when player01 clicks a box, the box is changed to x
 // if playerTurn is player02
 //   when player02 clicks a box, the box is changed to o
 
-$(box).on('click', function() {
-  if (playerTurn === player01 ){
-        $(this).text('X');
-        playerTurn = player02;
-    } else {
-        $(this).text('O');
-        playerTurn = player01;
-    }
-});
+  $(box).on('click', function() {
+    if (player === player01 ){
+          $(this).text('X');
+           getWinner($(this));
+          player = player02;
+      } else {
+          $(this).text('O');
+          getWinner($(this));
+          player = player01;
+      }
+  });
+
+// this only wored when I just targeted the .reset-game class
+  $('.reset-game').on('click', function() {
+    // reset each square
+    $(boxGrid).text('-');
+    player = player01;
+  });
+
+  fullBoard();
 
 
 });
 
+// end scripts
 
-function getWinner() {
-  if (winnerIs('x')) {
-    return 'X';
-  }
-  if (winnerIs('o')) {
-    return 'O';
-  }
-  return null;
-}
 
-function winnerIs(player) {
-  return winsRow(player) || winsColumn(player) || winsDiagonal(player);
-}
 
-function winsRow(player) {
-  return allThree(player, cells('a'), cells('b'), cells('c')) ||
-         allThree(player, cells('d'), cells('e'), cells('f')) ||
-         allThree(player, cells('g'), cells('h'), cells('i'));
-}
-
-function winsColumn(player) {
-  return allThree(player, cells('a'), cells('d'), cells('g')) ||
-         allThree(player, cells('b'), cells('e'), cells('h')) ||
-         allThree(player, cells('c'), cells('f'), cells('i'));
-}
-
-function winsDiagonal(player) {
-  return allThree(player, cells('a'), cells('e'), cells('i')) ||
-         allThree(player, cells('c'), cells('e'), cells('g'));
-}
-
-function allThree(player, cellOne, cellTwo, cellThree) {
-  return (cellOne === player) && (cellTwo === player) && (cellThree === player);
-}
 
 
 // 'use strict';
@@ -112,7 +145,7 @@ function allThree(player, cellOne, cellTwo, cellThree) {
 //     } else { // if the checkbox is unchecked
 //       // loop over the length of the 'listElements' array
 //       for(var index=0; index < numListElements; index++) {
-//         // remove the specific click khandler we set
+//         // remove the specific click handler we set
 //         // on each <li> in our <ul>
 //         listElements[index].removeEventListener('click', liClickHandler);
 //       }
