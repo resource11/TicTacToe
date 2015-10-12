@@ -58,31 +58,31 @@ $(document).ready(function() {
 // check for winner long way
 var checkForWinner = function checkForWinner() {
   if (
-  $(boxGrid[0]).text() && $(boxGrid[1]).text() && $(boxGrid[2]).text() === 'X' ||
-  $(boxGrid[3]).text() && $(boxGrid[4]).text() && $(boxGrid[5]).text() === 'X' ||
-  $(boxGrid[6]).text() && $(boxGrid[7]).text() && $(boxGrid[8]).text() === 'X' ||
-  $(boxGrid[0]).text() && $(boxGrid[3]).text() && $(boxGrid[6]).text() === 'X' ||
-  $(boxGrid[1]).text() && $(boxGrid[4]).text() && $(boxGrid[7]).text() === 'X' ||
-  $(boxGrid[2]).text() && $(boxGrid[5]).text() && $(boxGrid[8]).text() === 'X' ||
-  $(boxGrid[0]).text() && $(boxGrid[4]).text() && $(boxGrid[8]).text() === 'X' ||
-  $(boxGrid[2]).text() && $(boxGrid[4]).text() && $(boxGrid[6]).text() === 'X')
+  $(boxGrid[0]).text()  === 'X' && $(boxGrid[1]).text()  === 'X' && $(boxGrid[2]).text() === 'X' ||
+  $(boxGrid[3]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[5]).text() === 'X' ||
+  $(boxGrid[6]).text()  === 'X' && $(boxGrid[7]).text()  === 'X' && $(boxGrid[8]).text() === 'X' ||
+  $(boxGrid[0]).text()  === 'X' && $(boxGrid[3]).text()  === 'X' && $(boxGrid[6]).text() === 'X' ||
+  $(boxGrid[1]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[7]).text() === 'X' ||
+  $(boxGrid[2]).text()  === 'X' && $(boxGrid[5]).text()  === 'X' && $(boxGrid[8]).text() === 'X' ||
+  $(boxGrid[0]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[8]).text() === 'X' ||
+  $(boxGrid[2]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[6]).text() === 'X')
 
   { winner = 'x';
-    console.log('winner is x'); } // else if (
+    console.log('winner is x'); } else if (
 
-  // $(boxGrid[0]).text() && $(boxGrid[1]).text() && $(boxGrid[2]).text() === 'O' ||
-  // $(boxGrid[3]).text() && $(boxGrid[4]).text() && $(boxGrid[5]).text() === 'O' ||
-  // $(boxGrid[6]).text() && $(boxGrid[7]).text() && $(boxGrid[8]).text() === 'O' ||
-  // $(boxGrid[0]).text() && $(boxGrid[3]).text() && $(boxGrid[6]).text() === 'O' ||
-  // $(boxGrid[1]).text() && $(boxGrid[4]).text() && $(boxGrid[7]).text() === 'O' ||
-  // $(boxGrid[2]).text() && $(boxGrid[5]).text() && $(boxGrid[8]).text() === 'O' ||
-  // $(boxGrid[0]).text() && $(boxGrid[4]).text() && $(boxGrid[8]).text() === 'O' ||
-  // $(boxGrid[2]).text() && $(boxGrid[4]).text() && $(boxGrid[6]).text() === 'O')
+  $(boxGrid[0]).text() === 'O' && $(boxGrid[1]).text() === 'O' && $(boxGrid[2]).text() === 'O' ||
+  $(boxGrid[3]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[5]).text() === 'O' ||
+  $(boxGrid[6]).text() === 'O' && $(boxGrid[7]).text() === 'O' && $(boxGrid[8]).text() === 'O' ||
+  $(boxGrid[0]).text() === 'O' && $(boxGrid[3]).text() === 'O' && $(boxGrid[6]).text() === 'O' ||
+  $(boxGrid[1]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[7]).text() === 'O' ||
+  $(boxGrid[2]).text() === 'O' && $(boxGrid[5]).text() === 'O' && $(boxGrid[8]).text() === 'O' ||
+  $(boxGrid[0]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[8]).text() === 'O' ||
+  $(boxGrid[2]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[6]).text() === 'O')
 
-  // {
-  //   winner = 'o';
-  //   console.log('winner is o');
-  // }
+  {
+    winner = 'o';
+    console.log('winner is o');
+  }
 
 
   // var winnerX = 'XXX';
@@ -160,6 +160,7 @@ var checkForWinner = function checkForWinner() {
     if (player === player01 ){
           $(this).text('X');
           console.log(boxGrid.text());
+          // console.log($(this).text());
           // checkForBlanks();
           checkForWinner();
           player = player02;
