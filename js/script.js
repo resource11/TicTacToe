@@ -8,7 +8,6 @@ $(document).ready(function() {
   var winner = null;
   var boxGrid = $('#tic-tac-holder').children();
   var box = $('.box');
-
   var player01 = 'X';
   var player02 = 'O';
   var player = player01;
@@ -28,6 +27,7 @@ var checkForWinner = function checkForWinner(player) {
   $(boxGrid[2]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[6]).text() === player)
 
   { winner = player;
+    // increment player win count
     console.log('Winner is ' + player); } else if (checkForBlanks()) {
       console.log('the cat has it');
     }
@@ -56,7 +56,9 @@ var checkForWinner = function checkForWinner(player) {
 
 // use piece/player function here
   $(box).on('click', function() {
-
+    if ($(this).text() !== '-') {
+      console.log('you can\'t click on that box!');
+    } else {
     if (player === player01) {
           $(this).text('X');
           console.log(boxGrid.text());
@@ -73,9 +75,10 @@ var checkForWinner = function checkForWinner(player) {
           // $(this).attr('disabled');
           // $(this).off('click');
           // checkForBlanks();
-          checkForWinner();
+          checkForWinner(player);
           player = player01;
       }
+    }
 
   });
 
