@@ -13,142 +13,40 @@ $(document).ready(function() {
   var player02 = 'O';
   var player = player01;
 
-// play the game
-
-// check for winner test
-// var getWinner = function getWinner() {
-//     if (winnerIs('X')) {
-//     console.log('X');
-//     return 'The winner is X';
-//   }
-//   else if (winnerIs('O')) {
-//     console.log('O');
-//     return 'The winner is O';
-//   } else {
-//     return null;
-//   }
-// };
-
-// var winnerIs = function winnerIs(player) {
-//   return winsRow(player) || winsColumn(player) || winsDiagonal(player);
-// };
-
-// var winsRow = function winsRow(player) {
-//   return allThree(player, boxGrid[0], boxGrid[1], boxGrid[2]) ||
-//          allThree(player, boxGrid[3], boxGrid[4], boxGrid[5]) ||
-//          allThree(player, boxGrid[6], boxGrid[7], boxGrid[8]);
-// };
-
-// var winsColumn = function winsColumn(player) {
-//   return allThree(player, boxGrid[0], boxGrid[3], boxGrid[6]) ||
-//          allThree(player, boxGrid[1], boxGrid[4], boxGrid[7]) ||
-//          allThree(player, boxGrid[2], boxGrid[5], boxGrid[8]);
-// };
-
-// var winsDiagonal = function winsDiagonal(player) {
-//   return allThree(player, boxGrid[0], boxGrid[4], boxGrid[8]) ||
-//          allThree(player, boxGrid[2], boxGrid[4], boxGrid[6]);
-// };
-
-// var allThree = function allThree(player, boxOne, boxTwo, boxThree) {
-//   return (boxOne === player) && (boxTwo === player) && (boxThree === player);
-// };
 
 
 // check for winner long way
-var checkForWinner = function checkForWinner() {
+var checkForWinner = function checkForWinner(player) {
   if (
-  $(boxGrid[0]).text()  === 'X' && $(boxGrid[1]).text()  === 'X' && $(boxGrid[2]).text() === 'X' ||
-  $(boxGrid[3]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[5]).text() === 'X' ||
-  $(boxGrid[6]).text()  === 'X' && $(boxGrid[7]).text()  === 'X' && $(boxGrid[8]).text() === 'X' ||
-  $(boxGrid[0]).text()  === 'X' && $(boxGrid[3]).text()  === 'X' && $(boxGrid[6]).text() === 'X' ||
-  $(boxGrid[1]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[7]).text() === 'X' ||
-  $(boxGrid[2]).text()  === 'X' && $(boxGrid[5]).text()  === 'X' && $(boxGrid[8]).text() === 'X' ||
-  $(boxGrid[0]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[8]).text() === 'X' ||
-  $(boxGrid[2]).text()  === 'X' && $(boxGrid[4]).text()  === 'X' && $(boxGrid[6]).text() === 'X')
+  $(boxGrid[0]).text()  === player && $(boxGrid[1]).text()  === player && $(boxGrid[2]).text() === player ||
+  $(boxGrid[3]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[5]).text() === player ||
+  $(boxGrid[6]).text()  === player && $(boxGrid[7]).text()  === player && $(boxGrid[8]).text() === player ||
+  $(boxGrid[0]).text()  === player && $(boxGrid[3]).text()  === player && $(boxGrid[6]).text() === player ||
+  $(boxGrid[1]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[7]).text() === player ||
+  $(boxGrid[2]).text()  === player && $(boxGrid[5]).text()  === player && $(boxGrid[8]).text() === player ||
+  $(boxGrid[0]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[8]).text() === player ||
+  $(boxGrid[2]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[6]).text() === player)
 
-  { winner = 'x';
-    console.log('winner is x'); } else if (
-
-  $(boxGrid[0]).text() === 'O' && $(boxGrid[1]).text() === 'O' && $(boxGrid[2]).text() === 'O' ||
-  $(boxGrid[3]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[5]).text() === 'O' ||
-  $(boxGrid[6]).text() === 'O' && $(boxGrid[7]).text() === 'O' && $(boxGrid[8]).text() === 'O' ||
-  $(boxGrid[0]).text() === 'O' && $(boxGrid[3]).text() === 'O' && $(boxGrid[6]).text() === 'O' ||
-  $(boxGrid[1]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[7]).text() === 'O' ||
-  $(boxGrid[2]).text() === 'O' && $(boxGrid[5]).text() === 'O' && $(boxGrid[8]).text() === 'O' ||
-  $(boxGrid[0]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[8]).text() === 'O' ||
-  $(boxGrid[2]).text() === 'O' && $(boxGrid[4]).text() === 'O' && $(boxGrid[6]).text() === 'O')
-
-  {
-    winner = 'o';
-    console.log('winner is o');
-  }
-
-
-  // var winnerX = 'XXX';
-  // var winnerO = 'OOO';
-
-  // console.log('running test');
-  // var k = 0;
-  // var combo = '---';
-
-  // for (var i = 0; i < winCombo.length; i++) {
-  //   combo = winCombo[i];
-  //   console.log($(combo[i]).text());
-  // }
-  // if ((combo[0]+combo[1]+combo[2]) === 'XXX') {
-  //   console.log('winner is X');
-  // }
-  // if ((combo[0]+combo[1]+combo[2]) === 'OOO') {
-  //   console.log('winner is O');
-  // }
-
-
-  // for (var k in winCombo) {
-  //   var combo = winCombo[k];
-  //   console.log(winCombo[k]);
-  // }
+  { winner = player;
+    console.log('Winner is ' + player); } else if (checkForBlanks()) {
+      console.log('the cat has it');
+    }
 
 };
 
-
-// check for no dashes in board boxes
-// var isNotBlank = function isNotBlank(element, index, array) {
-//       return element !== '-';
-// }
-
-// var checkForBlanks = function checkForBlanks() {
-//   return boxGrid.every(isNotBlank);
-// }
-
-// check for full board with no winner
-// var fullBoard = function fullBoard() {
-//   // if (!winnerIs('X') || !winnerIs('O') || checkForBlanks) {
-//     // console.log($(boxGrid).text());
-//     for (var i = 0; i < boxGrid.length; i++) {
-//       if (boxGrid[i] !== '-') {
-
-//       }
-//     // }
-//     console.log('full board, no winner');
-//     console.log($(boxGrid).text());
-//   }
-// };
+// check for Cat's Game
  var checkForBlanks = function checkForBlanks() {
   var boxCount = 0;
-  var i = 0;
-  for (i in this.boxGrid) {
-    if (boxGrid[i] !== '-') {
+  boxGrid.each(function() {
+    if ($(this).text() !== '-') {
       boxCount += 1;
     }
-
-    if (boxCount === 9) {
+  });
+  if (boxCount === 9) {
+      console.log('cat game');
       return 'Cat\'s game';
     }
-  }
 };
-
-
 
 
 // if playerTurn is player01
@@ -156,33 +54,95 @@ var checkForWinner = function checkForWinner() {
 // if playerTurn is player02
 //   when player02 clicks a box, the box is changed to o
 
+// use piece/player function here
   $(box).on('click', function() {
-    if (player === player01 ){
+
+    if (player === player01) {
           $(this).text('X');
           console.log(boxGrid.text());
+          // $(this).attr('disabled', 'true');
           // console.log($(this).text());
+          // $(this).prop('disabled', true);
+          // $(this).prop('disabled', false);
           // checkForBlanks();
-          checkForWinner();
+          checkForWinner(player);
           player = player02;
       } else {
           $(this).text('O');
-          console.log(boxGrid.text());
+          // console.log(boxGrid.text());
+          // $(this).attr('disabled');
+          // $(this).off('click');
           // checkForBlanks();
           checkForWinner();
           player = player01;
       }
+
   });
 
 // this only wored when I just targeted the .reset-game class
   $('.reset-game').on('click', function() {
     // reset each square
     $(boxGrid).text('-');
+    // if ( $(box).attr('disabled') == "disabled" ) {
+    //     return false;
+    //   }
+    //   else {
+          // $(boxGrid).bind('click');
+      // }
+    // $(boxGrid).on('click').find(box);
     player = player01;
   });
 
 });
 
-// end scripts
+// end $(document).ready(function())
+
+
+// $( "#bind" ).click(function() {
+//   $( "body" )
+//     .on( "click", "#theone", flash )
+//     .find( "#theone" )
+//       .text( "Can Click!" );
+// });
+// $( "#unbind" ).click(function() {
+//   $( "body" )
+//     .off( "click", "#theone", flash )
+//     .find( "#theone" )
+//       .text( "Does nothing..." );
+// });
+
+
+// $("#file-button").click(function() {
+//       if ( $('#file-button').attr('disabled') == "disabled" ) {
+//         return false;
+//       }
+//       else {
+//           $('#file').trigger('click');
+//       }
+//     });
+
+
+// wrap game piece/player choice function
+// var playerSelectsBox = function (player, player01, player02) {
+//   if (player === player01 ){
+//           $(this).text('X');
+//           console.log(boxGrid.text());
+//           $(this).off('click');
+//           // console.log($(this).text());
+//           // $(this).prop('disabled', true);
+//           // $(this).prop('disabled', false);
+//           checkForBlanks();
+//           checkForWinner();
+//           player = player02;
+//       } else {
+//           $(this).text('O');
+//           console.log(boxGrid.text());
+//           $(this).off('click');
+//           checkForBlanks();
+//           checkForWinner();
+//           player = player01;
+//       }
+// }
 
 
 
