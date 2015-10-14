@@ -13,7 +13,7 @@
   font-weight: 400;
   color: #fff;
   position: relative;
-  top: 100px;
+  top: 120px;
   background-color: #AA1505;
   min-height: 750px;
 }
@@ -35,15 +35,25 @@ h1 {
   padding-bottom: 10px;
 }
 
+.header-title-banner {
+  width:  35%;
+  position: absolute;
+  top: -110px;
+  left: -35px;
+  z-index: 5;
+}
+
 .game-container {
-  width: 59%;
+  width: 57%;
   /*height: 600px;*/
-  margin: 5px;
+  margin: 0 auto;
+  padding: 3px 0 10px;
   position: relative;
   float: left;
   display: inline-block;
   border-radius: 5% 0 5% 5%;
   left: 10px;
+  top: 10px;
   overflow: auto;
   background-color: #9D052C;
 }
@@ -51,7 +61,7 @@ h1 {
 .game-box {
   width: 170px;
   height: 170px;
-  margin: 7px;
+  margin: 10px 0 0 9px;
   float: left;
   /*border: 2px solid black;*/
   border-radius: 50%;
@@ -127,4 +137,19 @@ button {
 
 .clear-left {
   clear: left;
+}
+
+/* styles from web api */
+
+#result {
+  height: 40ex;
+  width: 50%;
+  margin: 0 auto;
+}
+
+
+.test-data-stuff {
+  position: absolute;
+  left: 1050px;
+  top: 10px;
 }

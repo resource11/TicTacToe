@@ -2,6 +2,8 @@
 
 'use strict';
 
+// var $ = require('jquery');
+
 $(document).ready(function() {
 
 // finds each box in the grid
@@ -62,19 +64,10 @@ var checkForWinner = function checkForWinner(player) {
     if (player === player01) {
           $(this).text('X');
           console.log(boxGrid.text());
-          // $(this).attr('disabled', 'true');
-          // console.log($(this).text());
-          // $(this).prop('disabled', true);
-          // $(this).prop('disabled', false);
-          // checkForBlanks();
           checkForWinner(player);
           player = player02;
       } else {
           $(this).text('O');
-          // console.log(boxGrid.text());
-          // $(this).attr('disabled');
-          // $(this).off('click');
-          // checkForBlanks();
           checkForWinner(player);
           player = player01;
       }
@@ -86,68 +79,13 @@ var checkForWinner = function checkForWinner(player) {
   $('.reset-game').on('click', function() {
     // reset each square
     $(boxGrid).text('-');
-    // if ( $(box).attr('disabled') == "disabled" ) {
-    //     return false;
-    //   }
-    //   else {
-          // $(boxGrid).bind('click');
-      // }
-    // $(boxGrid).on('click').find(box);
     player = player01;
   });
 
 });
 
+
+// do user reg, user login, game creation test
+
 // end $(document).ready(function())
-
-
-// $( "#bind" ).click(function() {
-//   $( "body" )
-//     .on( "click", "#theone", flash )
-//     .find( "#theone" )
-//       .text( "Can Click!" );
-// });
-// $( "#unbind" ).click(function() {
-//   $( "body" )
-//     .off( "click", "#theone", flash )
-//     .find( "#theone" )
-//       .text( "Does nothing..." );
-// });
-
-
-// $("#file-button").click(function() {
-//       if ( $('#file-button').attr('disabled') == "disabled" ) {
-//         return false;
-//       }
-//       else {
-//           $('#file').trigger('click');
-//       }
-//     });
-
-
-// wrap game piece/player choice function
-// var playerSelectsBox = function (player, player01, player02) {
-//   if (player === player01 ){
-//           $(this).text('X');
-//           console.log(boxGrid.text());
-//           $(this).off('click');
-//           // console.log($(this).text());
-//           // $(this).prop('disabled', true);
-//           // $(this).prop('disabled', false);
-//           checkForBlanks();
-//           checkForWinner();
-//           player = player02;
-//       } else {
-//           $(this).text('O');
-//           console.log(boxGrid.text());
-//           $(this).off('click');
-//           checkForBlanks();
-//           checkForWinner();
-//           player = player01;
-//       }
-// }
-
-
-
-
 
