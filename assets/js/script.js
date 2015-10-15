@@ -33,6 +33,7 @@ var checkForWinner = function checkForWinner(player) {
   $(boxGrid[2]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[6]).text() === player)
 
   { winner = player;
+    myApp.gameOver = true;
     // increment player win count
     console.log('Winner is ' + player); } else if (checkForBlanks()) {
       console.log('the cat has it');
@@ -73,38 +74,29 @@ var checkForWinner = function checkForWinner(player) {
     } else {
     if (player === player01) {
           $(this).text('X');
-          myApp.currentCellValue = $(this).text();
-          myApp.currentCellIndex = $(this).data('cell');
-          data.game.cell.index = myApp.currentCellIndex;
-          data.game.cell.value = myApp.currentCellValue;
-          console.log(myApp.currentCellIndex);
-          console.log(myApp.currentCellValue);
-          console.log(data.game.cell.index);
-          console.log(data.game.cell.value);
           checkForWinner(player);
           console.log(myApp.boardState);
           player = player02;
       } else {
           $(this).text('O');
           checkForWinner(player);
+          console.log(myApp.boardState);
           player = player01;
       }
     }
 
   });
 
-// this only wored when I just targeted the .reset-game class
+// this only worked when I just targeted the .reset-game class
   $('.reset-game').on('click', function() {
     // reset each square
+    // do this with the api instead as a stretch goal
     $(boxGrid).text('');
     player = player01;
     // console.log(boxGridArray);
   });
 
 });
-
-
-// do user reg, user login, game creation test
 
 // end $(document).ready(function())
 

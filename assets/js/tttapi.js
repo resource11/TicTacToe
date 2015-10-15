@@ -5,25 +5,25 @@
 // create empty array boardState when you pull the cells from the API
 
 var myApp = {
+  currentGameID: null,
   boardState: [],
-  currentCell: '',
   currentToken: null,
+  gameOverState: false,
+  currentCell: null,
+  currentCellIndex: null,
+  currentCellValue: null,
   player_x: null,
   player_o: null,
   currentPlayerID: null,
-  currentGameID: null,
   player_x_ID: null,
   player_o_ID: null,
-  gameOverState: false
+  player_x_token: null,
+  player_o_token: null
+
 }
 
 // note that it is an object
 var tttapi = {
-  // var gameData = data.game;
-  // var cells = gameData.cells;
-  // var index = cell.index
-  // var value = cell.value;
-
   gameWatcher: null,
   ttt: 'http://ttt.wdibos.com',
   // this method runs the ajax config and callback
@@ -139,6 +139,23 @@ var tttapi = {
       dataType:'json'
     }, callback);
   },
+
+// this method ends a game if there's a winner or Cat's Game
+  gameOver: function (id, data, token, gameOverState) {
+    this.ajax({
+      method: 'PATCH',
+      url: this.ttt + '/games/' + id,
+      headers: {
+        Authorization: 'Token token=' + token,
+      },
+      contentType: 'application/json; charset=utf-8',
+      // looking to send data
+      data: JSON.stringify(data),
+      dataType:'json'
+    }, callback);
+  },
+
+
 // this method authenticates a user from a separate computer and allows the user to watch the game moves from another computer
   watchGame: function (id, token) {
     var url = this.ttt + '/games/' + id + '/watch';
@@ -220,7 +237,9 @@ $(function() {
         return;
       }
       callback(null, data);
-      $('.token').val(data.user.token);
+      // $('.token').val(data.user.token);
+      myApp.currentToken = data.user.token;
+      console.log(myApp.currentToken);
     };
     e.preventDefault();
     tttapi.login(credentials, cb);
@@ -228,9 +247,9 @@ $(function() {
 
 // gets the list of created games
   $('#list-games').on('submit', function(e) {
-    var token = $(this).children('[name="token"]').val();
+    // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.listGames(token, callback);
+    tttapi.listGames(myApp.currentToken, callback);
   });
 
 // createGame callback function
@@ -244,29 +263,35 @@ var createGameCallback = function createGameCallback(error, data) {
       myApp.boardState = data.game.cells;
       myApp.gameOverState = data.game.over;
       myApp.currentGameID = data.game.id;
+      // don't redefine the token or the game will break
+      // this is hidden on purpose
+      // you only get the token when you log in
+      // myApp.currentToken = data.game.token;
       console.log(myApp.boardState);
 };
 
 // uses the createGame method to create a game on button click
   $('#create-game').on('submit', function(e) {
-    var token = $(this).children('[name="token"]').val();
+    // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.createGame(token, createGameCallback);
+    tttapi.createGame(myApp.currentToken, createGameCallback);
   });
 
 // uses the showGame method to show game
   $('#show-game').on('submit', function(e) {
-    var token = $(this).children('[name="token"]').val();
-    var id = $('#show-id').val();
+    // var token = $(this).children('[name="token"]').val();
+    // var id = $('#show-id').val();
+
+    //select game id from list and set that as the current ID
     e.preventDefault();
-    tttapi.showGame(id, token, callback);
+    tttapi.showGame(myApp.currentGameID, myApp.currentToken, callback);
   });
 // uses the joinGame method to join a game
   $('#join-game').on('submit', function(e) {
-    var token = $(this).children('[name="token"]').val();
-    var id = $('#join-id').val();
+    // var token = $(this).children('[name="token"]').val();
+    // var id = $('#join-id').val();
     e.preventDefault();
-    tttapi.joinGame(id, token, callback);
+    tttapi.joinGame(myApp.currentGameID,, myApp.currentToken, callback);
 
 
   });
@@ -279,21 +304,41 @@ var markCellCallback = function markCellCallback(error, data) {
         return;
       }
       $('#result').val(JSON.stringify(data, null, 4));
-      // data.game.cell.index = myApp.currentCellIndex;
-      // data.game.cell.value = myApp.currentCellValue;
       console.log(myApp.currentCellIndex);
       console.log(myApp.currentCellValue);
+      // check for winner or cat's game and
+      // set gameOverState to true if so
+      //
 };
 // uses the markCell method to mark a game piece
-  $('#mark-cell').on('submit', function(e) {
-    var token = $(this).children('[name="token"]').val();
-    var id = $('#mark-id').val();
-    var data = wrap('game', wrap('cell', form2object(this)));
+  // $('#mark-cell').on('submit', function(e) {
+  //   var token = $(this).children('[name="token"]').val();
+  //   // use the currentGameID here instead as a test
+  //   var id = $('#mark-id').val();
+  //   // use the index value and cell text of the clicked box
+  //   // make a function that finds the value of the clicked box and text
+  //   // test here
+  //   var data = wrap('game', wrap('cell', form2object(this)));
+  //   e.preventDefault();
+  //   tttapi.markCell(id, data, token, callback);
+  // });
+
+  // uses the markCell method to mark a game piece
+  $('.box').on('click', function(e) {
+    myApp.currentCellValue = $(this).text();
+    myApp.currentCellIndex = $(this).data('cell');
+    console.log(myApp.currentCellIndex);
+    console.log(myApp.currentCellValue);
+    // wrap the data of cell index and value into game {}
+    var data = wrap('game', wrap('cell', {'index': myApp.currentCellIndex, 'value': myApp.currentCellValue}));
     e.preventDefault();
-    tttapi.markCell(id, data, token, markCellCallback);
+    tttapi.markCell(myApp.currentGameID, data, myApp.currentToken, markCellCallback);
   });
+
+
 // allows a second player to watch moves remotely while
 // logged in to the game from a separate computer
+// need to add variables in here if doing this one
   $('#watch-game').on('submit', function(e){
     var token = $(this).children('[name="token"]').val();
     var id = $('#watch-id').val();
