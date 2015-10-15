@@ -23,10 +23,12 @@
 .container {
   max-width: 960px;
   min-height: 620px;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
+  margin: 40px 10px 10px 20px;
   background-color: rgba(240,80,62,.4);
   position: relative;
   top: 10px;
+  float: left;
 }
 
 h1 {
@@ -38,9 +40,9 @@ h1 {
 }
 
 .header-title-banner {
-  width:  35%;
+  width:  30%;
   position: absolute;
-  top: -130px;
+  top: -100px;
   left: -35px;
   z-index: 5;
 }
@@ -65,10 +67,8 @@ h1 {
   height: 170px;
   margin: 10px 0 0 9px;
   float: left;
-  /*border: 2px solid black;*/
   border-radius: 50%;
- /* background-color: #330033;*/
- background: radial-gradient(#FF5C4A 0%, #AA1505 100%);
+  background: radial-gradient(#FF5C4A 0%, #AA1505 100%);
   font-weight: 800;
   font-size: 150px;
   color: #fff;
@@ -121,15 +121,18 @@ h2 {
   float:left;
   width: 20%;
   min-height: 400px;
-    margin: 5px 20px;
+  margin: 5px 20px;
   font-size: 1em;
   background-color: rgba(240,80,62,.4);
 }
 
+/*.player-messages {
+
+}*/
+
 .buttons-container {
   width: 100%;
   overflow: auto;
-  /*border: 4px solid black;*/
   background-color: rgba(240,80,62,.4);
   clear: left;
 }
@@ -150,17 +153,57 @@ button {
   clear: left;
 }
 
-/* styles from web api */
+.API-section {
+  position: relative;
+  width: 30%;
+  float: left;
+  top: 40px;
+  margin: 5px 20px;
+  background-color: rgba(240,80,62,.4);
+  display: inline-block;
+  border-radius: 50%;
+  min-height: 150px;
+}
 
-#result {
-  height: 40ex;
-  width: 50%;
-  margin: 0 auto;
+.API-register-login {
+  width: 610px;
+  min-height: 100px;
+  top: 50px;
+/*  .container is 960px wide*/
+  left: 980px;
+  /*margin: 5px 20px;*/
+  padding: 10px 5px;
+  background-color: rgba(240,80,62,.8);
+  display: inline-block;
+}
+
+.button-look {
+  font-size: 2.5em;
+  margin: 5px;
 }
 
 
+
+/* styles from web api */
+
 .test-data-stuff {
   position: absolute;
-  left: 1050px;
-  top: 10px;
+  left: 610px;
+  top: 0px;
+  width: 500px;
+  min-height: 400px;
+  padding: 10px;
+  background-color: rgba(0,0,0, 0.5);
+}
+
+form {
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+
+#result {
+  height: 30ex;
+  min-width: 400px;
+/*  margin: 0 auto;*/
 }

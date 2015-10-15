@@ -1,12 +1,14 @@
+'use strict';
+
 // begin scripts
 
-'use strict';
 
 // var $ = require('jquery');
 
 $(document).ready(function() {
 
 // finds each box in the grid
+  var gameOver = false;
   var winner = null;
   var boxGrid = $('#tic-tac-holder').children();
   // var boxGridArray = boxGrid.toArray();
@@ -14,9 +16,18 @@ $(document).ready(function() {
   var player01 = 'X';
   var player02 = 'O';
   var player = player01;
-  var remote = false;
+  var gameId = 0;
+  var gameList = [];
+  var credentials = {};
+  var dataCell = {
+                   game: {
+                    cell: {
 
-
+                    }
+                  }
+                };
+  var currentCellIndex = 0;
+  var currentCellValue = '';
 
 
 
@@ -33,9 +44,15 @@ var checkForWinner = function checkForWinner(player) {
   $(boxGrid[2]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[6]).text() === player)
 
   { winner = player;
+    var winnerMessage = 'Winner is ' + winner;
     // increment player win count
-    console.log('Winner is ' + player); } else if (checkForBlanks()) {
+    $('.player-messages').text(winnerMessage);
+    console.log('Winner is ' + player);
+    // set the gameOver to true. PATCH gameOver property to database
+  } else if (checkForBlanks()) {
       console.log('the cat has it');
+      $('.player-messages').text('Cat\'s Game!');
+      // set the gameOver to true. PATCH gameOver property to database
     }
 
 };
@@ -49,62 +66,86 @@ var checkForWinner = function checkForWinner(player) {
     }
   });
   if (boxCount === 9) {
-      console.log('cat game');
-      // look at setting a boolean element to put in the else if ()
       return 'Cat\'s game';
-      // set the gameOver property on server to true
     }
 };
-
-
-// if playerTurn is player01
-//   when player01 clicks a box, the box is changed to x
-// if playerTurn is player02
-//   when player02 clicks a box, the box is changed to o
-
-
-// myApp.currentCellIndex = data.game.cell.index;
-//  data.game.cell.value = myApp.currentCellValue;
 
 // use piece/player function here
   $(box).on('click', function() {
     if ($(this).text() !== '') {
+      $('.player-messages').text('That box is taken! Choose another.');
       console.log('you can\'t click on that box!');
     } else {
     if (player === player01) {
           $(this).text('X');
-          myApp.currentCellValue = $(this).text();
+          dataCell.game.cell.index = $(this).data('cell');
           myApp.currentCellIndex = $(this).data('cell');
-          data.game.cell.index = myApp.currentCellIndex;
-          data.game.cell.value = myApp.currentCellValue;
-          console.log(myApp.currentCellIndex);
-          console.log(myApp.currentCellValue);
-          console.log(data.game.cell.index);
-          console.log(data.game.cell.value);
+          dataCell.game.cell.value = 'X';
+          myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
           console.log(myApp.boardState);
+
           player = player02;
+          // debugger;
+          tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
+            if(err) {
+                return console.error(err);
+            }
+            $('#result').val(JSON.stringify(data, null, 4));// debugger;
+            // checkForWinner(player);
+            // console.log(myApp.boardState);
+            // $('#result').val(JSON.stringify(data, null, 4));
+            // player = player02;
+          });
       } else {
           $(this).text('O');
+          dataCell.game.cell.index = $(this).data('cell');
+          myApp.currentCellIndex = $(this).data('cell');
+          dataCell.game.cell.value = 'O';
+          myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
+          console.log(myApp.boardState);
           player = player01;
+
+
+          // debugger;
+          tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
+            if(err) {
+                return console.error(err);
+            }
+            $('#result').val(JSON.stringify(data, null, 4));
+            // debugger;
+            // checkForWinner(player);
+            // console.log(myApp.boardState);
+            // $('#result').val(JSON.stringify(data, null, 4));
+            // player = player01;
+          });
+
+          // $(this).text('O');
+          // dataCell.game.cell.index = $(this).data('cell');
+          // myApp.currentCellIndex = $(this).data('cell');
+          // dataCell.game.cell.value = 'O';
+          // myApp.currentCellValue = dataCell.game.cell.value;
+          // // myApp.currentCellIndex = $(this).data('cell');
+          // checkForWinner(player);
+          // console.log(myApp.boardState);
+          // player = player01;
       }
     }
 
   });
 
-// this only wored when I just targeted the .reset-game class
+// this only worked when I just targeted the .reset-game class
   $('.reset-game').on('click', function() {
     // reset each square
+    // do this with the api instead as a stretch goal
     $(boxGrid).text('');
+    $('.player-messages').text('');
     player = player01;
     // console.log(boxGridArray);
   });
 
 });
-
-
-// do user reg, user login, game creation test
 
 // end $(document).ready(function())
 
