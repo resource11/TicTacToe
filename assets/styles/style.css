@@ -14,7 +14,9 @@
   color: #fff;
   position: relative;
   top: 120px;
-  background-color: #AA1505;
+  /*background-color: #AA1505;*/
+  background: url(../ticTac-table-photo-bak.jpg);
+  background-size: cover;
   min-height: 750px;
 }
 
@@ -38,7 +40,7 @@ h1 {
 .header-title-banner {
   width:  35%;
   position: absolute;
-  top: -110px;
+  top: -130px;
   left: -35px;
   z-index: 5;
 }
@@ -113,6 +115,15 @@ h2 {
   line-height: 1.1;
   text-align: center;
   padding: 5px;
+}
+
+.message-container {
+  float:left;
+  width: 20%;
+  min-height: 400px;
+    margin: 5px 20px;
+  font-size: 1em;
+  background-color: rgba(240,80,62,.4);
 }
 
 .buttons-container {

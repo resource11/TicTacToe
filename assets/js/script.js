@@ -9,10 +9,14 @@ $(document).ready(function() {
 // finds each box in the grid
   var winner = null;
   var boxGrid = $('#tic-tac-holder').children();
+  // var boxGridArray = boxGrid.toArray();
   var box = $('.box');
   var player01 = 'X';
   var player02 = 'O';
   var player = player01;
+  var remote = false;
+
+
 
 
 
@@ -40,13 +44,15 @@ var checkForWinner = function checkForWinner(player) {
  var checkForBlanks = function checkForBlanks() {
   var boxCount = 0;
   boxGrid.each(function() {
-    if ($(this).text() !== '-') {
+    if ($(this).text() !== '') {
       boxCount += 1;
     }
   });
   if (boxCount === 9) {
       console.log('cat game');
+      // look at setting a boolean element to put in the else if ()
       return 'Cat\'s game';
+      // set the gameOver property on server to true
     }
 };
 
@@ -56,15 +62,27 @@ var checkForWinner = function checkForWinner(player) {
 // if playerTurn is player02
 //   when player02 clicks a box, the box is changed to o
 
+
+// myApp.currentCellIndex = data.game.cell.index;
+//  data.game.cell.value = myApp.currentCellValue;
+
 // use piece/player function here
   $(box).on('click', function() {
-    if ($(this).text() !== '-') {
+    if ($(this).text() !== '') {
       console.log('you can\'t click on that box!');
     } else {
     if (player === player01) {
           $(this).text('X');
-          console.log(boxGrid.text());
+          myApp.currentCellValue = $(this).text();
+          myApp.currentCellIndex = $(this).data('cell');
+          data.game.cell.index = myApp.currentCellIndex;
+          data.game.cell.value = myApp.currentCellValue;
+          console.log(myApp.currentCellIndex);
+          console.log(myApp.currentCellValue);
+          console.log(data.game.cell.index);
+          console.log(data.game.cell.value);
           checkForWinner(player);
+          console.log(myApp.boardState);
           player = player02;
       } else {
           $(this).text('O');
@@ -78,8 +96,9 @@ var checkForWinner = function checkForWinner(player) {
 // this only wored when I just targeted the .reset-game class
   $('.reset-game').on('click', function() {
     // reset each square
-    $(boxGrid).text('-');
+    $(boxGrid).text('');
     player = player01;
+    // console.log(boxGridArray);
   });
 
 });

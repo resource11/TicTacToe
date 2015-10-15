@@ -13,15 +13,15 @@
     <div class="container">
     <!-- <h1>Tic Tac Toe</h1> -->
       <div id="tic-tac-holder" class="game-container">
-        <div id="box01" class="box game-box">-</div>
-        <div id="box02" class="box game-box">-</div>
-        <div id="box03" class="box game-box">-</div>
-        <div id="box04" class="box game-box clear-left">-</div>
-        <div id="box05" class="box game-box">-</div>
-        <div id="box06" class="box game-box">-</div>
-        <div id="box07" class="box game-box clear-left">-</div>
-        <div id="box08" class="box game-box">-</div>
-        <div id="box09" class="box game-box">-</div>
+        <div data-cell="0" id="box01" class="box game-box"></div>
+        <div data-cell="1" id="box02" class="box game-box"></div>
+        <div data-cell="2" id="box03" class="box game-box"></div>
+        <div data-cell="3" id="box04" class="box game-box clear-left"></div>
+        <div data-cell="4" id="box05" class="box game-box"></div>
+        <div data-cell="5" id="box06" class="box game-box"></div>
+        <div data-cell="6" id="box07" class="box game-box clear-left"></div>
+        <div data-cell="7" id="box08" class="box game-box"></div>
+        <div data-cell="8" id="box09" class="box game-box"></div>
       </div>
       <div class="scoreboard-container">
         <h2>Score</h2>
@@ -34,6 +34,7 @@
           <li id="score-player-02" class="score-box">0</li>
         </ul>
       </div>
+      <div class="message-container"></div>
       <div class="buttons-container">
         <button class="play-game" type="submit">Play</button>
         <button class="reset-game" type="submit">Reset game</button>
@@ -41,6 +42,9 @@
       </div>
     </div>
   </div>
+
+<!-- Antony API buttons and functionality testers below -->
+
 <div class="test-data-stuff">
     <form id="register">
     <input name="email" type="text" placeholder="email">

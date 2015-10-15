@@ -1,8 +1,29 @@
 'use strict';
 
 // this is the api for the tic-tac-toe game
+
+// create empty array boardState when you pull the cells from the API
+
+var myApp = {
+  boardState: [],
+  currentCell: '',
+  currentToken: null,
+  player_x: null,
+  player_o: null,
+  currentPlayerID: null,
+  currentGameID: null,
+  player_x_ID: null,
+  player_o_ID: null,
+  gameOverState: false
+}
+
 // note that it is an object
 var tttapi = {
+  // var gameData = data.game;
+  // var cells = gameData.cells;
+  // var index = cell.index
+  // var value = cell.value;
+
   gameWatcher: null,
   ttt: 'http://ttt.wdibos.com',
   // this method runs the ajax config and callback
@@ -19,16 +40,10 @@ var tttapi = {
   //
   register: function register(credentials, callback) {
     this.ajax({
-      // set the HTTP method. Since you're creating, use POST
       method: 'POST',
-      // set the pathm the backend person will send you the path
       url: this.ttt + '/users',
-      // set the content type we're sending over
       contentType: 'application/json; charset=utf-8',
-      // the data you want to send
-      // take a data object and convert it to a JSON object
       data: JSON.stringify(credentials),
-      // this is the data type we're receiving back
       dataType: 'json'
     }, callback);
   },
@@ -74,6 +89,8 @@ var tttapi = {
       // make a request body
       contentType: 'application/json; charset=utf-8',
       // create an empty array
+      // do I need to stringify in the actual app or
+      // is this just for seeing the content in the result box?
       data: JSON.stringify({}),
       dataType:'json'
     }, callback);
@@ -146,7 +163,7 @@ $(function() {
       // type submit and is *not* hidden...
       var type = $(this).attr('type');
       if ($(this).attr('name') && type !== 'submit' && type !== 'hidden') {
-        // set the key of each data[thie name attribute]
+        // set the key of each data[the name attribute]
         // to the value of the value attribute
         // example: in form element with id 'mark-cell'
         // the first key value pair of the data{} is
@@ -216,12 +233,27 @@ $(function() {
     tttapi.listGames(token, callback);
   });
 
-// uses the createGame method to create a game
+// createGame callback function
+var createGameCallback = function createGameCallback(error, data) {
+      if (error) {
+        console.error(error);
+        $('#result').val('status: ' + error.status + ', error: ' + error.error);
+        return;
+      }
+      $('#result').val(JSON.stringify(data, null, 4));
+      myApp.boardState = data.game.cells;
+      myApp.gameOverState = data.game.over;
+      myApp.currentGameID = data.game.id;
+      console.log(myApp.boardState);
+};
+
+// uses the createGame method to create a game on button click
   $('#create-game').on('submit', function(e) {
     var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.createGame(token, callback);
+    tttapi.createGame(token, createGameCallback);
   });
+
 // uses the showGame method to show game
   $('#show-game').on('submit', function(e) {
     var token = $(this).children('[name="token"]').val();
@@ -235,14 +267,30 @@ $(function() {
     var id = $('#join-id').val();
     e.preventDefault();
     tttapi.joinGame(id, token, callback);
+
+
   });
+
+  // markCell callback function
+var markCellCallback = function markCellCallback(error, data) {
+      if (error) {
+        console.error(error);
+        $('#result').val('status: ' + error.status + ', error: ' + error.error);
+        return;
+      }
+      $('#result').val(JSON.stringify(data, null, 4));
+      // data.game.cell.index = myApp.currentCellIndex;
+      // data.game.cell.value = myApp.currentCellValue;
+      console.log(myApp.currentCellIndex);
+      console.log(myApp.currentCellValue);
+};
 // uses the markCell method to mark a game piece
   $('#mark-cell').on('submit', function(e) {
     var token = $(this).children('[name="token"]').val();
     var id = $('#mark-id').val();
     var data = wrap('game', wrap('cell', form2object(this)));
     e.preventDefault();
-    tttapi.markCell(id, data, token, callback);
+    tttapi.markCell(id, data, token, markCellCallback);
   });
 // allows a second player to watch moves remotely while
 // logged in to the game from a separate computer
