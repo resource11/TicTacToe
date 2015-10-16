@@ -44,7 +44,11 @@ var checkForWinner = function checkForWinner(player) {
   $(boxGrid[2]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[6]).text() === player)
 
   { winner = player;
+
     var winnerMessage = 'Winner is ' + winner;
+
+    // myApp.gameOver = true;
+
     // increment player win count
     $('.player-messages').text(winnerMessage);
     console.log('Winner is ' + player);
@@ -79,7 +83,7 @@ var checkForWinner = function checkForWinner(player) {
     if (player === player01) {
           $(this).text('X');
           dataCell.game.cell.index = $(this).data('cell');
-          myApp.currentCellIndex = $(this).data('cell');
+          myApp.currentCellIndex = dataCell.game.cell.index;
           dataCell.game.cell.value = 'X';
           myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
@@ -100,7 +104,7 @@ var checkForWinner = function checkForWinner(player) {
       } else {
           $(this).text('O');
           dataCell.game.cell.index = $(this).data('cell');
-          myApp.currentCellIndex = $(this).data('cell');
+          myApp.currentCellIndex = dataCell.game.cell.index;
           dataCell.game.cell.value = 'O';
           myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
