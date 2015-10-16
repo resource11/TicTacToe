@@ -20,14 +20,16 @@ $(document).ready(function() {
   var gameList = [];
   var credentials = {};
   var dataCell = {
-                   game: {
+                  game: {
                     cell: {
-
-                    }
+                      index: 0,
+                      value: ''
+                    },
                   }
+
                 };
-  var currentCellIndex = 0;
-  var currentCellValue = '';
+
+  dataCell.game.over = gameOver;
 
 
 
@@ -52,10 +54,14 @@ var checkForWinner = function checkForWinner(player) {
     // increment player win count
     $('.player-messages').text(winnerMessage);
     console.log('Winner is ' + player);
+    gameOver = true;
+    return;
     // set the gameOver to true. PATCH gameOver property to database
   } else if (checkForBlanks()) {
       console.log('the cat has it');
       $('.player-messages').text('Cat\'s Game!');
+      gameOver = true;
+      return;
       // set the gameOver to true. PATCH gameOver property to database
     }
 
@@ -77,7 +83,6 @@ var checkForWinner = function checkForWinner(player) {
 // use piece/player function here
   $(box).on('click', function() {
     if ($(this).text() !== '') {
-      $('.player-messages').text('That box is taken! Choose another.');
       console.log('you can\'t click on that box!');
     } else {
     if (player === player01) {
@@ -87,20 +92,14 @@ var checkForWinner = function checkForWinner(player) {
           dataCell.game.cell.value = 'X';
           myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
-          console.log(myApp.boardState);
 
-          player = player02;
-          // debugger;
           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
             if(err) {
                 return console.error(err);
             }
-            $('#result').val(JSON.stringify(data, null, 4));// debugger;
-            // checkForWinner(player);
-            // console.log(myApp.boardState);
-            // $('#result').val(JSON.stringify(data, null, 4));
-            // player = player02;
+            $('#result').val(JSON.stringify(data, null, 4));
           });
+          player = player02;
       } else {
           $(this).text('O');
           dataCell.game.cell.index = $(this).data('cell');
@@ -108,32 +107,14 @@ var checkForWinner = function checkForWinner(player) {
           dataCell.game.cell.value = 'O';
           myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
-          console.log(myApp.boardState);
-          player = player01;
 
-
-          // debugger;
           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
             if(err) {
                 return console.error(err);
             }
             $('#result').val(JSON.stringify(data, null, 4));
-            // debugger;
-            // checkForWinner(player);
-            // console.log(myApp.boardState);
-            // $('#result').val(JSON.stringify(data, null, 4));
-            // player = player01;
           });
-
-          // $(this).text('O');
-          // dataCell.game.cell.index = $(this).data('cell');
-          // myApp.currentCellIndex = $(this).data('cell');
-          // dataCell.game.cell.value = 'O';
-          // myApp.currentCellValue = dataCell.game.cell.value;
-          // // myApp.currentCellIndex = $(this).data('cell');
-          // checkForWinner(player);
-          // console.log(myApp.boardState);
-          // player = player01;
+                    player = player01;
       }
     }
 
@@ -146,7 +127,7 @@ var checkForWinner = function checkForWinner(player) {
     $(boxGrid).text('');
     $('.player-messages').text('');
     player = player01;
-    // console.log(boxGridArray);
+    gameOver = false;
   });
 
 });

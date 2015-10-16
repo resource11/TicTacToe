@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
+
+
+
 <!-- begin wrapper -->
   <div class="wrapper">
     <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
@@ -28,26 +31,30 @@
       </div>
 <!-- end game container -->
 
-<!-- begin scoreboard container -->
-      <div class="scoreboard-container">
-        <h2>Score</h2>
-        <ul>
-          <li class="score-player">Player 1</li>
-          <li id="score-player-01" class="score-box">0</li>
-        </ul>
-        <ul>
-          <li class="score-player">Player 2</li>
-          <li id="score-player-02" class="score-box">0</li>
-        </ul>
-      </div>
-<!-- end scoreboard container -->
 
-<!-- begin message container -->
-      <div class="message-container">
-        <h2>messages here</h2>
-        <p class="player-messages"></p>
+      <div class="score-n-messages">
+      <!-- begin scoreboard container -->
+            <!-- <div class="scoreboard-container">
+              <h2>Score</h2>
+            </div> -->
+            <div class="player01-box">
+              <p id="score-player-01" class="score-box">0</p>
+              <p class="score-player-01-title">Player 1<p>
+            </div>
+            <div class="player02-box">
+              <p id="score-player-02" class="score-box">0</p>
+              <p class="score-player-02-title">Player 2</p>
+            </div>
+
+      <!-- end scoreboard container -->
+
+      <!-- begin message container -->
+            <div class="message-container">
+              <h2 class="player-messages">messages here</h2>
+              <!-- <p class="player-messages"></p> -->
+            </div>
+      <!-- end message container -->
       </div>
-<!-- end message container -->
 
 <!-- begin buttons container -->
       <div class="buttons-container">
@@ -55,8 +62,10 @@
         <button class="reset-game" type="submit">Reset game</button>
         <button class="reset-score" type="submit">Reset score</button>
       </div>
+
     </div>
 <!-- end container -->
+
 
 
 <!-- begin API section -->
@@ -65,9 +74,9 @@
 
 <!-- begin API register, login, create game, list game, show game, join game section -->
       <div class="API-register-login">
-      <h2>register/login</h2>
+        <h2>register/login</h2>
          <form id="register">
-          <input name="email" type="text" placeholder="email">
+          <input name="email" type="text" placeholder="email" class="nicer-input">
           <input name="password" type="password" placeholder="password">
           <input name="password_confirmation" type="password" placeholder="password confirmation">
           <input name="register" type="submit" value="Register" class="button-look">
@@ -77,7 +86,18 @@
           <input name="password" type="password" placeholder="password">
           <input name="login" type="submit" value="Login" class="button-look">
         </form>
-      </div>
+
+        <form id="create-game">
+            <input name="create-game" type="submit" value="Create Game"class="button-look">
+            <input class="token" name="token" type="hidden">
+          </form>
+          <form id="show-game">
+            <label for="show-id">Id:</label>
+            <input id="show-id" type="text" size="4">
+            <input name="show-game" type="submit" value="Show Game" class="button-look">
+            <input class="token" name="token" type="hidden">
+         </form>
+       </div>
 
  <!-- end API register, login, create game, list game, show game, join game section -->
 
@@ -91,7 +111,7 @@
           <input name="list-games" type="submit" value="List Games" class="button-look">
           <input class="token" name="token" type="hidden">
         </form>
-        <form id="create-game">
+        <!-- <form id="create-game">
           <input name="create-game" type="submit" value="Create Game"class="button-look">
           <input class="token" name="token" type="hidden">
         </form>
@@ -100,7 +120,7 @@
           <input id="show-id" type="text" size="4">
           <input name="show-game" type="submit" value="Show Game" class="button-look">
           <input class="token" name="token" type="hidden">
-       </form>
+       </form> -->
         <form id="join-game">
           <label for="join-id">Id:</label>
           <input id="join-id" type="text" size="4">

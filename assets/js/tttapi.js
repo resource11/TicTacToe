@@ -197,11 +197,20 @@ $(function() {
     tttapi.login(credentials, cb);
   });
 
+var listGamesCallback = function listGamesCallback(error, data) {
+  myApp.gameList = data.games;
+  console.log(myApp.gameList);
+  // retrieved games, how to extract id
+  // the below doesn't do it
+  for (var i = 0; i < data.games.length; i++)
+    myApp.gameList[i] = data.games[i];
+  console.log(myApp.gameList[i]);
+}
+
 // gets the list of created games
   $('#list-games').on('submit', function(e) {
-    // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.listGames(myApp.currentToken, callback);
+    tttapi.listGames(myApp.currentToken, listGamesCallback);
   });
 
 // createGame callback function
@@ -215,10 +224,6 @@ var createGameCallback = function createGameCallback(error, data) {
       myApp.boardState = data.game.cells;
       myApp.gameOverState = data.game.over;
       myApp.currentGameID = data.game.id;
-      // don't redefine the token or the game will break
-      // this is hidden on purpose
-      // you only get the token when you log in
-      // myApp.currentToken = data.game.token;
       console.log(myApp.boardState);
 };
 
@@ -246,44 +251,6 @@ var createGameCallback = function createGameCallback(error, data) {
     tttapi.joinGame(myApp.currentGameID, myApp.currentToken, callback);
   });
 
-  // markCell callback function
-var markCellCallback = function markCellCallback(error, data) {
-      if (error) {
-        console.error(error);
-        $('#result').val('status: ' + error.status + ', error: ' + error.error);
-        return;
-      }
-      $('#result').val(JSON.stringify(data, null, 4));
-      console.log(myApp.currentCellIndex);
-      console.log(myApp.currentCellValue);
-      // check for winner or cat's game and
-      // set gameOverState to true if so
-      //
-};
-// uses the markCell method to mark a game piece
-
-  // $('#mark-cell').on('submit', function(e) {
-  //   var token = $(this).children('[name="token"]').val();
-  //   // use the currentGameID here instead as a test
-  //   var id = $('#mark-id').val();
-  //   // use the index value and cell text of the clicked box
-  //   // make a function that finds the value of the clicked box and text
-  //   // test here
-  //   var data = wrap('game', wrap('cell', form2object(this)));
-  //   e.preventDefault();
-  //   tttapi.markCell(id, data, token, callback);
-  // });
-
-  // uses the markCell method to mark a game piece
-  $('.box').on('click', function(e) {
-    myApp.currentCellValue = $(this).text();
-    myApp.currentCellIndex = $(this).data('cell');
-    console.log(myApp.currentCellIndex);
-    console.log(myApp.currentCellValue);
-    // wrap the data of cell index and value into game {}
-    e.preventDefault();
-    tttapi.markCell(myApp.currentGameID, data, myApp.currentToken, markCellCallback);
-  });
 
 // allows a second player to watch moves remotely while
 // logged in to the game from a separate computer
@@ -318,3 +285,23 @@ var markCellCallback = function markCellCallback(error, data) {
 //       if (err) {console.error(err)}
 //       game.id = data.game.id;
 //     }
+
+
+  // $('#login_submit').on('click', function(){
+  //  tttapi.login({
+  //     "credentials": {
+  //       "email": document.getElementById('login_email').value,
+  //       "password": document.getElementById('login_pw').value
+  //     }
+  //   },
+  //     function(err, data){
+  //       if (err) {
+  //         console.error(err);
+  //       }
+  //       game.token = data.user.token;
+  //       $('.start').slideUp(400);
+  //       $('.turn_banner').text("^ TicTacToe! Pick then Go. ^");
+
+  //     }
+  //   )
+  // });
