@@ -21,21 +21,20 @@ High-level project goals:
 * The user in this scenario is one (or two) players who enjoy playing Tic Tac Toe.
 The features of this game develepment will address the following user stories.
 * As a user, I can join a Tic Tac Toe game online.
-*   Conditions of satisfaction
-*      User needs to be able to register an account and login. Then, the user needs to be able to create a game and enter either an X or O on the board.
+1. Conditions of satisfaction
+  1. User needs to be able to register an account and login. Then, the user needs to be able to create a game and enter either an X or O on the board.
 * As a user, I can play against another player on the same computer (we can take turns).
-*   Conditions of satisfaction
-*       The game board needs to be able to accept input from both users and needs to be able to change player turns so the board moves look as intended
+1. Conditions of satisfaction
+ 1.  The game board needs to be able to accept input from both users and needs to be able to change player turns so the board moves look as intended
 * As a user, I can keep track of how many games I have won.
-*   Conditions of satisfaction
-*       The game needs a scoring system to track wins
+1. Conditions of satisfaction
+  1. The game needs a scoring system to track wins
 * As a user, I can see if I have won or have tied a game.
-*   Conditions of satisfaction
-*       The game needs to somehow alert the user of game status
-*
+1. Conditions of satisfaction
+  1. The game needs to somehow alert the user of game status
 
 ##Wireframe
-* The initial wireframe mockup of a potential site design is located here
+* The initial wireframe mockup of a potential site design is located here: http://imgur.com/QiL8V6o
 
 ##Game approach
 * I leveraged my knowledge of HTML, CSS, Javascript, jQuery and AJAX to build a decently functional game
