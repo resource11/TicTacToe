@@ -236,8 +236,8 @@ var createGameCallback = function createGameCallback(error, data) {
 
 // uses the showGame method to show game
   $('#show-game').on('submit', function(e) {
-    // var token = $(this).children('[name="token"]').val();
-    // var id = $('#show-id').val();
+    var token = $(this).children('[name="token"]').val();
+    var id = $('#show-id').val();
 
     //select game id from list and set that as the current ID
     e.preventDefault();

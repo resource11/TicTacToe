@@ -13,6 +13,8 @@ $(document).ready(function() {
   var boxGrid = $('#tic-tac-holder').children();
   // var boxGridArray = boxGrid.toArray();
   var box = $('.box');
+  var player01Win = 0;
+  var player02Win = 0;
   var player01 = 'X';
   var player02 = 'O';
   var player = player01;
@@ -54,6 +56,11 @@ var checkForWinner = function checkForWinner(player) {
     // increment player win count
     $('.player-messages').text(winnerMessage);
     console.log('Winner is ' + player);
+    if (winner === 'X') {
+      $('#score-player-01').html(++player01Win);
+    } else if (winner === 'O') {
+      $('#score-player-02').html(++player02Win);
+    }
     gameOver = true;
     return;
     // set the gameOver to true. PATCH gameOver property to database
@@ -114,7 +121,7 @@ var checkForWinner = function checkForWinner(player) {
             }
             $('#result').val(JSON.stringify(data, null, 4));
           });
-                    player = player01;
+          player = player01;
       }
     }
 
@@ -122,12 +129,17 @@ var checkForWinner = function checkForWinner(player) {
 
 // this only worked when I just targeted the .reset-game class
   $('.reset-game').on('click', function() {
-    // reset each square
-    // do this with the api instead as a stretch goal
     $(boxGrid).text('');
     $('.player-messages').text('');
     player = player01;
     gameOver = false;
+  });
+
+  $('.reset-score').on('click', function() {
+    player01Win = 0;
+    player01Win = 0;
+    $('#score-player-01').html(0);
+    $('#score-player-02').html(0);
   });
 
 });

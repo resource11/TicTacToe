@@ -33,10 +33,6 @@
 
 
       <div class="score-n-messages">
-      <!-- begin scoreboard container -->
-            <!-- <div class="scoreboard-container">
-              <h2>Score</h2>
-            </div> -->
             <div class="player01-box">
               <p id="score-player-01" class="score-box">0</p>
               <p class="score-player-01-title">Player 1<p>
@@ -46,8 +42,6 @@
               <p class="score-player-02-title">Player 2</p>
             </div>
 
-      <!-- end scoreboard container -->
-
       <!-- begin message container -->
             <div class="message-container">
               <h2 class="player-messages">messages here</h2>
@@ -55,16 +49,6 @@
             </div>
       <!-- end message container -->
       </div>
-
-<!-- begin buttons container -->
-      <div class="buttons-container">
-        <button class="play-game" type="submit">Play</button>
-        <button class="reset-game" type="submit">Reset game</button>
-        <button class="reset-score" type="submit">Reset score</button>
-      </div>
-
-    </div>
-<!-- end container -->
 
 
 
@@ -97,6 +81,15 @@
             <input name="show-game" type="submit" value="Show Game" class="button-look">
             <input class="token" name="token" type="hidden">
          </form>
+        <div class="buttons-container">
+          <button class="play-game" type="submit">Play</button>
+          <button class="reset-game" type="submit">Reset game</button>
+          <button class="reset-score" type="submit">Reset score</button>
+          <button type="submit" class="show-testBox">Show Tester</button>
+        </div>
+
+
+    </div>
        </div>
 
  <!-- end API register, login, create game, list game, show game, join game section -->
@@ -105,23 +98,14 @@
 
 <!-- Antony API buttons and functionality testers below -->
 
-    <div class="test-data-stuff">
+    <div class="test-data-stuff" class="slideUp">
       <h2>API functionality testing</h2>
         <form id="list-games">
           <input name="list-games" type="submit" value="List Games" class="button-look">
           <input class="token" name="token" type="hidden">
         </form>
-        <!-- <form id="create-game">
-          <input name="create-game" type="submit" value="Create Game"class="button-look">
-          <input class="token" name="token" type="hidden">
-        </form>
-        <form id="show-game">
-          <label for="show-id">Id:</label>
-          <input id="show-id" type="text" size="4">
-          <input name="show-game" type="submit" value="Show Game" class="button-look">
-          <input class="token" name="token" type="hidden">
-       </form> -->
-        <form id="join-game">
+
+<!--         <form id="join-game">
           <label for="join-id">Id:</label>
           <input id="join-id" type="text" size="4">
           <input name="join-game" type="submit" value="Join Game" class="button-look">
@@ -146,7 +130,7 @@
           <input name="value" id="watch-value" type="text" size="4">
           <input name="watch-game" type="submit" value="Watch Game" class="button-look">
           <input class="token" name="token" type="hidden">
-        </form>
+        </form> -->
         <br>
         <label for="result">Result</label>
         <textarea id="result"></textarea>
