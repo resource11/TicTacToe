@@ -1,22 +1,37 @@
+'use strict';
+
 // begin scripts
 
-'use strict';
 
 // var $ = require('jquery');
 
 $(document).ready(function() {
 
 // finds each box in the grid
+  var gameOver = false;
   var winner = null;
   var boxGrid = $('#tic-tac-holder').children();
   // var boxGridArray = boxGrid.toArray();
   var box = $('.box');
+  var player01Win = 0;
+  var player02Win = 0;
   var player01 = 'X';
   var player02 = 'O';
   var player = player01;
-  var remote = false;
+  var gameId = 0;
+  var gameList = [];
+  var credentials = {};
+  var dataCell = {
+                  game: {
+                    cell: {
+                      index: 0,
+                      value: ''
+                    },
+                  }
 
+                };
 
+  dataCell.game.over = gameOver;
 
 
 
@@ -33,9 +48,28 @@ var checkForWinner = function checkForWinner(player) {
   $(boxGrid[2]).text()  === player && $(boxGrid[4]).text()  === player && $(boxGrid[6]).text() === player)
 
   { winner = player;
+
+    var winnerMessage = 'Winner is ' + winner;
+
+    // myApp.gameOver = true;
+
     // increment player win count
-    console.log('Winner is ' + player); } else if (checkForBlanks()) {
+    $('.player-messages').text(winnerMessage);
+    console.log('Winner is ' + player);
+    if (winner === 'X') {
+      $('#score-player-01').html(++player01Win);
+    } else if (winner === 'O') {
+      $('#score-player-02').html(++player02Win);
+    }
+    gameOver = true;
+    return;
+    // set the gameOver to true. PATCH gameOver property to database
+  } else if (checkForBlanks()) {
       console.log('the cat has it');
+      $('.player-messages').text('Cat\'s Game!');
+      gameOver = true;
+      return;
+      // set the gameOver to true. PATCH gameOver property to database
     }
 
 };
@@ -49,22 +83,9 @@ var checkForWinner = function checkForWinner(player) {
     }
   });
   if (boxCount === 9) {
-      console.log('cat game');
-      // look at setting a boolean element to put in the else if ()
       return 'Cat\'s game';
-      // set the gameOver property on server to true
     }
 };
-
-
-// if playerTurn is player01
-//   when player01 clicks a box, the box is changed to x
-// if playerTurn is player02
-//   when player02 clicks a box, the box is changed to o
-
-
-// myApp.currentCellIndex = data.game.cell.index;
-//  data.game.cell.value = myApp.currentCellValue;
 
 // use piece/player function here
   $(box).on('click', function() {
@@ -73,38 +94,63 @@ var checkForWinner = function checkForWinner(player) {
     } else {
     if (player === player01) {
           $(this).text('X');
-          myApp.currentCellValue = $(this).text();
-          myApp.currentCellIndex = $(this).data('cell');
-          data.game.cell.index = myApp.currentCellIndex;
-          data.game.cell.value = myApp.currentCellValue;
-          console.log(myApp.currentCellIndex);
-          console.log(myApp.currentCellValue);
-          console.log(data.game.cell.index);
-          console.log(data.game.cell.value);
+          dataCell.game.cell.index = $(this).data('cell');
+          myApp.currentCellIndex = dataCell.game.cell.index;
+          dataCell.game.cell.value = 'X';
+          myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
-          console.log(myApp.boardState);
+
+          tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
+            if(err) {
+                return console.error(err);
+            }
+            $('#result').val(JSON.stringify(data, null, 4));
+          });
           player = player02;
       } else {
           $(this).text('O');
+          dataCell.game.cell.index = $(this).data('cell');
+          myApp.currentCellIndex = dataCell.game.cell.index;
+          dataCell.game.cell.value = 'O';
+          myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
+
+          tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
+            if(err) {
+                return console.error(err);
+            }
+            $('#result').val(JSON.stringify(data, null, 4));
+          });
           player = player01;
       }
     }
 
   });
 
-// this only wored when I just targeted the .reset-game class
+// this only worked when I just targeted the .reset-game class
   $('.reset-game').on('click', function() {
-    // reset each square
     $(boxGrid).text('');
+    $('.player-messages').text('');
     player = player01;
-    // console.log(boxGridArray);
+    gameOver = false;
+  });
+
+  $('.reset-score').on('click', function() {
+    player01Win = 0;
+    player01Win = 0;
+    $('#score-player-01').html(0);
+    $('#score-player-02').html(0);
   });
 
 });
 
-
-// do user reg, user login, game creation test
+$('.test-data-stuff').click(function() {
+  if ( $('.test-data-stuff').is(':hidden') ) {
+    $( "div" ).show( "slow" );
+  } else {
+    $( "div" ).slideUp();
+  }
+});
 
 // end $(document).ready(function())
 
