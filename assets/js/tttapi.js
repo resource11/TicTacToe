@@ -280,28 +280,3 @@ var createGameCallback = function createGameCallback(error, data) {
 
 });
 
-
-// function(err, data){
-//       if (err) {console.error(err)}
-//       game.id = data.game.id;
-//     }
-
-
-  // $('#login_submit').on('click', function(){
-  //  tttapi.login({
-  //     "credentials": {
-  //       "email": document.getElementById('login_email').value,
-  //       "password": document.getElementById('login_pw').value
-  //     }
-  //   },
-  //     function(err, data){
-  //       if (err) {
-  //         console.error(err);
-  //       }
-  //       game.token = data.user.token;
-  //       $('.start').slideUp(400);
-  //       $('.turn_banner').text("^ TicTacToe! Pick then Go. ^");
-
-  //     }
-  //   )
-  // });

@@ -144,5 +144,13 @@ var checkForWinner = function checkForWinner(player) {
 
 });
 
+$('.test-data-stuff').click(function() {
+  if ( $('.test-data-stuff').is(':hidden') ) {
+    $( "div" ).show( "slow" );
+  } else {
+    $( "div" ).slideUp();
+  }
+});
+
 // end $(document).ready(function())
 
