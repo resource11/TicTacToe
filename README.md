@@ -38,7 +38,7 @@ The features of this game development will address the following user stories.
 
 ##Game approach
 * I leveraged my knowledge of HTML, CSS, Javascript, jQuery and AJAX to build a decently functional game
-* After sketching a wireframe and reviewing my user stories, I mocked up the HTML file and added some basic CSS3 styling. Then I worked through the game logic to solve the problem of recognizing user clicks on the board and changing the board piece according to game specs and requirements.
+* After sketching a [wireframe](http://i.imgur.com/QiL8V6o.jpg) and reviewing my user stories, I mocked up the HTML file and added some basic CSS3 styling. Then I worked through the [game logic](http://i.imgur.com/5ErZUba.jpg) to solve the problem of recognizing user clicks on the board and changing the board piece according to game specs and requirements.
 * One the logic was flushed out, I leveraged both JavaScript and jQuery to scaffold the app. Then... enter AJAX.
 * I successfully connected the Tic Tac Toe API to allow the user to register, log in, create a new game (which happens if the user authorization is valid), and mark game board cell, while also storing any newly-created or partially completed games on a remote server.
 
