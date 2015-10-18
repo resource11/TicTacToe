@@ -200,11 +200,22 @@ $(function() {
 var listGamesCallback = function listGamesCallback(error, data) {
   myApp.gameList = data.games;
   console.log(myApp.gameList);
+  // console.log(data.games);
   // retrieved games, how to extract id
   // the below doesn't do it
-  for (var i = 0; i < data.games.length; i++)
-    myApp.gameList[i] = data.games[i];
-  console.log(myApp.gameList[i]);
+  for (var i = 0; i < data.games.length; i++) {
+    for (var j = 0; j < data.games.length; j++) {
+      myApp.currentGameID[i[j]] = data.games[i[j]];
+      console.log(myApp.currentGameID);
+    }
+
+      $('#result').val(JSON.stringify(data, null, 4));
+  }
+  // $(data.games.id).each(function(index, el) {
+  //   myApp.currentGameID = data.games.id;
+  //   console.log(myApp.currentGameID);
+  // });
+
 }
 
 // gets the list of created games

@@ -130,11 +130,13 @@ var checkForWinner = function checkForWinner(player) {
     player = player01;
     gameOver = false;
     // create game to server
-    tttapi.createGame(tttapi.token,
+    tttapi.createGame(myApp.currentToken,
         function(err,data) {
             if(err) {
                 return console.error(err);
             }
+            myApp.boardState = data.game.cells;
+            myApp.gameOverState = data.game.over;
             gameId = data.game.id;
             // $('.list-result').text('Game created. Game ID: ' + gameId);
         }
