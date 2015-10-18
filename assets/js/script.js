@@ -11,7 +11,6 @@ $(document).ready(function() {
   var gameOver = false;
   var winner = null;
   var boxGrid = $('#tic-tac-holder').children();
-  // var boxGridArray = boxGrid.toArray();
   var box = $('.box');
   var player01Win = 0;
   var player02Win = 0;
@@ -27,11 +26,12 @@ $(document).ready(function() {
                       index: 0,
                       value: ''
                     },
+                    over: gameOver,
                   }
 
                 };
 
-  dataCell.game.over = gameOver;
+  // dataCell.game.over = gameOver;
 
 
 
@@ -87,19 +87,17 @@ var checkForWinner = function checkForWinner(player) {
     }
 };
 
+
 // use piece/player function here
   $(box).on('click', function() {
-    if ($(this).text() !== '') {
+    if ($(this).text() !== '' || gameOver === true) {
       console.log('you can\'t click on that box!');
     } else {
     if (player === player01) {
           $(this).text('X');
           dataCell.game.cell.index = $(this).data('cell');
-          myApp.currentCellIndex = dataCell.game.cell.index;
           dataCell.game.cell.value = 'X';
-          myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
-
           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
             if(err) {
                 return console.error(err);
@@ -110,11 +108,8 @@ var checkForWinner = function checkForWinner(player) {
       } else {
           $(this).text('O');
           dataCell.game.cell.index = $(this).data('cell');
-          myApp.currentCellIndex = dataCell.game.cell.index;
           dataCell.game.cell.value = 'O';
-          myApp.currentCellValue = dataCell.game.cell.value;
           checkForWinner(player);
-
           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
             if(err) {
                 return console.error(err);
@@ -123,7 +118,8 @@ var checkForWinner = function checkForWinner(player) {
           });
           player = player01;
       }
-    }
+
+    };
 
   });
 
@@ -133,6 +129,16 @@ var checkForWinner = function checkForWinner(player) {
     $('.player-messages').text('');
     player = player01;
     gameOver = false;
+    // create game to server
+    tttapi.createGame(tttapi.token,
+        function(err,data) {
+            if(err) {
+                return console.error(err);
+            }
+            gameId = data.game.id;
+            // $('.list-result').text('Game created. Game ID: ' + gameId);
+        }
+    );
   });
 
   $('.reset-score').on('click', function() {
@@ -142,15 +148,21 @@ var checkForWinner = function checkForWinner(player) {
     $('#score-player-02').html(0);
   });
 
+
+
+  $('.test-data-stuff').click(function() {
+    if ( $('.test-data-stuff').is(':hidden') ) {
+      $( "div" ).show( "slow" );
+    } else {
+      $( "div" ).slideUp();
+    }
+  });
+
+
 });
 
-$('.test-data-stuff').click(function() {
-  if ( $('.test-data-stuff').is(':hidden') ) {
-    $( "div" ).show( "slow" );
-  } else {
-    $( "div" ).slideUp();
-  }
-});
+
+
 
 // end $(document).ready(function())
 

@@ -257,6 +257,19 @@ button:active {
   margin: 5px;
 }
 
+input{
+      border:0;
+      padding:10px;
+      font-family: 'Lato';
+      font-weight: 300;
+      font-size:18px;
+}
+
+input[type="submit"] {
+      background: red;
+      color:white;
+}
+
 
 
 /* styles from web api */
