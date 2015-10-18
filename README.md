@@ -54,7 +54,7 @@ The features of this game development will address the following user stories.
 * Another big challenge for me is actually writing out the user stories, and the README.md file, without creating an extremely verbose description of every single thought or process I planned. Brevity in writing: not my bag.
 
 ##Final Thoughts
-* In general, I think this is a great first project for showing how much we have learned in the past three weeks!
+* In general, I think this is a great first project for showing how much we have learned in the past three weeks! Ready for more...
 
 [License](LICENSE)
 ------------------
