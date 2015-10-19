@@ -8,13 +8,16 @@
 
 header {
   position: relative;
-  min-height: 50px;
+  min-height: 80px;
   background-color: gray;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  z-index: 3;
 }
 
 .top-nav {
   position: fixed;
-  top: 70px;
+  top: 48px;
   right: 20px;
 }
 
@@ -22,7 +25,7 @@ header {
   display: inline-block;
   width: 200px;
   height: 30px;
-  margin: 2px auto;
+  margin: 2px 0 0 5px;
   padding: 5px;
   border: 0;
   background-color: rgba(170,21,5,1);
@@ -31,7 +34,35 @@ header {
   font-weight: 900;
   text-align: center;
   color: #fff;
+}
 
+/*.API-connector {
+  position: fixed;
+  top: 80px;
+  width: 200px;
+  height: 200px;
+  padding: 10px 5px;
+  background-color: rgba(240,80,62,.4);
+}*/
+
+.API-register {
+  position: fixed;
+  top: 80px;
+  right: 228px;
+  width: 200px;
+  height: 200px;
+  padding: 10px 5px;
+  background-color: rgba(240,80,62,.4);
+}
+
+.API-login {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  padding: 10px 5px;
+  background-color: rgba(240,80,62,.4);
 }
 
 .wrapper {
@@ -41,17 +72,15 @@ header {
   color: #fff;
   position: relative;
   top: 50px;
-  /*background-color: #AA1505;*/
   background: url(../ticTac-table-photo-bak-crop.jpg);
   background-size: cover;
-/*  background-position: center;*/
   min-height: 650px;
 }
 
 .header-title-banner {
   width:  30%;
   position: absolute;
-  top: -50px;
+  top: 45px;
   left: 25px;
   z-index: 5;
 }
@@ -62,10 +91,7 @@ header {
   position: relative;
   top: 10px;
   float: left;
-  /*margin: 0 auto;*/
   margin: 60px 10px 10px 60px;
-  /*background-color: rgba(240,80,62,.4);*/
-
 }
 
 h1 {
@@ -178,7 +204,6 @@ h2 {
   margin-left: 6px;
   font-size: 1.2em;
   line-height: 1.5;
-
 }
 
 .score-box{
@@ -189,7 +214,6 @@ h2 {
   line-height: 1.2em;
   font-weight: 900;
   text-align: center;
-
 }
 
 
@@ -266,17 +290,6 @@ button:active {
   box-shadow: 3px 2px 3px rgba(0,0,0,0.5);
 }
 
-.API-register {
-  position: fixed;
-  top:90px;
-  right: 100px;
-  width: 220px;
-  height: 220px;
-  padding: 10px 5px;
-  background-color: rgba(240,80,62,.4);
-}
-
-
 .API-register-login {
   position: relative;
   top:10px;
@@ -295,7 +308,7 @@ input{
       margin: 10px 0;
       font-family: 'Lato';
       font-weight: 300;
-      font-size:18px;
+      font-size:.8em;
       display: block;
 }
 
@@ -320,7 +333,6 @@ input[type="submit"] {
 
 form {
   margin: 10px;
-  /*font-size: 1.2em;*/
   border: none;
   display: block;
 }
@@ -329,7 +341,6 @@ form {
 #result {
   height: 25ex;
   min-width: 250px;
-/*  margin: 0 auto;*/
 }
 
 .nicer_input {

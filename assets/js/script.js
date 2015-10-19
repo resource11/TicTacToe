@@ -160,6 +160,11 @@ var checkForWinner = function checkForWinner(player) {
     }
   });
 
+// login/register boxes animation click handlers
+  // $('.header-buttons').on('click', function() {
+  //   $(this).find('.API-connector').slideToggle('fast');
+  // })
+
 
 });
 
