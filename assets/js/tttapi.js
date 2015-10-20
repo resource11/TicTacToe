@@ -198,18 +198,20 @@ $(function() {
   });
 
 var listGamesCallback = function listGamesCallback(error, data) {
-  myApp.gameList = data.games;
-  console.log(myApp.gameList);
+  // myApp.gameList = data.games;
+  // console.log(myApp.gameList);
   // console.log(data.games);
   // retrieved games, how to extract id
   // the below doesn't do it
   for (var i = 0; i < data.games.length; i++) {
-    for (var j = 0; j < data.games.length; j++) {
-      myApp.currentGameID[i[j]] = data.games[i[j]];
-      console.log(myApp.currentGameID);
-    }
+    // for (var j = 0; j < data.games.length; j++) {
+    //   myApp.currentGameID[i[j]] = data.games[i[j]];
+    //   console.log(myApp.currentGameID);
+    // }
+    myApp.currentGameID[i] = data.games[i].id;
+    myApp.currentCell[i] = data.games[i].cells;
 
-      $('#result').val(JSON.stringify(data, null, 4));
+    $('#result').val(JSON.stringify(data, null, 4));
   }
   // $(data.games.id).each(function(index, el) {
   //   myApp.currentGameID = data.games.id;
