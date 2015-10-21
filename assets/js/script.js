@@ -1,7 +1,44 @@
 'use strict';
 
-// begin scripts
+//global variables
 
+// initialize the gameOver status, winner status and player scores
+var gameOver = false;
+var winner = null;
+var p1Win = 0;
+var p2Win = 0;
+
+// set each child of #tic-tac-holder to variable 'boxes'
+var boxes = $('#tic-tac-holder').children();
+
+// so we only traverse the DOM once to find elements with a class of 'box'
+var box = $('.box');
+
+// these are the players
+var p1 = 'X';
+var p2 = 'O';
+
+// set current player to p1
+var currPlayer = p1;
+
+// initialize gameId and gameList
+var gameId = 0;
+var gameList = [];
+
+// these are the credentials
+var credentials = {};
+
+// this is the data that will be patched back to the API
+// when a cell is marked
+var dataCell = {
+                game: {
+                  cell: {
+                    index: 0,
+                    value: ''
+                  },
+                  over: gameOver,
+                }
+              };
 
 // var $ = require('jquery');
 
@@ -10,147 +47,102 @@ $(document).ready(function() {
 // click event handler for game pieces
   $(box).on('click', function() {
     // if the gameboard isn't empty or the game is over
-    if ($(this).text() !== '' || gameOver === true) {
+    if (gameOver === true) {
+      $('.player-messages').text('Game is over. No more moves.');
+      console.log('Sorry, game is over.');
+    } else if ($(this).text() !== '') {
+      $('.player-messages').text('That box is taken, pick another.');
       console.log('you can\'t click on that box!');
     } else {
-    if (player === player01) {
+      if (currPlayer === p1) {
           $(this).text('X');
-          dataCell.game.cell.index = $(this).data('cell');
           dataCell.game.cell.value = 'X';
-          checkForWinner(player);
-          // tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
-          //   if(err) {
-          //       return console.error(err);
-          //   }
-          //   $('#result').val(JSON.stringify(data, null, 4));
-          // });
-          tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
-          player = player02;
-      } else {
+          checkForWinner(currPlayer);
+          currPlayer = p2;
+        } else {
           $(this).text('O');
-          dataCell.game.cell.index = $(this).data('cell');
           dataCell.game.cell.value = 'O';
-          checkForWinner(player);
-          tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
-          // tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
-          //   if(err) {
-          //       return console.error(err);
-          //   }
-          //   $('#result').val(JSON.stringify(data, null, 4));
-          // });
-          player = player01;
-      }
+          checkForWinner(currPlayer);
+          currPlayer = p1;
+        }
+        dataCell.game.cell.index = $(this).data('cell');
 
-    };
-
+        tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
+    }
   });
-
-
 });
 // end $(document).ready(function())
 
-// finds each box in the grid
-  var gameOver = false;
-  var winner = null;
-  // set each child of #tic-tac-holder to variable 'boxes'
-  var boxes = $('#tic-tac-holder').children();
-  var box = $('.box');
 
-  var p1Win = 0;
-  var p2Win = 0;
-  // these are the players
-  var player01 = 'X';
-  var player02 = 'O';
-  // this is the player turn
-  var player = player01;
-  // this is the game ID
-  var gameId = 0;
-  // this is the list of games
-  var gameList = [];
-  // these are the credentials
-  var credentials = {};
-  // this is the data that will be patched back to the API
-  // when a cell is marked
-  var dataCell = {
-                  game: {
-                    cell: {
-                      index: 0,
-                      value: ''
-                    },
-                    over: gameOver,
-                  }
-                };
 
   // dataCell.game.over = gameOver;
 
-// var isWinner = function (player) {
+var isWinner = function (currPlayer) {
 
-//   // rows
-//     // 0, 1, 2
-//     // 3, 4, 5
-//     // 6, 7, 8
-//   for (var index = 0; index < 3; index++) {
-//     if (boxes.eq(3 * index).text() === player &&
-//         boxes.eq(3 * index + 1).text() === player &&
-//         boxes.eq(3 * index + 2).text() === player) {
-//       return true;
-//     }
-//   }
+  // rows
+  for (var index = 0; index < 3; index++) {
+    if (boxes.eq(3 * index).text() === currPlayer &&
+        boxes.eq(3 * index + 1).text() === currPlayer &&
+        boxes.eq(3 * index + 2).text() === currPlayer) {
+      return true;
+    }
+  }
 
-//   // cols
-//     // 0, 3, 6
-//     // 1, 4, 7
-//     // 2, 5, 8
-//   for (var index = 0; index < 3; index++) {
-//     if (boxes.eq(index).text() === player &&
-//         boxes.eq(index + 3).text() === player &&
-//         boxes.eq(index + 6).text() === player) {
-//       return true;
-//     }
-//   }
+  // cols
+  for (var index = 0; index < 3; index++) {
+    if (boxes.eq(index).text() === currPlayer &&
+        boxes.eq(index + 3).text() === currPlayer &&
+        boxes.eq(index + 6).text() === currPlayer)
+      { return true; }
+  }
 
-//   // diag
-//     // 0, 4, 8
-//     // 2, 4, 6
-//   if ((boxes.eq(0).text() === player && boxes.eq(4).text() === player && boxes.eq(8).text() === player) ||
-//      (boxes.eq(2).text() === player && boxes.eq(4).text() === player && boxes.eq(6).text() === player))
-//   {
-//     return true;
-//   }
-//   }
-//   return false;
-// };
+  // diag
+  if ((boxes.eq(0).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(8).text() === currPlayer) ||
+     (boxes.eq(2).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(6).text() === currPlayer))
+    { return true; }
+  return false;
+};
 
-// var getWinner = function getWinner(isWinner, player) {
-//   var winnerMessage = 'Winner is ' + winner;
+var getWinner = function getWinner(isWinner, currPlayer) {
+  var winnerMessage = 'Winner is ' + currPlayer;
 
-//   if (isWinner && player === 'X') {
-//     $('.player-messages').text(winnerMessage);
-//     console.log('Winner is ' + player);
-//     $('#score-player-01').html(++p1Win);
+  if (isWinner(currPlayer)) {
+    $('.player-messages').text(winnerMessage);
+    console.log('Winner is ' + currPlayer);
 
-//   } else if (isWinner && player === 'O')  {
-//     $('.player-messages').text(winnerMessage);
-//     console.log('Winner is ' + player);
-//     $('#score-player-02').html(++p2Win);
-//   }
-// };
+    if(currPlayer === 'X') {
+      $('#score-player-01').html(++p1Win);
+    } else if(currPlayer === 'O') {
+      $('#score-player-02').html(++p2Win);
+    }
+
+  } else if (isBoardFull()) {
+    $('.player-messages').text('Cat\'s Game!');
+    console.log('the cat has it');
+    gameOver = true;
+    return;
+  }
+};
 
 
 
 // check for winner long way
-var checkForWinner = function checkForWinner(player) {
+var checkForWinner = function checkForWinner(currPlayer) {
   if (
-  $(boxes[0]).text()  === player && $(boxes[1]).text()  === player && $(boxes[2]).text() === player ||
-  $(boxes[3]).text()  === player && $(boxes[4]).text()  === player && $(boxes[5]).text() === player ||
-  $(boxes[6]).text()  === player && $(boxes[7]).text()  === player && $(boxes[8]).text() === player ||
-  $(boxes[0]).text()  === player && $(boxes[3]).text()  === player && $(boxes[6]).text() === player ||
-  $(boxes[1]).text()  === player && $(boxes[4]).text()  === player && $(boxes[7]).text() === player ||
-  $(boxes[2]).text()  === player && $(boxes[5]).text()  === player && $(boxes[8]).text() === player ||
-  $(boxes[0]).text()  === player && $(boxes[4]).text()  === player && $(boxes[8]).text() === player ||
-  $(boxes[2]).text()  === player && $(boxes[4]).text()  === player && $(boxes[6]).text() === player)
 
-  { winner = player;
+  // rows
+  $(boxes[0]).text()  === currPlayer && $(boxes[1]).text()  === currPlayer && $(boxes[2]).text() === currPlayer ||
+  $(boxes[3]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[5]).text() === currPlayer ||
+  $(boxes[6]).text()  === currPlayer && $(boxes[7]).text()  === currPlayer && $(boxes[8]).text() === currPlayer ||
+
+  $(boxes[0]).text()  === currPlayer && $(boxes[3]).text()  === currPlayer && $(boxes[6]).text() === currPlayer ||
+  $(boxes[1]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[7]).text() === currPlayer ||
+  $(boxes[2]).text()  === currPlayer && $(boxes[5]).text()  === currPlayer && $(boxes[8]).text() === currPlayer ||
+
+  $(boxes[0]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[8]).text() === currPlayer ||
+  $(boxes[2]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[6]).text() === currPlayer)
+
+  { winner = currPlayer;
     // this is the winner message
     var winnerMessage = 'Winner is ' + winner;
 
@@ -158,7 +150,7 @@ var checkForWinner = function checkForWinner(player) {
 
     // put the winner message in the message box
     $('.player-messages').text(winnerMessage);
-    console.log('Winner is ' + player);
+    console.log('Winner is ' + currPlayer);
 
     if (winner === 'X') {
       // increment the X win counter
@@ -214,32 +206,20 @@ var isBoardFull = function isBoardFull() {
 //     if ($(this).text() !== '' || gameOver === true) {
 //       console.log('you can\'t click on that box!');
 //     } else {
-//     if (player === player01) {
+//     if (player === p1) {
 //           $(this).text('X');
 //           dataCell.game.cell.index = $(this).data('cell');
 //           dataCell.game.cell.value = 'X';
 //           checkForWinner(player);
-//           // tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
-//           //   if(err) {
-//           //       return console.error(err);
-//           //   }
-//           //   $('#result').val(JSON.stringify(data, null, 4));
-//           // });
 //           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
-//           player = player02;
+//           player = p2;
 //       } else {
 //           $(this).text('O');
 //           dataCell.game.cell.index = $(this).data('cell');
 //           dataCell.game.cell.value = 'O';
 //           checkForWinner(player);
 //           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
-//           // tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, function(err, data){
-//           //   if(err) {
-//           //       return console.error(err);
-//           //   }
-//           //   $('#result').val(JSON.stringify(data, null, 4));
-//           // });
-//           player = player01;
+//           player = p1;
 //       }
 
 //     };
@@ -251,9 +231,9 @@ var isBoardFull = function isBoardFull() {
   $('.reset-game').on('click', function() {
     $(boxes).text('');
     $('.player-messages').text('');
-    player = player01;
+    currPlayer = p1;
     gameOver = false;
-    // create game to server
+    // create new game on database
     tttapi.createGame(myApp.currentToken, createGameCallback);
   });
 

@@ -254,7 +254,7 @@ var createGameCallback = function createGameCallback(error, data) {
 
     //select game id from list and set that as the current ID
     e.preventDefault();
-    tttapi.showGame(myApp.currentGameID, myApp.currentToken, callback);
+    tttapi.showGame(id, myApp.currentToken, callback);
   });
 // uses the joinGame method to join a game
   $('#join-game').on('submit', function(e) {
