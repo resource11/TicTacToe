@@ -156,10 +156,10 @@ $(document).ready(function() {
     $('.API-login').removeClass('hidden');
   });
 
-  $('.top-nav-button').on('click', function() {
+  $('.top-reg-button').on('click', function() {
     $('.API-register').slideUp();
   });
-    $('.top-nav-button').on('click', function() {
+  $('.top-login-button').on('click', function() {
     $('.API-login').slideUp();
   });
 

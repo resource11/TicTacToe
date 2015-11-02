@@ -27,12 +27,12 @@ header {
   height: 30px;
   margin: 2px auto;
   padding: 5px;
-  border: 2px solid rgba(255,255,255,0);
-  background-color: rgba(170,21,5,.5);
+  border-bottom: 4px solid rgba(170,21,5,.5);
+  /*background-color: rgba(170,21,5,.5);*/
   font-size: 1em;
   font-weight: 900;
   text-align: center;
-  color: #fff;
+  color: #333;
 }
 
 .top-nav-register {
@@ -56,6 +56,10 @@ header {
 
 .hidden {
   display: none;
+}
+
+.top-reg-button, .top-login-button {
+  width: 100px;
 }
 
 .wrapper {
@@ -137,6 +141,7 @@ h1 {
 h2 {
   font-size: 1.4em;
   padding: 10px 10px 0px;
+  color: #fff;
 }
 
 .score-n-messages {
@@ -240,7 +245,7 @@ h2 {
 
 button, .button-look, .top-nav-button {
   display: inline;
-  width: 200px;
+  width: 165px;
   height: 30px;
   margin: 2px auto;
   padding: 5px;
@@ -249,6 +254,7 @@ button, .button-look, .top-nav-button {
   font-size: 1em;
   font-weight: 900;
   text-align: center;
+  line-height: .9em;
   color: #fff;
 }
 
@@ -260,10 +266,6 @@ button:hover, .button-look:hover, .top-nav-button:hover {
 button:active, .button-look:active, .top-nav-button:active {
   border: 2px solid rgba(255,255,255,0.2);
   background-color: rgba(240,180,62,.4);
-}
-
-.top-nav-button {
-  width: 100px;
 }
 
 .clear-left {
