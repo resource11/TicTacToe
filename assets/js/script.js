@@ -2,8 +2,8 @@
 
 //global variables
 
-// initialize the gameOver status, winner status and player scores
-var gameOver = false;
+// initialize the winner status and player scores
+
 var winner = null;
 var p1Win = 0;
 var p2Win = 0;
@@ -26,14 +26,14 @@ var gameList = [];
 // this is the data that will be patched back to the API
 // when a cell is marked
 var data = {
-                game: {
-                  cell: {
-                    index: 0,
-                    value: ''
-                  },
-                  over: gameOver,
-                }
-              };
+              game: {
+                cell: {
+                  index: 0,
+                  value: ''
+                },
+                over: false,
+              }
+            };
 
 
 
@@ -85,7 +85,7 @@ var getWinner = function getWinner(isWinner, currPlayer) {
   if (isWinner(currPlayer)) {
     $('.player-messages').text(winnerMessage);
     console.log('Winner is ' + currPlayer);
-    gameOver = true;
+    data.over = true;
 
     if(currPlayer === 'X') {
       $('#score-player-01').html(++p1Win);
@@ -96,7 +96,7 @@ var getWinner = function getWinner(isWinner, currPlayer) {
   } else if (isBoardFull()) {
     $('.player-messages').text('Cat\'s Game!');
     console.log('the cat has it');
-    gameOver = true;
+    data.over = true;
     return;
   }
 };
@@ -107,7 +107,7 @@ $(document).ready(function() {
 // click event handler for game pieces
   $(box).on('click', function() {
     // if the gameboard isn't empty or the game is over
-    if (gameOver === true) {
+    if (data.over === true) {
       $('.player-messages').text('Game is over. No more moves.');
       console.log('Sorry, game is over.');
     } else if ($(this).text() !== '') {
@@ -140,7 +140,7 @@ $(document).ready(function() {
     $(boxes).text('');
     $('.player-messages').text('');
     currPlayer = p1;
-    gameOver = false;
+    data.over = false;
     // create new game on database
     tttapi.createGame(game.token, createGameCallback);
   });
