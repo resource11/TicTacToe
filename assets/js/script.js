@@ -57,12 +57,14 @@ $(document).ready(function() {
       if (currPlayer === p1) {
           $(this).text('X');
           dataCell.game.cell.value = 'X';
-          checkForWinner(currPlayer);
+          getWinner(isWinner, currPlayer);
+          // checkForWinner(currPlayer);
           currPlayer = p2;
         } else {
           $(this).text('O');
           dataCell.game.cell.value = 'O';
-          checkForWinner(currPlayer);
+          getWinner(isWinner, currPlayer);
+          // checkForWinner(currPlayer);
           currPlayer = p1;
         }
         dataCell.game.cell.index = $(this).data('cell');
@@ -73,7 +75,7 @@ $(document).ready(function() {
 });
 // end $(document).ready(function())
 
-
+// Game Logic
 
   // dataCell.game.over = gameOver;
 
@@ -109,6 +111,7 @@ var getWinner = function getWinner(isWinner, currPlayer) {
   if (isWinner(currPlayer)) {
     $('.player-messages').text(winnerMessage);
     console.log('Winner is ' + currPlayer);
+    gameOver = true;
 
     if(currPlayer === 'X') {
       $('#score-player-01').html(++p1Win);
