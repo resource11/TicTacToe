@@ -112,7 +112,7 @@ $(document).ready(function() {
 // click event handler for game pieces
   $(box).on('click', function() {
     // if the gameboard isn't empty or the game is over
-    if (data.over === true) {
+    if (game.over === true) {
       $('.player-messages').text('Game is over. No more moves.');
       console.log('Sorry, game is over.');
     } else if ($(this).text() === '-') {
