@@ -193,7 +193,11 @@ $(function() {
     tttapi.listGames(game.token, callback);
   });
 
-
+var drawBoard = function(board){ // assume board is an array of strings
+  $(boxes).each(function(index){
+    $(this).text(game.board[index]);
+  });
+};
 // createGame callback function
 var createGameCallback = function createGameCallback(error, data) {
       if (error) {
@@ -206,6 +210,7 @@ var createGameCallback = function createGameCallback(error, data) {
       game.over = data.game.over;
       game.id = data.game.id;
       $('.player-messages').text('Game created. Game ID: ' + game.id);
+      drawBoard(game.board);
       console.log(game.board);
 };
 
@@ -223,6 +228,7 @@ var createGameCallback = function createGameCallback(error, data) {
 
     //select game id from list and set that as the current ID
     e.preventDefault();
+    drawBoard(game.board);
     tttapi.showGame(id, game.token, callback);
   });
 // uses the joinGame method to join a game

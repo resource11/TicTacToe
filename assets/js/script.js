@@ -130,6 +130,16 @@ $(document).ready(function() {
         tttapi.markCell(game.id, data, game.token, markCellCallback);
     }
   });
+
+
+  var drawBoard = function(board){ // assume board is an array of strings
+  $(boxes).each(function(index){
+    $(this).text(game.board[index]);
+  });
+};
+
+
+
 });
 // end click event handlers
 
