@@ -42,6 +42,74 @@ var dataCell = {
 
 // var $ = require('jquery');
 
+
+
+
+
+// Game Logic
+
+var isWinner = function (currPlayer) {
+
+  // rows
+  for (var index = 0; index < 3; index++) {
+    if (boxes.eq(3 * index).text() === currPlayer &&
+        boxes.eq(3 * index + 1).text() === currPlayer &&
+        boxes.eq(3 * index + 2).text() === currPlayer) {
+      return true;
+    }
+  }
+
+  // cols
+  for (index = 0; index < 3; index++) {
+    if (boxes.eq(index).text() === currPlayer &&
+        boxes.eq(index + 3).text() === currPlayer &&
+        boxes.eq(index + 6).text() === currPlayer)
+      { return true; }
+  }
+
+  // diag
+  if ((boxes.eq(0).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(8).text() === currPlayer) ||
+     (boxes.eq(2).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(6).text() === currPlayer))
+    { return true; }
+  return false;
+};
+
+// check for Cat's Game, count empty boxes
+var isBoardFull = function isBoardFull() {
+  var boxCount = 0;
+  boxes.each(function() {
+    if ($(this).text() !== '') {
+      boxCount += 1;
+    }
+  });
+  if (boxCount === 9) {
+      return true;
+  }
+};
+
+var getWinner = function getWinner(isWinner, currPlayer) {
+  var winnerMessage = 'Winner is ' + currPlayer;
+
+  if (isWinner(currPlayer)) {
+    $('.player-messages').text(winnerMessage);
+    console.log('Winner is ' + currPlayer);
+    gameOver = true;
+
+    if(currPlayer === 'X') {
+      $('#score-player-01').html(++p1Win);
+    } else if(currPlayer === 'O') {
+      $('#score-player-02').html(++p2Win);
+    }
+
+  } else if (isBoardFull()) {
+    $('.player-messages').text('Cat\'s Game!');
+    console.log('the cat has it');
+    gameOver = true;
+    return;
+  }
+};
+
+// begin click event handlers
 $(document).ready(function() {
 
 // click event handler for game pieces
@@ -73,134 +141,7 @@ $(document).ready(function() {
     }
   });
 });
-// end $(document).ready(function())
-
-// Game Logic
-
-  // dataCell.game.over = gameOver;
-
-var isWinner = function (currPlayer) {
-
-  // rows
-  for (var index = 0; index < 3; index++) {
-    if (boxes.eq(3 * index).text() === currPlayer &&
-        boxes.eq(3 * index + 1).text() === currPlayer &&
-        boxes.eq(3 * index + 2).text() === currPlayer) {
-      return true;
-    }
-  }
-
-  // cols
-  for (var index = 0; index < 3; index++) {
-    if (boxes.eq(index).text() === currPlayer &&
-        boxes.eq(index + 3).text() === currPlayer &&
-        boxes.eq(index + 6).text() === currPlayer)
-      { return true; }
-  }
-
-  // diag
-  if ((boxes.eq(0).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(8).text() === currPlayer) ||
-     (boxes.eq(2).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(6).text() === currPlayer))
-    { return true; }
-  return false;
-};
-
-var getWinner = function getWinner(isWinner, currPlayer) {
-  var winnerMessage = 'Winner is ' + currPlayer;
-
-  if (isWinner(currPlayer)) {
-    $('.player-messages').text(winnerMessage);
-    console.log('Winner is ' + currPlayer);
-    gameOver = true;
-
-    if(currPlayer === 'X') {
-      $('#score-player-01').html(++p1Win);
-    } else if(currPlayer === 'O') {
-      $('#score-player-02').html(++p2Win);
-    }
-
-  } else if (isBoardFull()) {
-    $('.player-messages').text('Cat\'s Game!');
-    console.log('the cat has it');
-    gameOver = true;
-    return;
-  }
-};
-
-
-
-// check for winner long way
-var checkForWinner = function checkForWinner(currPlayer) {
-  if (
-
-  // rows
-  $(boxes[0]).text()  === currPlayer && $(boxes[1]).text()  === currPlayer && $(boxes[2]).text() === currPlayer ||
-  $(boxes[3]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[5]).text() === currPlayer ||
-  $(boxes[6]).text()  === currPlayer && $(boxes[7]).text()  === currPlayer && $(boxes[8]).text() === currPlayer ||
-
-  $(boxes[0]).text()  === currPlayer && $(boxes[3]).text()  === currPlayer && $(boxes[6]).text() === currPlayer ||
-  $(boxes[1]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[7]).text() === currPlayer ||
-  $(boxes[2]).text()  === currPlayer && $(boxes[5]).text()  === currPlayer && $(boxes[8]).text() === currPlayer ||
-
-  $(boxes[0]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[8]).text() === currPlayer ||
-  $(boxes[2]).text()  === currPlayer && $(boxes[4]).text()  === currPlayer && $(boxes[6]).text() === currPlayer)
-
-  { winner = currPlayer;
-    // this is the winner message
-    var winnerMessage = 'Winner is ' + winner;
-
-    // myApp.gameOver = true;
-
-    // put the winner message in the message box
-    $('.player-messages').text(winnerMessage);
-    console.log('Winner is ' + currPlayer);
-
-    if (winner === 'X') {
-      // increment the X win counter
-      $('#score-player-01').html(++p1Win);
-
-
-    } else if (winner === 'O') {
-      // increment the O win counter
-      $('#score-player-02').html(++p2Win);
-    }
-    // set the gameOver state to true
-    gameOver = true;
-    return;
-
-    // set the gameOver to true. PATCH gameOver property to database
-
-    // refactor the isBoardFull to return a boolean
-  } else if (isBoardFull()) {
-      console.log('the cat has it');
-      // put the cat's game message in the message box
-      $('.player-messages').text('Cat\'s Game!');
-      gameOver = true;
-      return;
-      // set the gameOver to true. PATCH gameOver property to database
-    }
-
-};
-
-
-
-
-// check for Cat's Game
-// count for empty boxes
-var isBoardFull = function isBoardFull() {
-  var boxCount = 0;
-  boxes.each(function() {
-    if ($(this).text() !== '') {
-      boxCount += 1;
-    }
-  });
-  if (boxCount === 9) {
-      return true;
-  }
-};
-
-
-
+// end click event handlers
 
 
 // // click event handler for game pieces
