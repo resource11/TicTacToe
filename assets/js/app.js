@@ -144,15 +144,23 @@ $(document).ready(function() {
   //   $('.API-connector').show( 'fast');
   // });
 
-  $('.register-button').on('click', function() {
+  $('#register-button').on('click', function() {
     $('.API-register').slideDown();
     $('.API-register').removeClass('hidden');
   });
 
-  $('.login-button').on('click', function() {
+  $('#login-button').on('click', function() {
     $('.API-login').slideDown();
     $('.API-login').removeClass('hidden');
   });
+
+  $('.top-nav-button').on('click', function() {
+    $('.API-register').slideUp();
+  });
+    $('.top-nav-button').on('click', function() {
+    $('.API-login').slideUp();
+  });
+
 
 });
 

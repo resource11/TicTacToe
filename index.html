@@ -10,16 +10,16 @@
 <body>
   <header>
     <ul class="top-nav">
-      <li class="register-button">Register</li>
-      <li class="login-button">Log In</li>
+      <li id ="register-button" class="top-nav-register">Register</li>
+      <li id="login-button" class="top-nav-login">Log In</li>
     </ul>
     <div class="API-register hidden">
       <h2>register</h2>
        <form id="register">
-          <input name="email" type="text" placeholder="email" class="nicer-input">
+          <input name="email" type="text" placeholder="email">
           <input name="password" type="password" placeholder="password">
           <input name="password_confirmation" type="password" placeholder="password confirmation">
-          <input name="register" type="submit" value="Register" class="button-look">
+          <input name="register" type="submit" value="Register" class="top-nav-button">
       </form>
     </div>
       <div class="API-login hidden">
@@ -27,7 +27,7 @@
         <form id="login">
           <input name="email" type="text" placeholder="email">
           <input name="password" type="password" placeholder="password">
-          <input name="login" type="submit" value="Login" class="button-look">
+          <input name="login" type="submit" value="Login" class="top-nav-button">
         </form>
       </div>
       <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
@@ -85,7 +85,7 @@
           </form>
 
           <form id="show-game">
-            <label for="show-id">Id:</label>
+            <label for="show-id">Game Id:</label>
             <input id="show-id" type="text" size="4">
             <input name="show-game" type="submit" value="Load Saved Game" class="button-look">
             <input class="token" name="token" type="hidden">

@@ -9,7 +9,7 @@
 header {
   position: relative;
   min-height: 80px;
-  background-color: gray;
+  background-color: #fff;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   z-index: 3;
@@ -21,19 +21,23 @@ header {
   right: 20px;
 }
 
-.register-button, .login-button{
+.top-nav-register, .top-nav-login {
   display: inline-block;
   width: 200px;
   height: 30px;
-  margin: 2px 0 0 5px;
+  margin: 2px auto;
   padding: 5px;
-  border: 0;
-  background-color: rgba(170,21,5,1);
-  font-family: 'Lato', sans-serif;
+  border: 2px solid rgba(255,255,255,0);
+  background-color: rgba(170,21,5,.5);
   font-size: 1em;
   font-weight: 900;
   text-align: center;
   color: #fff;
+}
+
+.top-nav-register {
+  position: relative;
+  margin-right: 5px;
 }
 
 .API-register, .API-login {
@@ -234,13 +238,13 @@ h2 {
   overflow: auto;
 }
 
-button {
+button, .button-look, .top-nav-button {
   display: inline;
   width: 200px;
   height: 30px;
   margin: 2px auto;
   padding: 5px;
-  border: 0;
+  border: 2px solid rgba(255,255,255,0);
   background-color: rgba(170,21,5,.5);
   font-size: 1em;
   font-weight: 900;
@@ -248,14 +252,18 @@ button {
   color: #fff;
 }
 
-button:hover {
+button:hover, .button-look:hover, .top-nav-button:hover {
   border: 2px solid rgba(255,255,255,0.2);
   background-color: rgba(216,50,12,.8);
 }
 
-button:active {
+button:active, .button-look:active, .top-nav-button:active {
   border: 2px solid rgba(255,255,255,0.2);
   background-color: rgba(240,180,62,.4);
+}
+
+.top-nav-button {
+  width: 100px;
 }
 
 .clear-left {
@@ -283,24 +291,15 @@ button:active {
   padding: 10px 5px;
 }
 
-/*.button-look {
-  font-size: 2em;
-  margin: 5px;
-}*/
-
 input{
-      border:0;
-      padding:5px;
+      border: 0;
+      padding: 5px 10px;
       margin: 10px 0;
+      width: 165px;
       font-family: 'Lato';
       font-weight: 300;
       font-size:.8em;
       display: block;
-}
-
-input[type="submit"] {
-      background: red;
-      color:white;
 }
 
 
@@ -329,10 +328,6 @@ form {
   min-width: 250px;
 }
 
-.nicer_input {
-  border: none;
-}
-
 .window-slideDown {
   position: relative;
   left: 300px;
@@ -345,5 +340,5 @@ form {
   font-size: 10em;
   font-weight: 900;
   text-align: center;
-  color: black;
+  color: white;
 }
