@@ -1,13 +1,5 @@
 'use strict';
 
-//global variables
-
-// initialize the winner status and player scores
-
-var winner = null;
-var p1Win = 0;
-var p2Win = 0;
-
 // set each child of #tic-tac-holder to variable 'boxes'
 var boxes = $('#tic-tac-holder').children();
 
@@ -19,22 +11,9 @@ var p1 = 'X';
 var p2 = 'O';
 var currPlayer = p1;
 
-// initialize gameId and gameList
-var gameId = 0;
-var gameList = [];
-
-// this is the data that will be patched back to the API
-// when a cell is marked
-var data = {
-              game: {
-                cell: {
-                  index: 0,
-                  value: ''
-                },
-                over: false,
-              }
-            };
-
+// initialize player scores
+var p1Win = 0;
+var p2Win = 0;
 
 
 
@@ -101,6 +80,30 @@ var getWinner = function getWinner(isWinner, currPlayer) {
   }
 };
 
+// end game logic
+
+
+var markCellCallback = function(err, data) {
+  if(err) {
+    return console.error(err);
+  }
+  $('#result').val(JSON.stringify(data, null, 4));
+};
+
+// this is the data that will be patched back to the API
+// when a cell is marked
+var data = {
+              game: {
+                cell: {
+                  index: 0,
+                  value: ''
+                },
+                over: false
+              }
+            };
+
+
+
 // begin click event handlers
 $(document).ready(function() {
 
@@ -126,17 +129,9 @@ $(document).ready(function() {
           currPlayer = p1;
         }
         data.game.cell.index = $(this).data('cell');
-
         tttapi.markCell(game.id, data, game.token, markCellCallback);
     }
   });
-
-});
-//end first doc ready area
-
-// end click event handlers
-
-
 
   $('.reset-score').on('click', function() {
     p1Win = 0;
@@ -145,6 +140,9 @@ $(document).ready(function() {
     $('#score-player-02').html(0);
   });
 
+});
+
+// end click event handlers
 
 
 
@@ -163,14 +161,7 @@ $(document).ready(function() {
 
 
 
-// // callback functions
-var markCellCallback = function(err, data) {
-  if(err) {
-    return console.error(err);
-  }
-  $('#result').val(JSON.stringify(data, null, 4));
-  // }
-};
+
 
 
 
