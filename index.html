@@ -37,31 +37,31 @@
 
 <!-- begin container -->
     <div class="container">
-    <!-- <h1>Tic Tac Toe</h1> -->
-
-      <div id="tic-tac-holder" class="game-container">
-        <div class="box game-box"></div>
-        <div class="box game-box"></div>
-        <div class="box game-box"></div>
-        <div class="box game-box clear-left"></div>
-        <div class="box game-box"></div>
-        <div class="box game-box"></div>
-        <div class="box game-box clear-left"></div>
-        <div class="box game-box"></div>
-        <div class="box game-box"></div>
+      <div id="tic-tac-holder" class="game-container game-box">
+        <div class="box">-</div>
+        <div class="box">-</div>
+        <div class="box">-</div>
+        <div class="box clear-left">-</div>
+        <div class="box">-</div>
+        <div class="box">-</div>
+        <div class="box clear-left">-</div>
+        <div class="box">-</div>
+        <div class="box">-</div>
       </div>
 <!-- end game container -->
 
 
       <div class="score-n-messages">
-            <div class="player01-box">
-              <p id="score-player-01" class="score-box">0</p>
-              <p class="score-player-01-title">Player 1<p>
-            </div>
-            <div class="player02-box">
-              <p id="score-player-02" class="score-box">0</p>
-              <p class="score-player-02-title">Player 2</p>
-            </div>
+        <!-- begin score box section -->
+        <div class="player01-box">
+          <p id="score-player-01" class="score-box">0</p>
+          <p class="score-player-01-title">Player 1<p>
+        </div>
+        <div class="player02-box">
+          <p id="score-player-02" class="score-box">0</p>
+          <p class="score-player-02-title">Player 2</p>
+        </div>
+        <!-- end score box section -->
 
       <!-- begin message container -->
             <div class="message-container">
@@ -80,22 +80,26 @@
       <div class="API-register-login">
 
         <form id="create-game">
-            <input name="create-game" type="submit" value="Create Game"class="button-look">
+            <input name="create-game" type="submit" value="Create New Game"class="button-look">
             <input class="token" name="token" type="hidden">
           </form>
+
           <form id="show-game">
             <label for="show-id">Id:</label>
             <input id="show-id" type="text" size="4">
-            <input name="show-game" type="submit" value="Show Game" class="button-look">
+            <input name="show-game" type="submit" value="Load Saved Game" class="button-look">
             <input class="token" name="token" type="hidden">
          </form>
+
+         <form id="list-games">
+          <input name="list-games" type="submit" value="List Saved Games" class="button-look">
+          <input class="token" name="token" type="hidden">
+        </form>
+
         <div class="buttons-container">
-<!--           <button class="play-game" type="submit">Play</button> -->
-          <!-- <button class="reset-game" type="submit">Reset game</button> -->
           <button class="reset-score" type="submit">Reset score</button>
           <button type="submit" class="show-testBox">Show Tester</button>
         </div>
-
 
       </div>
     </div>
@@ -104,14 +108,10 @@
 
 
 
-<!-- Antony API buttons and functionality testers below -->
+<!-- functionality tester window below -->
 
     <div class="test-data-stuff" class="slideUp">
       <h2>API functionality testing</h2>
-        <form id="list-games">
-          <input name="list-games" type="submit" value="List Games" class="button-look">
-          <input class="token" name="token" type="hidden">
-        </form>
         <br>
         <label for="result">Result</label>
         <textarea id="result"></textarea>
@@ -124,7 +124,7 @@
 <!--   end wrapper -->
 
 <!-- script links below here -->
-<!--  adding the src type below will break the jquery link, so left it off -->
+<!--  left off src type of jquery library script purposefully -->
   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
   <script src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" type="text/javascript" defer charset="utf-8"></script>
   <script src="assets/js/tttapi.js" type="text/javascript" defer charset="utf-8"></script>

@@ -38,7 +38,7 @@ $(function() {
       game.id = data.game.id;
       drawBoard(game.board);
       console.log(game.board);
-      $('.player-messages').text('Game created. Game ID: ' + game.id);
+      $('.player-messages').text('New game created, game id: ' + game.id);
   };
 
 // uses the createGame method to create a game on button click
@@ -60,7 +60,7 @@ $(function() {
     game.id = data.game.id;
     drawBoard(game.board);
     console.log(game.board);
-    $('.player-messages').text('Game loaded. Game ID: ' + game.id);
+    $('.player-messages').text('Game loaded, game ID: ' + game.id);
   };
 
   // uses the showGame method to show game

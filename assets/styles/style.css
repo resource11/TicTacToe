@@ -36,16 +36,7 @@ header {
   color: #fff;
 }
 
-/*.API-connector {
-  position: fixed;
-  top: 80px;
-  width: 200px;
-  height: 200px;
-  padding: 10px 5px;
-  background-color: rgba(240,80,62,.4);
-}*/
-
-.API-register {
+.API-register, .API-login {
   position: fixed;
   top: 80px;
   right: 228px;
@@ -56,13 +47,7 @@ header {
 }
 
 .API-login {
-  position: fixed;
-  top: 80px;
   right: 20px;
-  width: 200px;
-  height: 200px;
-  padding: 10px 5px;
-  background-color: rgba(240,80,62,.4);
 }
 
 .hidden {
@@ -117,7 +102,7 @@ h1 {
   overflow: auto;
 }
 
-.game-box {
+.game-box > div{
   width: 140px;
   height: 140px;
   margin: 10px 0 0 9px;
@@ -136,12 +121,12 @@ h1 {
   transition: all .3s ease-in-out;
 }
 
-.game-box:hover{
+.game-box > div:hover{
   background: rgba(163,7,33,.8);
   transform: scale(1.05);
 }
 
-.game-box:active{
+.game-box > div:active{
   background: radial-gradient(#FFEF8C 0%, #FF6A00 100%);
 }
 
@@ -238,12 +223,9 @@ h2 {
   margin-top:  55px;
   margin-left: 25px;
   font-weight: 900;
-  font-size: 2.7em;
+  font-size: 2.3em;
+  line-height: 1.1;
 }
-
-/*.player-messages {
-
-}*/
 
 .buttons-container {
   width: 50%;
