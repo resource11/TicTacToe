@@ -127,7 +127,7 @@ $(document).ready(function() {
         }
         dataCell.game.cell.index = $(this).data('cell');
 
-        tttapi.markCell(game.id, dataCell, game.currentToken, markCellCallback);
+        tttapi.markCell(game.id, dataCell, game.token, markCellCallback);
     }
   });
 });
@@ -142,7 +142,7 @@ $(document).ready(function() {
     currPlayer = p1;
     gameOver = false;
     // create new game on database
-    tttapi.createGame(game.currentToken, createGameCallback);
+    tttapi.createGame(game.token, createGameCallback);
   });
 
   $('.reset-score').on('click', function() {
@@ -179,15 +179,15 @@ var markCellCallback = function(err, data) {
   // }
 };
 
-var createGameCallback = function(err,data) {
-  if(err) {
-    return console.error(err);
-  }
-  game.board = data.game.cells;
-  game.over = data.game.over;
-  gameId = data.game.id;
-  // $('.list-result').text('Game created. Game ID: ' + gameId);
-};
+// var createGameCallback = function(err,data) {
+//   if(err) {
+//     return console.error(err);
+//   }
+//   game.board = data.game.cells;
+//   game.over = data.game.over;
+//   gameId = data.game.id;
+//   // $('.list-result').text('Game created. Game ID: ' + gameId);
+// };
 
 
 

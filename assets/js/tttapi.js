@@ -7,19 +7,9 @@
 var game = {
   id: null,
   board: [],
-  currentToken: null,
+  token: null,
   over: false,
-  currentCell: null,
-  currentCellIndex: 0,
-  currentCellValue: '',
-  player_x: null,
-  player_o: null,
-  currentPlayerID: null,
-  player_x_ID: null,
-  player_o_ID: null,
-  player_x_token: null,
-  player_o_token: null
-
+  currentPlayerID: null
 }
 
 // note that it is an object
@@ -121,7 +111,7 @@ var tttapi = {
 
 
 // this method ends a game if there's a winner or Cat's Game
-  gameOver: function (id, data, token, over) {
+  gameOver: function (id, data, token, over, callback) {
     this.ajax({
       method: 'PATCH',
       url: this.ttt + '/games/' + id,
@@ -190,8 +180,8 @@ $(function() {
       }
       callback(null, data);
       // $('.token').val(data.user.token);
-      game.currentToken = data.user.token;
-      console.log(game.currentToken);
+      game.token = data.user.token;
+      console.log(game.token);
     };
     e.preventDefault();
     tttapi.login(credentials, cb);
@@ -200,7 +190,7 @@ $(function() {
     $('#list-games').on('submit', function(e) {
     // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.listGames(game.currentToken, callback);
+    tttapi.listGames(game.token, callback);
   });
 
 
@@ -215,14 +205,25 @@ var createGameCallback = function createGameCallback(error, data) {
       game.board = data.game.cells;
       game.over = data.game.over;
       game.id = data.game.id;
+      $('.player-messages').text('Game created. Game ID: ' + game.id);
       console.log(game.board);
 };
+
+// var createGameCallback = function(err,data) {
+//   if(err) {
+//     return console.error(err);
+//   }
+//   game.board = data.game.cells;
+//   game.over = data.game.over;
+//   gameId = data.game.id;
+//   // $('.list-result').text('Game created. Game ID: ' + gameId);
+// };
 
 // uses the createGame method to create a game on button click
   $('#create-game').on('submit', function(e) {
     // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.createGame(game.currentToken, createGameCallback);
+    tttapi.createGame(game.token, createGameCallback);
   });
 
 // uses the showGame method to show game
@@ -232,14 +233,14 @@ var createGameCallback = function createGameCallback(error, data) {
 
     //select game id from list and set that as the current ID
     e.preventDefault();
-    tttapi.showGame(id, game.currentToken, callback);
+    tttapi.showGame(id, game.token, callback);
   });
 // uses the joinGame method to join a game
   $('#join-game').on('submit', function(e) {
     // var token = $(this).children('[name="token"]').val();
     // var id = $('#join-id').val();
     e.preventDefault();
-    tttapi.joinGame(game.id, game.currentToken, callback);
+    tttapi.joinGame(game.id, game.token, callback);
   });
 
 
