@@ -52,6 +52,7 @@ $(function() {
       // $('.token').val(data.user.token);
       game.token = data.user.token;
       console.log(game.token);
+      $('.player-messages').text('Welcome, user #' + data.user.id);
     };
     e.preventDefault();
     tttapi.login(credentials, cb);

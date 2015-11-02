@@ -113,6 +113,8 @@ $(document).ready(function() {
     if (data.over === true) {
       $('.player-messages').text('Game is over. No more moves.');
       console.log('Sorry, game is over.');
+    } else if ($(this).text() === '-') {
+      $('.player-messages').text('You must log in to play.');
     } else if ($(this).text() !== '') {
       $('.player-messages').text('That box is taken, pick another.');
       console.log('you can\'t click on that box!');
