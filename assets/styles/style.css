@@ -21,7 +21,7 @@ header {
   right: 20px;
 }
 
-.header-buttons {
+.register-button, .login-button{
   display: inline-block;
   width: 200px;
   height: 30px;
@@ -63,6 +63,10 @@ header {
   height: 200px;
   padding: 10px 5px;
   background-color: rgba(240,80,62,.4);
+}
+
+.hidden {
+  display: none;
 }
 
 .wrapper {

@@ -140,19 +140,27 @@ $(document).ready(function() {
     $('#score-player-02').html(0);
   });
 
+  // $('.header-buttons').on('click' function() {
+  //   $('.API-connector').show( 'fast');
+  // });
+
+  $('.register-button').on('click', function() {
+    $('.API-register').slideDown();
+    $('.API-register').removeClass('hidden');
+  });
+
+  $('.login-button').on('click', function() {
+    $('.API-login').slideDown();
+    $('.API-login').removeClass('hidden');
+  });
+
 });
 
 // end click event handlers
 
 
 
-  // $('.test-data-stuff').click(function() {
-  //   if ( $('.test-data-stuff').is(':hidden') ) {
-  //     $( "div" ).show( "slow" );
-  //   } else {
-  //     $( "div" ).slideUp();
-  //   }
-  // });
+
 
 // login/register boxes animation click handlers
   // $('.header-buttons').on('click', function() {
