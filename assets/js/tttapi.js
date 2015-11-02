@@ -5,7 +5,7 @@
 // create empty array boardState when you pull the cells from the API
 
 var game = {
-  currentGameID: null,
+  id: null,
   boardState: [],
   currentToken: null,
   gameOverState: false,
@@ -214,7 +214,7 @@ var createGameCallback = function createGameCallback(error, data) {
       $('#result').val(JSON.stringify(data, null, 4));
       game.boardState = data.game.cells;
       game.gameOverState = data.game.over;
-      game.currentGameID = data.game.id;
+      game.id = data.game.id;
       console.log(game.boardState);
 };
 
@@ -239,7 +239,7 @@ var createGameCallback = function createGameCallback(error, data) {
     // var token = $(this).children('[name="token"]').val();
     // var id = $('#join-id').val();
     e.preventDefault();
-    tttapi.joinGame(game.currentGameID, game.currentToken, callback);
+    tttapi.joinGame(game.id, game.currentToken, callback);
   });
 
 

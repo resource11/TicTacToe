@@ -134,7 +134,7 @@ $(document).ready(function() {
         }
         dataCell.game.cell.index = $(this).data('cell');
 
-        tttapi.markCell(game.currentGameID, dataCell, game.currentToken, markCellCallback);
+        tttapi.markCell(game.id, dataCell, game.currentToken, markCellCallback);
     }
   });
 });
