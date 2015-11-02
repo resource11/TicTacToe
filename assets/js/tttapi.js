@@ -197,34 +197,40 @@ $(function() {
     tttapi.login(credentials, cb);
   });
 
-var listGamesCallback = function listGamesCallback(error, data) {
-  // myApp.gameList = data.games;
-  // console.log(myApp.gameList);
-  // console.log(data.games);
-  // retrieved games, how to extract id
-  // the below doesn't do it
-  for (var i = 0; i < data.games.length; i++) {
-    // for (var j = 0; j < data.games.length; j++) {
-    //   myApp.currentGameID[i[j]] = data.games[i[j]];
-    //   console.log(myApp.currentGameID);
-    // }
-    myApp.currentGameID[i] = data.games[i].id;
-    myApp.currentCell[i] = data.games[i].cells;
+    $('#list-games').on('submit', function(e) {
+    var token = $(this).children('[name="token"]').val();
+    e.preventDefault();
+    tttapi.listGames(myApp.currentToken, callback);
+  });
 
-    $('#result').val(JSON.stringify(data, null, 4));
-  }
-  // $(data.games.id).each(function(index, el) {
-  //   myApp.currentGameID = data.games.id;
-  //   console.log(myApp.currentGameID);
-  // });
+// var listGamesCallback = function listGamesCallback(error, data) {
+//   // myApp.gameList = data.games;
+//   // console.log(myApp.gameList);
+//   // console.log(data.games);
+//   // retrieved games, how to extract id
+//   // the below doesn't do it
+//   for (var i = 0; i < data.games.length; i++) {
+//     // for (var j = 0; j < data.games.length; j++) {
+//     //   myApp.currentGameID[i[j]] = data.games[i[j]];
+//     //   console.log(myApp.currentGameID);
+//     // }
+//     myApp.currentGameID[i] = data.games[i].id;
+//     myApp.currentCell[i] = data.games[i].cells;
 
-}
+//     $('#result').val(JSON.stringify(data, null, 4));
+//   }
+//   // $(data.games.id).each(function(index, el) {
+//   //   myApp.currentGameID = data.games.id;
+//   //   console.log(myApp.currentGameID);
+//   // });
+
+// }
 
 // gets the list of created games
-  $('#list-games').on('submit', function(e) {
-    e.preventDefault();
-    tttapi.listGames(myApp.currentToken, listGamesCallback);
-  });
+  // $('#list-games').on('submit', function(e) {
+  //   e.preventDefault();
+  //   tttapi.listGames(myApp.currentToken, listGamesCallback);
+  // });
 
 // createGame callback function
 var createGameCallback = function createGameCallback(error, data) {
