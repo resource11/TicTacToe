@@ -209,16 +209,6 @@ var createGameCallback = function createGameCallback(error, data) {
       console.log(game.board);
 };
 
-// var createGameCallback = function(err,data) {
-//   if(err) {
-//     return console.error(err);
-//   }
-//   game.board = data.game.cells;
-//   game.over = data.game.over;
-//   gameId = data.game.id;
-//   // $('.list-result').text('Game created. Game ID: ' + gameId);
-// };
-
 // uses the createGame method to create a game on button click
   $('#create-game').on('submit', function(e) {
     // var token = $(this).children('[name="token"]').val();

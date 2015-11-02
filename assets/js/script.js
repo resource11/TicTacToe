@@ -25,7 +25,7 @@ var gameList = [];
 
 // this is the data that will be patched back to the API
 // when a cell is marked
-var dataCell = {
+var data = {
                 game: {
                   cell: {
                     index: 0,
@@ -116,18 +116,18 @@ $(document).ready(function() {
     } else {
       if (currPlayer === p1) {
           $(this).text('X');
-          dataCell.game.cell.value = 'X';
+          data.game.cell.value = 'X';
           getWinner(isWinner, currPlayer);
           currPlayer = p2;
         } else {
           $(this).text('O');
-          dataCell.game.cell.value = 'O';
+          data.game.cell.value = 'O';
           getWinner(isWinner, currPlayer);
           currPlayer = p1;
         }
-        dataCell.game.cell.index = $(this).data('cell');
+        data.game.cell.index = $(this).data('cell');
 
-        tttapi.markCell(game.id, dataCell, game.token, markCellCallback);
+        tttapi.markCell(game.id, data, game.token, markCellCallback);
     }
   });
 });
@@ -178,17 +178,6 @@ var markCellCallback = function(err, data) {
   $('#result').val(JSON.stringify(data, null, 4));
   // }
 };
-
-// var createGameCallback = function(err,data) {
-//   if(err) {
-//     return console.error(err);
-//   }
-//   game.board = data.game.cells;
-//   game.over = data.game.over;
-//   gameId = data.game.id;
-//   // $('.list-result').text('Game created. Game ID: ' + gameId);
-// };
-
 
 
 
