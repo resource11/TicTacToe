@@ -14,19 +14,14 @@ var boxes = $('#tic-tac-holder').children();
 // so we only traverse the DOM once to find elements with a class of 'box'
 var box = $('.box');
 
-// these are the players
+// these are the players and the currentPlayer
 var p1 = 'X';
 var p2 = 'O';
-
-// set current player to p1
 var currPlayer = p1;
 
 // initialize gameId and gameList
 var gameId = 0;
 var gameList = [];
-
-// these are the credentials
-var credentials = {};
 
 // this is the data that will be patched back to the API
 // when a cell is marked
@@ -123,13 +118,11 @@ $(document).ready(function() {
           $(this).text('X');
           dataCell.game.cell.value = 'X';
           getWinner(isWinner, currPlayer);
-          // checkForWinner(currPlayer);
           currPlayer = p2;
         } else {
           $(this).text('O');
           dataCell.game.cell.value = 'O';
           getWinner(isWinner, currPlayer);
-          // checkForWinner(currPlayer);
           currPlayer = p1;
         }
         dataCell.game.cell.index = $(this).data('cell');
@@ -190,8 +183,8 @@ var createGameCallback = function(err,data) {
   if(err) {
     return console.error(err);
   }
-  game.boardState = data.game.cells;
-  game.gameOverState = data.game.over;
+  game.board = data.game.cells;
+  game.over = data.game.over;
   gameId = data.game.id;
   // $('.list-result').text('Game created. Game ID: ' + gameId);
 };

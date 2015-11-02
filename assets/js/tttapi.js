@@ -2,13 +2,13 @@
 
 // this is the api for the tic-tac-toe game
 
-// create empty array boardState when you pull the cells from the API
+// create empty array board when you pull the cells from the API
 
 var game = {
   id: null,
-  boardState: [],
+  board: [],
   currentToken: null,
-  gameOverState: false,
+  over: false,
   currentCell: null,
   currentCellIndex: 0,
   currentCellValue: '',
@@ -121,7 +121,7 @@ var tttapi = {
 
 
 // this method ends a game if there's a winner or Cat's Game
-  gameOver: function (id, data, token, gameOverState) {
+  gameOver: function (id, data, token, over) {
     this.ajax({
       method: 'PATCH',
       url: this.ttt + '/games/' + id,
@@ -212,10 +212,10 @@ var createGameCallback = function createGameCallback(error, data) {
         return;
       }
       $('#result').val(JSON.stringify(data, null, 4));
-      game.boardState = data.game.cells;
-      game.gameOverState = data.game.over;
+      game.board = data.game.cells;
+      game.over = data.game.over;
       game.id = data.game.id;
-      console.log(game.boardState);
+      console.log(game.board);
 };
 
 // uses the createGame method to create a game on button click
