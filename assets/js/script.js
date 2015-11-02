@@ -132,22 +132,11 @@ $(document).ready(function() {
   });
 
 });
+//end first doc ready area
+
 // end click event handlers
 
 
-
-// // this only worked when I just targeted the .reset-game class
-//   $('.reset-game').on('click', function() {
-//     $(boxes).text('');
-//     $('.player-messages').text('');
-//     currPlayer = p1;
-//     data.over = false;
-//     game.board = ['','','','','','','','',''];
-//     // drawBoard(game.board);
-//     // create new game on database
-//     tttapi.markCell(game.id, data, game.token, markCellCallback)
-//     // tttapi.createGame(game.token, createGameCallback);
-//   });
 
   $('.reset-score').on('click', function() {
     p1Win = 0;

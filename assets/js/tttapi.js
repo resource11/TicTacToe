@@ -187,61 +187,61 @@ $(function() {
     tttapi.login(credentials, cb);
   });
 
-    $('#list-games').on('submit', function(e) {
-    // var token = $(this).children('[name="token"]').val();
-    e.preventDefault();
-    tttapi.listGames(game.token, callback);
-  });
+//     $('#list-games').on('submit', function(e) {
+//     // var token = $(this).children('[name="token"]').val();
+//     e.preventDefault();
+//     tttapi.listGames(game.token, callback);
+//   });
 
-var drawBoard = function(board){ // assume board is an array of strings
-  $(boxes).each(function(index){
-    $(this).text(game.board[index]);
-  });
-};
-// createGame callback function
-var createGameCallback = function createGameCallback(error, data) {
-      if (error) {
-        console.error(error);
-        $('#result').val('status: ' + error.status + ', error: ' + error.error);
-        return;
-      }
-      $('#result').val(JSON.stringify(data, null, 4));
-      game.board = data.game.cells;
-      game.over = data.game.over;
-      game.id = data.game.id;
-      drawBoard(game.board);
-      console.log(game.board);
-      $('.player-messages').text('Game created. Game ID: ' + game.id);
-};
+// var drawBoard = function(board){ // assume board is an array of strings
+//   $(boxes).each(function(index){
+//     $(this).text(game.board[index]);
+//   });
+// };
+// // createGame callback function
+// var createGameCallback = function createGameCallback(error, data) {
+//       if (error) {
+//         console.error(error);
+//         $('#result').val('status: ' + error.status + ', error: ' + error.error);
+//         return;
+//       }
+//       $('#result').val(JSON.stringify(data, null, 4));
+//       game.board = data.game.cells;
+//       game.over = data.game.over;
+//       game.id = data.game.id;
+//       drawBoard(game.board);
+//       console.log(game.board);
+//       $('.player-messages').text('Game created. Game ID: ' + game.id);
+// };
 
-// uses the createGame method to create a game on button click
-  $('#create-game').on('submit', function(e) {
-    e.preventDefault();
-    tttapi.createGame(game.token, createGameCallback);
-  });
+// // uses the createGame method to create a game on button click
+//   $('#create-game').on('submit', function(e) {
+//     e.preventDefault();
+//     tttapi.createGame(game.token, createGameCallback);
+//   });
 
-  // showGame callback function
-var showGameCallback = function showGameCallback(error, data) {
-      if (error) {
-        console.error(error);
-        $('#result').val('status: ' + error.status + ', error: ' + error.error);
-        return;
-      }
-      $('#result').val(JSON.stringify(data, null, 4));
-      game.board = data.game.cells;
-      game.over = data.game.over;
-      game.id = data.game.id;
-      drawBoard(game.board);
-      console.log(game.board);
-      $('.player-messages').text('Game loaded. Game ID: ' + game.id);
-};
+//   // showGame callback function
+// var showGameCallback = function showGameCallback(error, data) {
+//       if (error) {
+//         console.error(error);
+//         $('#result').val('status: ' + error.status + ', error: ' + error.error);
+//         return;
+//       }
+//       $('#result').val(JSON.stringify(data, null, 4));
+//       game.board = data.game.cells;
+//       game.over = data.game.over;
+//       game.id = data.game.id;
+//       drawBoard(game.board);
+//       console.log(game.board);
+//       $('.player-messages').text('Game loaded. Game ID: ' + game.id);
+// };
 
-// uses the showGame method to show game
-  $('#show-game').on('submit', function(e) {
-    var id = $('#show-id').val();
-    e.preventDefault();
-    tttapi.showGame(id, game.token, showGameCallback);
-  });
+// // uses the showGame method to show game
+//   $('#show-game').on('submit', function(e) {
+//     var id = $('#show-id').val();
+//     e.preventDefault();
+//     tttapi.showGame(id, game.token, showGameCallback);
+//   });
 
 });
 
