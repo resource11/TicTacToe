@@ -4,7 +4,7 @@
 
 // create empty array boardState when you pull the cells from the API
 
-var myApp = {
+var game = {
   currentGameID: null,
   boardState: [],
   currentToken: null,
@@ -190,47 +190,19 @@ $(function() {
       }
       callback(null, data);
       // $('.token').val(data.user.token);
-      myApp.currentToken = data.user.token;
-      console.log(myApp.currentToken);
+      game.currentToken = data.user.token;
+      console.log(game.currentToken);
     };
     e.preventDefault();
     tttapi.login(credentials, cb);
   });
 
     $('#list-games').on('submit', function(e) {
-    var token = $(this).children('[name="token"]').val();
+    // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.listGames(myApp.currentToken, callback);
+    tttapi.listGames(game.currentToken, callback);
   });
 
-// var listGamesCallback = function listGamesCallback(error, data) {
-//   // myApp.gameList = data.games;
-//   // console.log(myApp.gameList);
-//   // console.log(data.games);
-//   // retrieved games, how to extract id
-//   // the below doesn't do it
-//   for (var i = 0; i < data.games.length; i++) {
-//     // for (var j = 0; j < data.games.length; j++) {
-//     //   myApp.currentGameID[i[j]] = data.games[i[j]];
-//     //   console.log(myApp.currentGameID);
-//     // }
-//     myApp.currentGameID[i] = data.games[i].id;
-//     myApp.currentCell[i] = data.games[i].cells;
-
-//     $('#result').val(JSON.stringify(data, null, 4));
-//   }
-//   // $(data.games.id).each(function(index, el) {
-//   //   myApp.currentGameID = data.games.id;
-//   //   console.log(myApp.currentGameID);
-//   // });
-
-// }
-
-// gets the list of created games
-  // $('#list-games').on('submit', function(e) {
-  //   e.preventDefault();
-  //   tttapi.listGames(myApp.currentToken, listGamesCallback);
-  // });
 
 // createGame callback function
 var createGameCallback = function createGameCallback(error, data) {
@@ -240,17 +212,17 @@ var createGameCallback = function createGameCallback(error, data) {
         return;
       }
       $('#result').val(JSON.stringify(data, null, 4));
-      myApp.boardState = data.game.cells;
-      myApp.gameOverState = data.game.over;
-      myApp.currentGameID = data.game.id;
-      console.log(myApp.boardState);
+      game.boardState = data.game.cells;
+      game.gameOverState = data.game.over;
+      game.currentGameID = data.game.id;
+      console.log(game.boardState);
 };
 
 // uses the createGame method to create a game on button click
   $('#create-game').on('submit', function(e) {
     // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
-    tttapi.createGame(myApp.currentToken, createGameCallback);
+    tttapi.createGame(game.currentToken, createGameCallback);
   });
 
 // uses the showGame method to show game
@@ -260,20 +232,18 @@ var createGameCallback = function createGameCallback(error, data) {
 
     //select game id from list and set that as the current ID
     e.preventDefault();
-    tttapi.showGame(id, myApp.currentToken, callback);
+    tttapi.showGame(id, game.currentToken, callback);
   });
 // uses the joinGame method to join a game
   $('#join-game').on('submit', function(e) {
     // var token = $(this).children('[name="token"]').val();
     // var id = $('#join-id').val();
     e.preventDefault();
-    tttapi.joinGame(myApp.currentGameID, myApp.currentToken, callback);
+    tttapi.joinGame(game.currentGameID, game.currentToken, callback);
   });
 
 
-// allows a second player to watch moves remotely while
-// logged in to the game from a separate computer
-// need to add variables in here if doing this one
+// allows a second player to watch moves remotely
   $('#watch-game').on('submit', function(e){
     var token = $(this).children('[name="token"]').val();
     var id = $('#watch-id').val();

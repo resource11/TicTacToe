@@ -40,9 +40,6 @@ var dataCell = {
                 }
               };
 
-// var $ = require('jquery');
-
-
 
 
 
@@ -137,38 +134,12 @@ $(document).ready(function() {
         }
         dataCell.game.cell.index = $(this).data('cell');
 
-        tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
+        tttapi.markCell(game.currentGameID, dataCell, game.currentToken, markCellCallback);
     }
   });
 });
 // end click event handlers
 
-
-// // click event handler for game pieces
-//   $(box).on('click', function() {
-//     // if the gameboard isn't empty or the game is over
-//     if ($(this).text() !== '' || gameOver === true) {
-//       console.log('you can\'t click on that box!');
-//     } else {
-//     if (player === p1) {
-//           $(this).text('X');
-//           dataCell.game.cell.index = $(this).data('cell');
-//           dataCell.game.cell.value = 'X';
-//           checkForWinner(player);
-//           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
-//           player = p2;
-//       } else {
-//           $(this).text('O');
-//           dataCell.game.cell.index = $(this).data('cell');
-//           dataCell.game.cell.value = 'O';
-//           checkForWinner(player);
-//           tttapi.markCell(myApp.currentGameID, dataCell, myApp.currentToken, markCellCallback);
-//           player = p1;
-//       }
-
-//     };
-
-//   });
 
 
 // this only worked when I just targeted the .reset-game class
@@ -178,7 +149,7 @@ $(document).ready(function() {
     currPlayer = p1;
     gameOver = false;
     // create new game on database
-    tttapi.createGame(myApp.currentToken, createGameCallback);
+    tttapi.createGame(game.currentToken, createGameCallback);
   });
 
   $('.reset-score').on('click', function() {
@@ -219,8 +190,8 @@ var createGameCallback = function(err,data) {
   if(err) {
     return console.error(err);
   }
-  myApp.boardState = data.game.cells;
-  myApp.gameOverState = data.game.over;
+  game.boardState = data.game.cells;
+  game.gameOverState = data.game.over;
   gameId = data.game.id;
   // $('.list-result').text('Game created. Game ID: ' + gameId);
 };
