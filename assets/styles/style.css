@@ -55,7 +55,7 @@ header {
   width: 200px;
   height: 205px;
   padding: 10px 5px;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .API-login {
@@ -65,10 +65,6 @@ header {
 
 .hidden {
   display: none;
-}
-
-.top-reg-button, .top-login-button {
-  width: 100px;
 }
 
 .wrapper {
@@ -240,7 +236,7 @@ h2 {
   width:200px;
   margin-top:  55px;
   margin-left: 25px;
-  font-weight: 900;
+  font-weight: 300;
   font-size: 2.3em;
   line-height: 1.1;
 }
@@ -278,6 +274,11 @@ button:hover, .button-look:hover, .top-nav-button:hover {
 button:active, .button-look:active, .top-nav-button:active {
   border: 2px solid rgba(255,255,255,0.2);
   background-color: rgba(240,180,62,.4);
+}
+
+.top-reg-button, .top-login-button {
+  width: 100px;
+  background-color: rgba(240,80,62, 1);
 }
 
 .clear-left {
@@ -319,11 +320,11 @@ input{
 
 .test-data-stuff {
   position: absolute;
-  left: 910px;
-  top: 450px;
+  left: 880px;
+  top: 370px;
   width: 340px;
-  min-height: 300px;
-  padding: 10px;
+  min-height: 200px;
+  padding: 5px auto 10px 10px;
   background-color: rgba(0,0,0, 0.5);
 }
 
@@ -336,19 +337,4 @@ form {
 #result {
   height: 25ex;
   min-width: 250px;
-}
-
-.window-slideDown {
-  position: relative;
-  left: 300px;
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-  padding: 5px;
-  border: 0;
-  background-color: rgba(170,21,5,.5);
-  font-size: 10em;
-  font-weight: 900;
-  text-align: center;
-  color: white;
 }

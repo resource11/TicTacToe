@@ -142,9 +142,6 @@ $(document).ready(function() {
     $('#score-player-02').html(0);
   });
 
-  // $('.header-buttons').on('click' function() {
-  //   $('.API-connector').show( 'fast');
-  // });
 
   $('#register-button').on('click', function() {
     $('.API-register').slideDown();
@@ -167,15 +164,6 @@ $(document).ready(function() {
 });
 
 // end click event handlers
-
-
-
-
-
-// login/register boxes animation click handlers
-  // $('.header-buttons').on('click', function() {
-  //   $(this).find('.API-connector').slideToggle('fast');
-  // })
 
 
 

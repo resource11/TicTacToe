@@ -72,53 +72,51 @@
 
 
 
-<!-- begin API section -->
-  <div class="API-section">
+      <!-- begin API section -->
+      <div class="API-section">
+
+          <div class="API-register-login">
+            <div class="buttons-container">
+            <form id="create-game">
+                <input name="create-game" type="submit" value="Create New Game"class="button-look">
+                <input class="token" name="token" type="hidden">
+              </form>
+
+              <form id="show-game">
+                <label for="show-id">Game Id:</label>
+                <input id="show-id" type="text" size="4">
+                <input name="show-game" type="submit" value="Load Saved Game" class="button-look">
+                <input class="token" name="token" type="hidden">
+             </form>
+
+             <form id="list-games">
+              <input name="list-games" type="submit" value="List Saved Games" class="button-look">
+              <input class="token" name="token" type="hidden">
+            </form>
 
 
-<!-- begin API register, login, create game, list game, show game, join game section -->
-      <div class="API-register-login">
-        <div class="buttons-container">
-        <form id="create-game">
-            <input name="create-game" type="submit" value="Create New Game"class="button-look">
-            <input class="token" name="token" type="hidden">
-          </form>
+              <button type="submit" class="reset-score">Reset score</button>
+            </div>
 
-          <form id="show-game">
-            <label for="show-id">Game Id:</label>
-            <input id="show-id" type="text" size="4">
-            <input name="show-game" type="submit" value="Load Saved Game" class="button-look">
-            <input class="token" name="token" type="hidden">
-         </form>
-
-         <form id="list-games">
-          <input name="list-games" type="submit" value="List Saved Games" class="button-look">
-          <input class="token" name="token" type="hidden">
-        </form>
-
-
-          <button type="submit">Reset score</button>
-          <button type="submit">Show Tester</button>
-        </div>
-
+          </div>
       </div>
+
+      <!-- end API section -->
+
+      <!-- functionality tester window below -->
+
+      <div class="test-data-stuff">
+        <h2>API functionality testing</h2>
+          <br>
+          <label for="result">Result</label>
+          <textarea id="result"></textarea>
+      </div>
+
+
+
     </div>
 
- <!-- end API register, login, create game, list game, show game, join game section -->
-
-
-
-<!-- functionality tester window below -->
-
-    <div class="test-data-stuff" class="slideUp">
-      <h2>API functionality testing</h2>
-        <br>
-        <label for="result">Result</label>
-        <textarea id="result"></textarea>
-      </div>
-    </div>
-<!-- end API section -->
-
+  <!-- end container -->
   </div>
 
 <!--   end wrapper -->
