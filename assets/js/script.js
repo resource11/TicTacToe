@@ -131,29 +131,23 @@ $(document).ready(function() {
     }
   });
 
-
-  var drawBoard = function(board){ // assume board is an array of strings
-  $(boxes).each(function(index){
-    $(this).text(game.board[index]);
-  });
-};
-
-
-
 });
 // end click event handlers
 
 
 
-// this only worked when I just targeted the .reset-game class
-  $('.reset-game').on('click', function() {
-    $(boxes).text('');
-    $('.player-messages').text('');
-    currPlayer = p1;
-    data.over = false;
-    // create new game on database
-    tttapi.createGame(game.token, createGameCallback);
-  });
+// // this only worked when I just targeted the .reset-game class
+//   $('.reset-game').on('click', function() {
+//     $(boxes).text('');
+//     $('.player-messages').text('');
+//     currPlayer = p1;
+//     data.over = false;
+//     game.board = ['','','','','','','','',''];
+//     // drawBoard(game.board);
+//     // create new game on database
+//     tttapi.markCell(game.id, data, game.token, markCellCallback)
+//     // tttapi.createGame(game.token, createGameCallback);
+//   });
 
   $('.reset-score').on('click', function() {
     p1Win = 0;

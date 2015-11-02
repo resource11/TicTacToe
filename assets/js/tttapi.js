@@ -209,59 +209,38 @@ var createGameCallback = function createGameCallback(error, data) {
       game.board = data.game.cells;
       game.over = data.game.over;
       game.id = data.game.id;
-      $('.player-messages').text('Game created. Game ID: ' + game.id);
       drawBoard(game.board);
       console.log(game.board);
+      $('.player-messages').text('Game created. Game ID: ' + game.id);
 };
 
 // uses the createGame method to create a game on button click
   $('#create-game').on('submit', function(e) {
-    // var token = $(this).children('[name="token"]').val();
     e.preventDefault();
     tttapi.createGame(game.token, createGameCallback);
   });
 
+  // showGame callback function
+var showGameCallback = function showGameCallback(error, data) {
+      if (error) {
+        console.error(error);
+        $('#result').val('status: ' + error.status + ', error: ' + error.error);
+        return;
+      }
+      $('#result').val(JSON.stringify(data, null, 4));
+      game.board = data.game.cells;
+      game.over = data.game.over;
+      game.id = data.game.id;
+      drawBoard(game.board);
+      console.log(game.board);
+      $('.player-messages').text('Game loaded. Game ID: ' + game.id);
+};
+
 // uses the showGame method to show game
   $('#show-game').on('submit', function(e) {
-    var token = $(this).children('[name="token"]').val();
     var id = $('#show-id').val();
-
-    //select game id from list and set that as the current ID
     e.preventDefault();
-    drawBoard(game.board);
-    tttapi.showGame(id, game.token, callback);
-  });
-// uses the joinGame method to join a game
-  $('#join-game').on('submit', function(e) {
-    // var token = $(this).children('[name="token"]').val();
-    // var id = $('#join-id').val();
-    e.preventDefault();
-    tttapi.joinGame(game.id, game.token, callback);
-  });
-
-
-// allows a second player to watch moves remotely
-  $('#watch-game').on('submit', function(e){
-    var token = $(this).children('[name="token"]').val();
-    var id = $('#watch-id').val();
-    e.preventDefault();
-
-    var gameWatcher = tttapi.watchGame(id, token);
-
-    gameWatcher.on('change', function(data){
-      var parsedData = JSON.parse(data);
-      if (data.timeout) { //not an error
-        this.gameWatcher.close();
-        return console.warn(data.timeout);
-      }
-      var gameData = parsedData.game;
-      var cell = gameData.cell;
-      $('#watch-index').val(cell.index);
-      $('#watch-value').val(cell.value);
-    });
-    gameWatcher.on('error', function(e){
-      console.error('an error has occured with the stream', e);
-    });
+    tttapi.showGame(id, game.token, showGameCallback);
   });
 
 });
