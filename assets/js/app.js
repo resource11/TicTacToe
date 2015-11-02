@@ -65,6 +65,7 @@ var getWinner = function getWinner(isWinner, currPlayer) {
     $('.player-messages').text(winnerMessage);
     console.log('Winner is ' + currPlayer);
     data.over = true;
+    console.log(data.over);
 
     if(currPlayer === 'X') {
       $('#score-player-01').html(++p1Win);
@@ -76,6 +77,7 @@ var getWinner = function getWinner(isWinner, currPlayer) {
     $('.player-messages').text('Cat\'s Game!');
     console.log('the cat has it');
     data.over = true;
+    console.log(data.over);
     return;
   }
 };

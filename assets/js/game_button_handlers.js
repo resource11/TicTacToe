@@ -38,6 +38,7 @@ $(function() {
       game.id = data.game.id;
       drawBoard(game.board);
       console.log(game.board);
+      console.log(game.over);
       $('.player-messages').text('New game created, game id: ' + game.id);
   };
 
