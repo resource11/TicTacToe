@@ -17,8 +17,8 @@ header {
 
 .top-nav {
   position: fixed;
-  top: 48px;
-  right: 20px;
+  top: 100px;
+  right: 40px;
 }
 
 .top-nav-register, .top-nav-login {
@@ -27,11 +27,11 @@ header {
   height: 30px;
   margin: 2px auto;
   padding: 5px;
-  border-bottom: 4px solid rgba(170,21,5,.5);
-  /*background-color: rgba(170,21,5,.5);*/
+  border-bottom: 4px solid rgba(170,21,5,1);
   font-size: 1em;
   font-weight: 900;
   text-align: center;
+  line-height: .9em;
   color: #333;
 }
 
@@ -40,18 +40,27 @@ header {
   margin-right: 5px;
 }
 
+.top-nav-register:hover, .top-nav-login:hover {
+  border-bottom: 4px solid rgba(87, 138, 7, 1);
+}
+
+.top-nav-register:active, .top-nav-login:active {
+  border-bottom: 4px solid rgba(240,80,62, 1);
+}
+
 .API-register, .API-login {
   position: fixed;
-  top: 80px;
-  right: 228px;
+  top: 130px;
+  right: 248px;
   width: 200px;
-  height: 200px;
+  height: 205px;
   padding: 10px 5px;
-  background-color: rgba(240,80,62,.4);
+  background-color: rgba(0, 0, 0, .5);
 }
 
 .API-login {
-  right: 20px;
+  right: 40px;
+  height: 170px;
 }
 
 .hidden {
@@ -88,7 +97,7 @@ header {
   position: relative;
   top: 10px;
   float: left;
-  margin: 60px 10px 10px 60px;
+  margin: 60px 10px 10px 30px;
 }
 
 h1 {
@@ -236,10 +245,13 @@ h2 {
   line-height: 1.1;
 }
 
+
+/* styles from web api */
+
 .buttons-container {
   width: 50%;
   position: relative;
-  margin: 0 auto;
+  margin: 0 0 0 40px;
   overflow: auto;
 }
 
@@ -247,12 +259,12 @@ button, .button-look, .top-nav-button {
   display: inline;
   width: 165px;
   height: 30px;
-  margin: 2px auto;
+  margin: 5px auto;
   padding: 5px;
   border: 2px solid rgba(255,255,255,0);
   background-color: rgba(170,21,5,.5);
   font-size: 1em;
-  font-weight: 900;
+  font-weight: 300;
   text-align: center;
   line-height: .9em;
   color: #fff;
@@ -274,8 +286,8 @@ button:active, .button-look:active, .top-nav-button:active {
 
 .API-section {
   position: relative;
-  width: 420px;
-  height: 420px;
+  width: 350px;
+  height: 350px;
   float: left;
   top: 0px;
   left: 400px;
@@ -305,9 +317,6 @@ input{
 }
 
 
-
-/* styles from web api */
-
 .test-data-stuff {
   position: absolute;
   left: 910px;
@@ -319,7 +328,6 @@ input{
 }
 
 form {
-  margin: 10px;
   border: none;
   display: block;
 }
