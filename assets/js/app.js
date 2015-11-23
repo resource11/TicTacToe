@@ -25,7 +25,8 @@ var isWinner = function (currPlayer) {
   for (var index = 0; index < 3; index++) {
     if (boxes.eq(3 * index).text() === currPlayer &&
         boxes.eq(3 * index + 1).text() === currPlayer &&
-        boxes.eq(3 * index + 2).text() === currPlayer) {
+        boxes.eq(3 * index + 2).text() === currPlayer)
+    {
       return true;
     }
   }
@@ -39,8 +40,12 @@ var isWinner = function (currPlayer) {
   }
 
   // diag
-  if ((boxes.eq(0).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(8).text() === currPlayer) ||
-     (boxes.eq(2).text() === currPlayer && boxes.eq(4).text() === currPlayer && boxes.eq(6).text() === currPlayer))
+  if ((boxes.eq(0).text() === currPlayer &&
+    boxes.eq(4).text() === currPlayer &&
+    boxes.eq(8).text() === currPlayer) ||
+     (boxes.eq(2).text() === currPlayer &&
+      boxes.eq(4).text() === currPlayer &&
+      boxes.eq(6).text() === currPlayer))
     { return true; }
   return false;
 };
