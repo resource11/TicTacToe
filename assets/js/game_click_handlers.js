@@ -128,5 +128,14 @@ $(function() {
     $('.API-login').slideUp();
   });
 
+  $('.tester').on('click', function() {
+    $('.test-data-stuff').fadeIn();
+    $('.test-data-stuff').removeClass('hidden');
+  });
+
+  $('.close-me').on('click', function() {
+    $('.test-data-stuff').fadeOut();
+  });
+
 });
 // end document ready

@@ -6,6 +6,7 @@
   <title></title>
   <link rel="stylesheet" href="assets/styles/reset.css">
   <link rel="stylesheet" href="assets/styles/responsive.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
@@ -23,20 +24,20 @@
   </header>
 
   <div class="API-register span_2_of_12 hidden">
-    <h2>register</h2>
+    <h2>Sign up</h2>
     <form id="register">
       <input name="email" type="text" placeholder="email">
       <input name="password" type="password" placeholder="password">
       <input name="password_confirmation" type="password" placeholder="pw confirmation">
-      <input name="register" type="submit" value="Register" class="top-reg-button button-look">
+      <input name="register" type="submit" value="submit" class="top-reg-button button-look">
     </form>
   </div>
   <div class="API-login span_2_of_12 hidden">
-    <h2>login</h2>
+    <h2>Sign in</h2>
     <form id="login">
       <input name="email" type="text" placeholder="email">
       <input name="password" type="password" placeholder="password">
-      <input name="login" type="submit" value="Login" class="top-login-button button-look">
+      <input name="login" type="submit" value="submit" class="top-login-button button-look">
     </form>
   </div>
 
@@ -48,44 +49,10 @@
   <div class="wrapper">
 
 <!-- begin container -->
-    <div class="container">
-      <div id="tic-tac-holder" class="game-container game-box">
-        <div data-cell="0" class="box">-</div>
-        <div data-cell="1" class="box">-</div>
-        <div data-cell="2" class="box">-</div>
-        <div data-cell="3" class="box clear-left">-</div>
-        <div data-cell="4" class="box">-</div>
-        <div data-cell="5" class="box">-</div>
-        <div data-cell="6" class="box clear-left">-</div>
-        <div data-cell="7" class="box">-</div>
-        <div data-cell="8" class="box">-</div>
-      </div>
-<!-- end game container -->
-
-
-      <div class="score-n-messages">
-        <!-- begin score box section -->
-        <div class="player01-box">
-          <p id="score-player-01" class="score-box">0</p>
-          <p class="score-player-01-title">Player 1<p>
-        </div>
-        <div class="player02-box">
-          <p id="score-player-02" class="score-box">0</p>
-          <p class="score-player-02-title">Player 2</p>
-        </div>
-        <!-- end score box section -->
-
-      <!-- begin message container -->
-            <div class="message-container">
-              <h2 class="player-messages">messages here</h2>
-            </div>
-      <!-- end message container -->
-      </div>
-
-
+    <div class="container span_12_of_12">
 
       <!-- begin API section -->
-      <div class="API-section">
+      <div class="col span_3_of_12 API-section">
 
           <div class="API-register-login">
             <div class="buttons-container">
@@ -115,13 +82,57 @@
 
       <!-- end API section -->
 
+
+      <div id="tic-tac-holder" class="col span_5_of_12 game-container game-box">
+        <div data-cell="0" class="box">-</div>
+        <div data-cell="1" class="box">-</div>
+        <div data-cell="2" class="box">-</div>
+        <div data-cell="3" class="box clear-left">-</div>
+        <div data-cell="4" class="box">-</div>
+        <div data-cell="5" class="box">-</div>
+        <div data-cell="6" class="box clear-left">-</div>
+        <div data-cell="7" class="box">-</div>
+        <div data-cell="8" class="box">-</div>
+      </div>
+<!-- end game container -->
+
+
+      <div class="col span_4_of_12 score-n-messages">
+        <!-- begin score box section -->
+        <div class="player01-box">
+          <p id="score-player-01" class="score-box">0</p>
+          <p class="score-player-01-title">Player 1<p>
+        </div>
+
+        <div class="player02-box">
+          <p id="score-player-02" class="score-box">0</p>
+          <p class="score-player-02-title">Player 2</p>
+        </div>
+        <!-- end score box section -->
+
+      <!-- begin message container -->
+        <div class="message-container">
+          <h2 class="player-messages">messages here</h2>
+        </div>
+      <!-- end message container -->
+      </div>
+
+
+
+
+
       <!-- functionality tester window below -->
 
-      <div class="test-data-stuff">
-        <h2>API functionality testing</h2>
-          <br>
-          <label for="result">Result</label>
-          <textarea id="result"></textarea>
+      <div class="tester-area">
+
+        <div class="test-data-stuff hidden">
+          <p class="close-me"><i class="fa fa-times"></i></p>
+          <h3>API under the hood</h3>
+            <label for="result">Result</label>
+            <textarea id="result"></textarea>
+        </div>
+
+        <button class="tester">API tester</button>
       </div>
 
 
@@ -129,9 +140,13 @@
     </div>
 
   <!-- end container -->
-  </div>
 
-<!--   end wrapper -->
+  </div>
+  <!--   end wrapper -->
+
+  <footer>
+    <small>copyright 2015 Kathleen McMahon</small>
+  </footer>
 
 <!-- script links below here -->
 <!--  left off src type of jquery library script purposefully -->
