@@ -6,28 +6,44 @@
    box-sizing: border-box;
 }
 
-header {
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 80px;
   position: relative;
-  min-height: 80px;
+  left: 10px;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.4em;
+  padding: 10px 10px 0px;
+  color: #fff;
+}
+
+header {
+  position: fixed;
+  min-height: 60px;
   background-color: #fff;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-  z-index: 3;
 }
 
 .top-nav {
   position: fixed;
-  top: 100px;
-  right: 40px;
+  right: 2%;
+/*  margin-right: 5%;*/
 }
 
-.top-nav-register, .top-nav-login {
+.top-nav li {
   display: inline-block;
-  width: 200px;
-  height: 30px;
-  margin: 2px auto;
-  padding: 5px;
-  border-bottom: 4px solid rgba(170,21,5,1);
+  margin-top: 35px;
+  height: 25px;
+  border-bottom: 3px solid rgba(170,21,5,1);
   font-size: 1em;
   font-weight: 900;
   text-align: center;
@@ -35,33 +51,38 @@ header {
   color: #333;
 }
 
-.top-nav-register {
-  position: relative;
-  margin-right: 5px;
+.top-nav li:hover {
+  border-bottom: 3px solid rgba(87, 138, 7, 1);
 }
 
-.top-nav-register:hover, .top-nav-login:hover {
-  border-bottom: 4px solid rgba(87, 138, 7, 1);
+.top-nav li:active {
+  border-bottom: 3px solid rgba(240,80,62, 1);
 }
 
-.top-nav-register:active, .top-nav-login:active {
-  border-bottom: 4px solid rgba(240,80,62, 1);
+.header-title-banner {
+  position: absolute;
+  width:  30%;
+  top: 25px;
+  left: 25px;
 }
 
 .API-register, .API-login {
   position: fixed;
-  top: 130px;
-  right: 248px;
-  width: 200px;
+  display: inline-block;
+  top: 60px;
+  right: 18.65%;
   height: 205px;
-  padding: 10px 5px;
   background-color: rgba(0, 0, 0, .8);
 }
 
 .API-login {
-  right: 40px;
+/*  display: inline-block;*/
+  right: 2.6%;
   height: 170px;
 }
+
+
+
 
 .hidden {
   display: none;
@@ -79,14 +100,6 @@ header {
   min-height: 650px;
 }
 
-.header-title-banner {
-  width:  30%;
-  position: absolute;
-  top: 45px;
-  left: 25px;
-  z-index: 5;
-}
-
 .container {
   width: 960px;
   min-height: 620px;
@@ -94,14 +107,6 @@ header {
   top: 10px;
   float: left;
   margin: 60px 10px 10px 30px;
-}
-
-h1 {
-  font-weight: 300;
-  font-size: 80px;
-  position: relative;
-  left: 10px;
-  padding-bottom: 10px;
 }
 
 .game-container {
@@ -141,12 +146,6 @@ h1 {
 
 .game-box > div:active{
   background: radial-gradient(#FFEF8C 0%, #FF6A00 100%);
-}
-
-h2 {
-  font-size: 1.4em;
-  padding: 10px 10px 0px;
-  color: #fff;
 }
 
 .score-n-messages {
@@ -264,6 +263,7 @@ button, .button-look, .top-nav-button {
   text-align: center;
   line-height: .9em;
   color: #fff;
+  border-radius: 15px;
 }
 
 button:hover, .button-look:hover, .top-nav-button:hover {
@@ -279,6 +279,7 @@ button:active, .button-look:active, .top-nav-button:active {
 .top-reg-button, .top-login-button {
   width: 100px;
   background-color: rgba(240,80,62, 1);
+  margin-left: 7px;
 }
 
 .clear-left {
@@ -308,13 +309,14 @@ button:active, .button-look:active, .top-nav-button:active {
 
 input{
       border: 0;
-      padding: 5px 10px;
-      margin: 10px 0;
-      width: 165px;
+      padding: 5px 5px;
+      margin: 10px 7px;
+      width: 90%;
       font-family: 'Lato';
       font-weight: 300;
-      font-size:.8em;
+      font-size:.7em;
       display: block;
+      border-radius: 5px;
 }
 
 
@@ -338,3 +340,33 @@ form {
   height: 25ex;
   min-width: 250px;
 }
+
+
+
+
+
+
+
+
+/* z-index structure */
+
+header {
+  z-index: 30;
+}
+
+.API-register {
+  z-index: 10;
+}
+
+.API-login {
+  z-index: 15;
+}
+
+.header-title-banner {
+  z-index: 40;
+}
+
+.top-nav {
+  z-index: 50;
+}
+

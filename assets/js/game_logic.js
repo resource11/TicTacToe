@@ -70,9 +70,10 @@ var getWinner = function getWinner(isWinner, currPlayer) {
   if (isWinner(currPlayer)) {
     $('.player-messages').text(winnerMessage);
     console.log('Winner is ' + currPlayer);
+    gameOver = true;
     data.game.over = true;
-    tttapi.markCell(game.id, data, game.token, markCellCallback);
-    console.log(data.game.over);
+    tttapi.markCell(gameID, data, userToken, markCellCallback);
+    console.log(gameOver);
 
     if(currPlayer === 'X') {
       $('#score-player-01').html(++p1Win);
@@ -83,9 +84,10 @@ var getWinner = function getWinner(isWinner, currPlayer) {
   } else if (isBoardFull()) {
     $('.player-messages').text('Cat\'s Game!');
     console.log('the cat has it');
+    gameOver = true;
     data.game.over = true;
-    tttapi.markCell(game.id, data, game.token, markCellCallback);
-    console.log(data.game.over);
+    tttapi.markCell(gameID, data, userToken, markCellCallback);
+    console.log(gameOver);
     return;
   }
 };
