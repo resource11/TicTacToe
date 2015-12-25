@@ -5,148 +5,156 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <link rel="stylesheet" href="assets/styles/reset.css">
+  <link rel="stylesheet" href="assets/styles/responsive.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
 
 
+  <header class="span_12_of_12">
+    <nav class="span_4_of_12 top-nav">
+      <ul>
+        <li id ="register-button" class="span_6_of_12">Register</li>
+        <li id="login-button" class="span_6_of_12">Log In</li>
+      </ul>
+    </nav>
+      <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
+
+  </header>
+
+  <div class="API-register span_2_of_12 hidden">
+    <h2>Sign up</h2>
+    <form id="register">
+      <input name="email" type="text" placeholder="email">
+      <input name="password" type="password" placeholder="password">
+      <input name="password_confirmation" type="password" placeholder="pw confirmation">
+      <input name="register" type="submit" value="submit" class="top-reg-button button-look">
+    </form>
+  </div>
+  <div class="API-login span_2_of_12 hidden">
+    <h2>Sign in</h2>
+    <form id="login">
+      <input name="email" type="text" placeholder="email">
+      <input name="password" type="password" placeholder="password">
+      <input name="login" type="submit" value="submit" class="top-login-button button-look">
+    </form>
+  </div>
+
+
+
+
 
 <!-- begin wrapper -->
   <div class="wrapper">
-    <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
-<!-- begin container -->
-    <div class="container">
-    <!-- <h1>Tic Tac Toe</h1> -->
 
-      <div id="tic-tac-holder" class="game-container">
-        <div data-cell="0" id="box01" class="box game-box"></div>
-        <div data-cell="1" id="box02" class="box game-box"></div>
-        <div data-cell="2" id="box03" class="box game-box"></div>
-        <div data-cell="3" id="box04" class="box game-box clear-left"></div>
-        <div data-cell="4" id="box05" class="box game-box"></div>
-        <div data-cell="5" id="box06" class="box game-box"></div>
-        <div data-cell="6" id="box07" class="box game-box clear-left"></div>
-        <div data-cell="7" id="box08" class="box game-box"></div>
-        <div data-cell="8" id="box09" class="box game-box"></div>
+<!-- begin container -->
+    <div class="container span_12_of_12">
+
+      <!-- begin API section -->
+      <div class="col span_3_of_12 API-section">
+
+          <div class="API-register-login">
+            <div class="buttons-container">
+            <form id="create-game">
+                <input name="create-game" type="submit" value="Create New Game"class="button-look">
+                <input class="token" name="token" type="hidden">
+              </form>
+
+              <form id="show-game">
+                <label for="show-id">Game Id:</label>
+                <input id="show-id" type="text" size="4">
+                <input name="show-game" type="submit" value="Load Saved Game" class="button-look">
+                <input class="token" name="token" type="hidden">
+             </form>
+
+             <form id="list-games">
+              <input name="list-games" type="submit" value="List Saved Games" class="button-look">
+              <input class="token" name="token" type="hidden">
+            </form>
+
+
+              <button type="submit" class="reset-score">Reset score</button>
+            </div>
+
+          </div>
+      </div>
+
+      <!-- end API section -->
+
+
+      <div id="tic-tac-holder" class="col span_5_of_12 game-container game-box">
+        <div data-cell="0" class="box">-</div>
+        <div data-cell="1" class="box">-</div>
+        <div data-cell="2" class="box">-</div>
+        <div data-cell="3" class="box clear-left">-</div>
+        <div data-cell="4" class="box">-</div>
+        <div data-cell="5" class="box">-</div>
+        <div data-cell="6" class="box clear-left">-</div>
+        <div data-cell="7" class="box">-</div>
+        <div data-cell="8" class="box">-</div>
       </div>
 <!-- end game container -->
 
 
-      <div class="score-n-messages">
-            <div class="player01-box">
-              <p id="score-player-01" class="score-box">0</p>
-              <p class="score-player-01-title">Player 1<p>
-            </div>
-            <div class="player02-box">
-              <p id="score-player-02" class="score-box">0</p>
-              <p class="score-player-02-title">Player 2</p>
-            </div>
+      <div class="col span_4_of_12 score-n-messages">
+        <!-- begin score box section -->
+        <div class="player01-box">
+          <p id="score-player-01" class="score-box">0</p>
+          <p class="score-player-01-title">Player 1<p>
+        </div>
+
+        <div class="player02-box">
+          <p id="score-player-02" class="score-box">0</p>
+          <p class="score-player-02-title">Player 2</p>
+        </div>
+        <!-- end score box section -->
 
       <!-- begin message container -->
-            <div class="message-container">
-              <h2 class="player-messages">messages here</h2>
-              <!-- <p class="player-messages"></p> -->
-            </div>
+        <div class="message-container">
+          <h2 class="player-messages">messages here</h2>
+        </div>
       <!-- end message container -->
       </div>
 
 
 
-<!-- begin API section -->
-  <div class="API-section">
 
 
-<!-- begin API register, login, create game, list game, show game, join game section -->
-      <div class="API-register-login">
-        <h2>register/login</h2>
-         <form id="register">
-          <input name="email" type="text" placeholder="email" class="nicer-input">
-          <input name="password" type="password" placeholder="password">
-          <input name="password_confirmation" type="password" placeholder="password confirmation">
-          <input name="register" type="submit" value="Register" class="button-look">
-        </form>
-        <form id="login">
-          <input name="email" type="text" placeholder="email">
-          <input name="password" type="password" placeholder="password">
-          <input name="login" type="submit" value="Login" class="button-look">
-        </form>
+      <!-- functionality tester window below -->
 
-        <form id="create-game">
-            <input name="create-game" type="submit" value="Create Game"class="button-look">
-            <input class="token" name="token" type="hidden">
-          </form>
-          <form id="show-game">
-            <label for="show-id">Id:</label>
-            <input id="show-id" type="text" size="4">
-            <input name="show-game" type="submit" value="Show Game" class="button-look">
-            <input class="token" name="token" type="hidden">
-         </form>
-        <div class="buttons-container">
-<!--           <button class="play-game" type="submit">Play</button> -->
-          <button class="reset-game" type="submit">Reset game</button>
-          <button class="reset-score" type="submit">Reset score</button>
-          <button type="submit" class="show-testBox">Show Tester</button>
+      <div class="tester-area">
+
+        <div class="test-data-stuff hidden">
+          <p class="close-me"><i class="fa fa-times"></i></p>
+          <h3>API under the hood</h3>
+            <label for="result">Result</label>
+            <textarea id="result"></textarea>
         </div>
 
-
-    </div>
-       </div>
-
- <!-- end API register, login, create game, list game, show game, join game section -->
-
-
-
-<!-- Antony API buttons and functionality testers below -->
-
-    <div class="test-data-stuff" class="slideUp">
-      <h2>API functionality testing</h2>
-        <form id="list-games">
-          <input name="list-games" type="submit" value="List Games" class="button-look">
-          <input class="token" name="token" type="hidden">
-        </form>
-
-<!--         <form id="join-game">
-          <label for="join-id">Id:</label>
-          <input id="join-id" type="text" size="4">
-          <input name="join-game" type="submit" value="Join Game" class="button-look">
-          <input class="token" name="token" type="hidden">
-       </form>
-       <form id="mark-cell">
-          <label for="mark-id">Id:</label>
-          <input id="mark-id" type="text" size="4">
-          <label for="mark-index">Index:</label>
-          <input name="index" id="mark-index" type="text" size="4">
-          <label for="mark-value">Value:</label>
-          <input name="value" id="mark-value" type="text" size="4">
-          <input name="mark-cell" type="submit" value="Mark Cell" class="button-look">
-          <input class="token" name="token" type="hidden">
-        </form>
-        <form id="watch-game">
-          <label for="watch-id">Id:</label>
-          <input id="watch-id" type="text" size="4">
-          <label for="watch-index">Index:</label>
-          <input name="index" id="watch-index" type="text" size="4">
-          <label for="watch-value">Value:</label>
-          <input name="value" id="watch-value" type="text" size="4">
-          <input name="watch-game" type="submit" value="Watch Game" class="button-look">
-          <input class="token" name="token" type="hidden">
-        </form> -->
-        <br>
-        <label for="result">Result</label>
-        <textarea id="result"></textarea>
+        <button class="tester">API tester</button>
       </div>
+
+
+
     </div>
-<!-- end API section -->
+
+  <!-- end container -->
 
   </div>
+  <!--   end wrapper -->
 
-<!--   end wrapper -->
+  <footer>
+    <small>copyright 2015 Kathleen McMahon</small>
+  </footer>
 
 <!-- script links below here -->
-<!--  adding the src type below will break the jquery link, so we left it off -->
+<!--  left off src type of jquery library script purposefully -->
   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-  <script type="text/javascript" src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" defer charset="utf-8"></script>
-  <script type="text/javascript" src="assets/js/tttapi.js" defer charset="utf-8"></script>
-   <script src="assets/js/script.js" type="text/javascript" defer charset="utf-8"></script>
+  <script src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" type="text/javascript" defer charset="utf-8"></script>
+  <script src="assets/js/tttapi.js" type="text/javascript" defer charset="utf-8"></script>
+  <script src="assets/js/game_click_handlers.js" type="text/javascript" defer charset="utf-8"></script>
+  <script src="assets/js/game_callbacks.js" type="text/javascript" defer charset="utf-8"></script>
+  <script src="assets/js/game_logic.js" type="text/javascript" defer charset="utf-8"></script>
 </body>
 </html>
