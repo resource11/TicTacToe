@@ -100,28 +100,29 @@ var tttapi = {
 
 
   watchGame: function (id, token) {
+    console.log(id + '' + token);
     var url = this.ttt + '/games/' + id + '/watch';
     var auth = {
       Authorization: 'Token token=' + token
     };
     this.gameWatcher = resourceWatcher(url, auth); //jshint ignore: line
     return this.gameWatcher;
-  },
-
-  // this method ends a game if there's a winner or Cat's Game
-  gameOver: function (id, data, token, over, callback) {
-    this.ajax({
-      method: 'PATCH',
-      url: this.ttt + '/games/' + id,
-      headers: {
-        Authorization: 'Token token=' + token,
-      },
-      contentType: 'application/json; charset=utf-8',
-      // looking to send data
-      data: JSON.stringify(data),
-      dataType:'json'
-    }, callback);
   }
+
+  // // this method ends a game if there's a winner or Cat's Game
+  // gameOver: function (id, data, token, over, callback) {
+  //   this.ajax({
+  //     method: 'PATCH',
+  //     url: this.ttt + '/games/' + id,
+  //     headers: {
+  //       Authorization: 'Token token=' + token,
+  //     },
+  //     contentType: 'application/json; charset=utf-8',
+  //     // looking to send data
+  //     data: JSON.stringify(data),
+  //     dataType:'json'
+  //   }, callback);
+  // }
 
 };
 

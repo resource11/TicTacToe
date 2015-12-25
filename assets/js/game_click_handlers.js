@@ -1,33 +1,13 @@
 'use strict';
 
-
-// game session info
-var game = {
-  id: null,
-  board: [],
-  token: null,
-  over: false
-};
+var gameID, gameOver, userToken;
+var gameBoard = [];
 
 
-
-// var myApp = {
-//   currentGameID: null,
-//   boardState: [],
-//   currentToken: null,
-//   gameOverState: false,
-//   currentCell: null,
-//   currentCellIndex: 0,
-//   currentCellValue: '',
-//   player_x: null,
-//   player_o: null,
-//   currentPlayerID: null,
-//   player_x_ID: null,
-//   player_o_ID: null,
-//   player_x_token: null,
-//   player_o_token: null
-
-// }
+// var playerID = null;
+// var player_x = null;
+// var player_o = null;
+// var turns = 0;
 
 
 
@@ -66,8 +46,8 @@ $(function() {
       }
       callback(null, data);
       // $('.token').val(data.user.token);
-      game.token = data.user.token;
-      console.log(game.token);
+      userToken = data.user.token;
+      console.log(userToken);
       $('.player-messages').text('Welcome, user #' + data.user.id);
     };
     e.preventDefault();
@@ -77,14 +57,14 @@ $(function() {
   // list user-created games
   $('#list-games').on('submit', function(e) {
     e.preventDefault();
-    tttapi.listGames(game.token, callback);
+    tttapi.listGames(userToken, callback);
   });
 
 
   // create a new game
   $('#create-game').on('submit', function(e) {
     e.preventDefault();
-    tttapi.createGame(game.token, createGameCallback);
+    tttapi.createGame(userToken, createGameCallback);
   });
 
 
@@ -92,13 +72,13 @@ $(function() {
   $('#show-game').on('submit', function(e) {
     var id = $('#show-id').val();
     e.preventDefault();
-    tttapi.showGame(id, game.token, showGameCallback);
+    tttapi.showGame(id, userToken, showGameCallback);
   });
 
   // click event handler for game pieces
   $(box).on('click', function() {
     // if the gameboard isn't empty or the game is over
-    if (data.game.over === true) {
+    if (gameOver === true) {
       $('.player-messages').text('Game is over. No more moves.');
       console.log('Sorry, game is over.');
     } else if ($(this).text() === '-') {
@@ -119,7 +99,7 @@ $(function() {
           currPlayer = p1;
         }
         data.game.cell.index = $(this).data('cell');
-        tttapi.markCell(game.id, data, game.token, markCellCallback);
+        tttapi.markCell(gameID, data, userToken, markCellCallback);
     }
   });
 

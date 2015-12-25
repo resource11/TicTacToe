@@ -22,7 +22,7 @@ var wrap = function wrap(root, formData) {
 var callback = function callback(error, data) {
 if (error) {
   console.error(error);
-  $('#result').val('status: ' + error.status + ', error: ' +error.error);
+  $('#result').val('status: ' + error.status + ', error: ' + error.error);
   return;
 }
   $('#result').val(JSON.stringify(data, null, 4));
@@ -37,11 +37,13 @@ var createGameCallback = function createGameCallback(error, data) {
       return;
     }
     $('#result').val(JSON.stringify(data, null, 4));
-    game.board = data.game.cells;
-    game.over = data.game.over;
-    game.id = data.game.id;
-    drawBoard(game.board);
-    $('.player-messages').text('New game created, game id: ' + game.id);
+    gameBoard = data.game.cells;
+    gameOver = data.game.over;
+    console.log('gameOver is: ' + gameOver);
+    gameID = data.game.id;
+    drawBoard(gameBoard);
+    currPlayer = p1;
+    $('.player-messages').text('New game created, game id: ' + gameID);
 };
 
 
@@ -60,11 +62,13 @@ var showGameCallback = function showGameCallback(error, data) {
     return;
   }
   $('#result').val(JSON.stringify(data, null, 4));
-  game.board = data.game.cells;
-  game.over = data.game.over;
-  game.id = data.game.id;
-  drawBoard(game.board);
-  $('.player-messages').text('Game loaded, game ID: ' + game.id);
+  gameBoard = data.game.cells;
+  gameOver = data.game.over;
+  console.log('gameOver is: ' + gameOver);
+  gameID = data.game.id;
+  drawBoard(gameBoard);
+  currPlayer = p1;
+  $('.player-messages').text('Game loaded, game ID: ' + gameID);
 };
 
 
@@ -74,3 +78,10 @@ var markCellCallback = function markCellCallback(err, data) {
   }
   $('#result').val(JSON.stringify(data, null, 4));
 };
+
+
+var joinGameCallback;
+
+var updateGameCallback;
+
+var watchGameCallback;

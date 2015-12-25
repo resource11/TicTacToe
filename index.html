@@ -5,33 +5,45 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <link rel="stylesheet" href="assets/styles/reset.css">
+  <link rel="stylesheet" href="assets/styles/responsive.css">
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
-  <header>
-    <ul class="top-nav">
-      <li id ="register-button" class="top-nav-register">Register</li>
-      <li id="login-button" class="top-nav-login">Log In</li>
-    </ul>
-    <div class="API-register hidden">
-      <h2>register</h2>
-       <form id="register">
-          <input name="email" type="text" placeholder="email">
-          <input name="password" type="password" placeholder="password">
-          <input name="password_confirmation" type="password" placeholder="password confirmation">
-          <input name="register" type="submit" value="Register" class="top-reg-button button-look">
-      </form>
-    </div>
-      <div class="API-login hidden">
-        <h2>login</h2>
-        <form id="login">
-          <input name="email" type="text" placeholder="email">
-          <input name="password" type="password" placeholder="password">
-          <input name="login" type="submit" value="Login" class="top-login-button button-look">
-        </form>
-      </div>
+
+
+  <header class="span_12_of_12">
+    <nav class="span_4_of_12 top-nav">
+      <ul>
+        <li id ="register-button" class="span_6_of_12">Register</li>
+        <li id="login-button" class="span_6_of_12">Log In</li>
+      </ul>
+    </nav>
       <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
+
   </header>
+
+  <div class="API-register span_2_of_12 hidden">
+    <h2>register</h2>
+    <form id="register">
+      <input name="email" type="text" placeholder="email">
+      <input name="password" type="password" placeholder="password">
+      <input name="password_confirmation" type="password" placeholder="pw confirmation">
+      <input name="register" type="submit" value="Register" class="top-reg-button button-look">
+    </form>
+  </div>
+  <div class="API-login span_2_of_12 hidden">
+    <h2>login</h2>
+    <form id="login">
+      <input name="email" type="text" placeholder="email">
+      <input name="password" type="password" placeholder="password">
+      <input name="login" type="submit" value="Login" class="top-login-button button-look">
+    </form>
+  </div>
+
+
+
+
+
 <!-- begin wrapper -->
   <div class="wrapper">
 
