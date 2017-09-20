@@ -4,13 +4,6 @@ var gameID, gameOver, userToken;
 var gameBoard = [];
 
 
-// var playerID = null;
-// var player_x = null;
-// var player_o = null;
-// var turns = 0;
-
-
-
 // this is the data that will be patched back to the API
 // when a cell is marked
 var data = {
@@ -112,25 +105,25 @@ $(function() {
 
 
   $('#register-button').on('click', function() {
-    $('.API-register').slideDown();
-    $('.API-register').removeClass('hidden');
+    $('.API-register').fadeIn();
+    $('.API-register').removeClass('visually-hidden');
   });
 
   $('#login-button').on('click', function() {
-    $('.API-login').slideDown();
-    $('.API-login').removeClass('hidden');
+    $('.API-login').fadeIn();
+    $('.API-login').removeClass('visually-hidden');
   });
 
   $('.top-reg-button').on('click', function() {
-    $('.API-register').slideUp();
+    $('.API-register').fadeOut();
   });
   $('.top-login-button').on('click', function() {
-    $('.API-login').slideUp();
+    $('.API-login').fadeOut();
   });
 
   $('.tester').on('click', function() {
     $('.test-data-stuff').fadeIn();
-    $('.test-data-stuff').removeClass('hidden');
+    $('.test-data-stuff').removeClass('visually-hidden');
   });
 
   $('.close-me').on('click', function() {

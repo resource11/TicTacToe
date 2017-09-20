@@ -1,4 +1,7 @@
+@import 'reset.css';
+@import 'responsive.css';
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,900);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 
 * {
    -webkit-box-sizing: border-box;
@@ -30,91 +33,125 @@ h3 {
   padding: 17px 10px 10px 5px;
 }
 
-header {
-  position: fixed;
-  min-height: 60px;
+input{
+  width: 90%;
+  margin: 5px 7px 8px;
+  padding: 5px;
+  display: block;
+  border: none;
+  border-radius: 3px;
+  font-size: .7em;
+  line-height: 1.5;
+}
+
+.header {
+  height: 67px;
+  display: flex;
+  justify-content: flex-end;
   background-color: #fff;
 }
 
-footer {
-  position: fixed;
-  min-height: 20px;
-  background-color: #fff;
-  bottom: 0;
-  left: 0;
+.footer {
+  height: 50px;
   padding: 7px 10px;
   color: #555;
+  background-color: #fff;
 }
-
-.top-nav {
-  position: fixed;
-  right: 2%;
-/*  margin-right: 5%;*/
-}
-
-.top-nav li {
-  display: inline-block;
-  margin-top: 35px;
-  height: 25px;
-  border-bottom: 3px solid rgba(170,21,5,1);
-  font-size: 1em;
-  font-weight: 900;
-  text-align: center;
-  line-height: .9em;
-  color: #333;
-}
-
-.top-nav li:hover {
-  border-bottom: 3px solid rgba(87, 138, 7, 1);
-}
-
-.top-nav li:active {
-  border-bottom: 3px solid rgba(240,80,62, 1);
-}
-
-.header-title-banner {
-  position: absolute;
-  width:  30%;
-  top: 25px;
-  left: 25px;
-}
-
-.API-register, .API-login {
-  position: fixed;
-  display: inline-block;
-  top: 60px;
-  right: 18.65%;
-  height: 205px;
-  background-color: rgba(0, 0, 0, .8);
-}
-
-.API-login {
-  right: 2.6%;
-  height: 170px;
-}
-
-
-
 
 .hidden {
   display: none;
 }
 
+.visually-hidden {
+  /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
 .wrapper {
   width: 100%;
-  color: #fff;
+  height: 100vh;
   position: relative;
-  top: 50px;
-  background: url(../ticTac-table-photo-bak-crop.jpg);
-  background-size: cover;
-  background-position: center;
-  min-height: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.header-title-banner {
+  position: absolute;
+  width:  300px;
+  top: 25px;
+  left: 25px;
+}
+
+.top-nav {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 2em;
+}
+
+.top-nav button {
+  display: inline-block;
+  width: 11em;
+  margin: 14px 0 0 10px;
+  padding: 7px 0;
+  height: 33px;
+  background-color: #fff;
+  border: 1px solid rgba(170,21,5,1);
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: 900;
+  text-align: center;
+  line-height: .9em;
+  color: rgba(170,21,5,1);
+}
+
+.top-nav button:hover {
+  border-bottom: 3px solid rgba(87, 138, 7, 1);
+}
+
+.top-nav button:active {
+  border-bottom: 3px solid rgba(240,80,62, 1);
+}
+
+.auth-form-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.API-register,
+.API-login {
+  width: 11em;
+  margin: 13px 0 0 10px;
+  padding: .331em;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.API-login {
+  margin-left: 12px;
+}
+
+.API-register label,
+.API-login label {
+  margin-left: 10px;
+  color: #fff;
+  font-size: .875em;
+}
+
+.API-register h2,
+.API-login h2 {
+  margin-bottom: 10px;
 }
 
 .container {
-  min-height: 620px;
-  position: relative;
-  top: 100px;
+  height: 100vh;
+  background: url(../ticTac-table-photo-bak-crop.jpg);
+  background-size: cover;
 }
 
 .game-container {
@@ -232,7 +269,7 @@ footer {
 /* styles from web api */
 
 .API-section {
-  margin-left: 60px;
+  margin-left: 3.75em;
 }
 
 .API-register-login {
@@ -242,19 +279,6 @@ footer {
   margin-left: 70px;
 }
 
-input{
-      border: 0;
-      padding: 5px 5px;
-      margin: 10px 7px;
-      width: 90%;
-      font-family: 'Lato';
-      font-weight: 300;
-      font-size:.7em;
-      display: block;
-      border-radius: 5px;
-}
-
-
 .buttons-container {
   position: relative;
   margin: 0 0 0 20px;
@@ -262,7 +286,7 @@ input{
   overflow: auto;
 }
 
-button, .button-look, .top-nav-button {
+.button-look, .top-nav-button {
   display: inline;
   width: 100%;
   min-width: 140px;
@@ -358,7 +382,7 @@ form {
 
 /* z-index structure */
 
-header {
+.header {
   z-index: 30;
 }
 

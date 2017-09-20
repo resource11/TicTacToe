@@ -1,57 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="assets/styles/reset.css">
-  <link rel="stylesheet" href="assets/styles/responsive.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <title>Tic Tac Toe | Kathleen McMahon</title>
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
+  <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
 
-
-  <header class="span_12_of_12">
-    <nav class="span_4_of_12 top-nav">
-      <ul>
-        <li id ="register-button" class="span_6_of_12">Register</li>
-        <li id="login-button" class="span_6_of_12">Log In</li>
-      </ul>
+  <div class="wrapper">
+    <header class="header" role="banner">
+    <nav class="top-nav" aria-label="primary">
+      <!-- <ul> -->
+        <button id ="register-button">Register</button>
+        <button id="login-button">Log In</button>
+      <!-- </ul> -->
+      <!-- <div class="auth-form-container"> -->
+        <div class="API-register visually-hidden" aria-hidden="true">
+          <h2>Sign up</h2>
+          <form id="register">
+            <label for="register-email">Email</label>
+            <input id="register-email" name="email" type="text" placeholder="email">
+            <label for="register-pw">Password</label>
+            <input id="register-pw" name="password" type="password" placeholder="password">
+            <label for="pw-conf">Password confirmation</label>
+            <input id="pw-conf" name="password_confirmation" type="password" placeholder="password confirmation">
+            <input name="register" type="submit" value="submit" class="top-reg-button button-look">
+          </form>
+        </div>
+        <div class="API-login visually-hidden">
+          <h2>Sign in</h2>
+          <form id="login">
+            <label for="login-email">Email</label>
+            <input id="login-email" name="email" type="text" placeholder="email">
+            <label for="login-pw">Password</label>
+            <input id="login-pw" name="password" type="password" placeholder="password">
+            <input name="login" type="submit" value="submit" class="top-login-button button-look">
+          </form>
+        </div>
+      <!-- </div> -->
     </nav>
-      <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
 
   </header>
 
-  <div class="API-register span_2_of_12 hidden">
-    <h2>Sign up</h2>
-    <form id="register">
-      <input name="email" type="text" placeholder="email">
-      <input name="password" type="password" placeholder="password">
-      <input name="password_confirmation" type="password" placeholder="pw confirmation">
-      <input name="register" type="submit" value="submit" class="top-reg-button button-look">
-    </form>
-  </div>
-  <div class="API-login span_2_of_12 hidden">
-    <h2>Sign in</h2>
-    <form id="login">
-      <input name="email" type="text" placeholder="email">
-      <input name="password" type="password" placeholder="password">
-      <input name="login" type="submit" value="submit" class="top-login-button button-look">
-    </form>
-  </div>
+    <main class="container span_12_of_12" aria-label="content">
 
-
-
-
-
-<!-- begin wrapper -->
-  <div class="wrapper">
-
-<!-- begin container -->
-    <div class="container span_12_of_12">
-
-      <!-- begin API section -->
+      <!-- API section -->
       <div class="col span_3_of_12 API-section">
 
           <div class="API-register-login">
@@ -80,9 +75,7 @@
           </div>
       </div>
 
-      <!-- end API section -->
-
-
+      <!-- game container -->
       <div id="tic-tac-holder" class="col span_5_of_12 game-container game-box">
         <div data-cell="0" class="box">-</div>
         <div data-cell="1" class="box">-</div>
@@ -94,11 +87,10 @@
         <div data-cell="7" class="box">-</div>
         <div data-cell="8" class="box">-</div>
       </div>
-<!-- end game container -->
 
 
       <div class="col span_4_of_12 score-n-messages">
-        <!-- begin score box section -->
+        <!-- score box -->
         <div class="player01-box">
           <p id="score-player-01" class="score-box">0</p>
           <p class="score-player-01-title">Player 1<p>
@@ -108,24 +100,19 @@
           <p id="score-player-02" class="score-box">0</p>
           <p class="score-player-02-title">Player 2</p>
         </div>
-        <!-- end score box section -->
 
-      <!-- begin message container -->
+      <!-- message container -->
         <div class="message-container">
           <h2 class="player-messages">messages here</h2>
         </div>
-      <!-- end message container -->
+
       </div>
 
 
-
-
-
-      <!-- functionality tester window below -->
-
+      <!-- functionality tester window -->
       <div class="tester-area">
 
-        <div class="test-data-stuff hidden">
+        <div class="test-data-stuff visually-hidden">
           <p class="close-me"><i class="fa fa-times"></i></p>
           <h3>API under the hood</h3>
             <label for="result">Result</label>
@@ -135,20 +122,15 @@
         <button class="tester">API tester</button>
       </div>
 
+    </main>
 
-
-    </div>
-
-  <!-- end container -->
+    <footer class="footer">
+      <small>copyright Kathleen McMahon</small>
+    </footer>
 
   </div>
-  <!--   end wrapper -->
 
-  <footer>
-    <small>copyright 2015 Kathleen McMahon</small>
-  </footer>
 
-<!-- script links below here -->
 <!--  left off src type of jquery library script purposefully -->
   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
   <script src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" type="text/javascript" defer charset="utf-8"></script>
