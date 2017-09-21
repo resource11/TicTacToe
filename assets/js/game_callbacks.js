@@ -23,9 +23,11 @@ var callback = function callback(error, data) {
 if (error) {
   console.error(error);
   $('#result').val('status: ' + error.status + ', error: ' + error.error);
+  $('.player-messages').text(`Whoops! ${error.error}`);
   return;
 }
   $('#result').val(JSON.stringify(data, null, 4));
+  $('.player-messages').text('Registration success!');
 };
 
 

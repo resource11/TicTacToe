@@ -35,13 +35,13 @@ $(function() {
     var cb = function cb(error, data) {
       if (error) {
         callback(error);
+        $('.player-messages').text(`Oh noes! ${error.error}`);
         return;
       }
       callback(null, data);
       // $('.token').val(data.user.token);
       userToken = data.user.token;
-      console.log(userToken);
-      $('.player-messages').text('Welcome, user #' + data.user.id);
+      $('.player-messages').text(`Welcome, user #${data.user.id}`);
     };
     e.preventDefault();
     tttapi.login(credentials, cb);
@@ -72,21 +72,22 @@ $(function() {
   $(box).on('click', function() {
     // if the gameboard isn't empty or the game is over
     if (gameOver === true) {
-      $('.player-messages').text('Game is over. No more moves.');
-      console.log('Sorry, game is over.');
+      $('.player-messages').text(`Game is over. No more moves.`);
     } else if ($(this).text() === '-') {
-      $('.player-messages').text('You must log in to play.');
+      $('.player-messages').text(`You must log in to play.`);
     } else if ($(this).text() !== '') {
-      $('.player-messages').text('That box is taken, pick another.');
+      $('.player-messages').text(`That box is taken, pick another.`);
       console.log('you can\'t click on that box!');
     } else {
       if (currPlayer === p1) {
           $(this).text('X');
+          $('.player-messages').text('Hey! It\'s player X\'s turn');
           data.game.cell.value = 'X';
           getWinner(isWinner, currPlayer);
           currPlayer = p2;
         } else {
           $(this).text('O');
+          $('.player-messages').text('Now it\'s player O\'s turn');
           data.game.cell.value = 'O';
           getWinner(isWinner, currPlayer);
           currPlayer = p1;
@@ -101,6 +102,7 @@ $(function() {
     p2Win = 0;
     $('#score-player-01').html(0);
     $('#score-player-02').html(0);
+    $('.player-messages').text('Score reset');
   });
 
 
@@ -114,10 +116,11 @@ $(function() {
     $('.API-login').removeClass('visually-hidden');
   });
 
-  $('.top-reg-button').on('click', function() {
-    $('.API-register').fadeOut();
+  $('#top-reg-button').on('click', function() {
+      $('.API-register').fadeOut();
   });
-  $('.top-login-button').on('click', function() {
+
+  $('#top-login-button').on('click', function() {
     $('.API-login').fadeOut();
   });
 
