@@ -11,68 +11,55 @@
 
   <div class="wrapper">
     <header class="header" role="banner">
-    <nav class="top-nav" aria-label="primary">
-      <!-- <ul> -->
-        <button id ="register-button" class="top-nav__button">Register</button>
-        <button id="login-button" class="top-nav__button">Log In</button>
-      <!-- </ul> -->
-        <div class="API-register visually-hidden">
-          <h2>Sign up to play</h2>
-          <form id="register">
-            <label for="register-email">Email</label>
-            <input id="register-email" name="email" type="text" placeholder="email">
-            <label for="register-pw">Password</label>
-            <input id="register-pw" name="password" type="password" placeholder="password">
-            <label for="pw-conf">Password confirmation</label>
-            <input id="pw-conf" name="password_confirmation" type="password" placeholder="password confirmation">
-            <button id="top-reg-button" name="register" type="submit" class="button-shape top-nav__submit-button">Sign me up</button>
-          </form>
-        </div>
-        <div class="API-login visually-hidden">
-          <h2>Sign in to play</h2>
-          <form id="login">
-            <label for="login-email">Email</label>
-            <input id="login-email" name="email" type="text" placeholder="email">
-            <label for="login-pw">Password</label>
-            <input id="login-pw" name="password" type="password" placeholder="password">
-            <button id="top-login-button" name="login" type="submit" class="button-shape top-nav__submit-button">Sign me in</button>
-          </form>
-        </div>
-    </nav>
-
-  </header>
+      <nav class="top-nav" aria-label="primary">
+        <!-- <ul> -->
+          <button id ="register-button" class="top-nav__button">Register</button>
+          <button id="login-button" class="top-nav__button">Log In</button>
+        <!-- </ul> -->
+          <div class="API-register visually-hidden">
+            <h2>Sign up to play</h2>
+            <form id="register">
+              <label for="register-email">Email</label>
+              <input id="register-email" name="email" type="text" placeholder="email">
+              <label for="register-pw">Password</label>
+              <input id="register-pw" name="password" type="password" placeholder="password">
+              <label for="pw-conf">Password confirmation</label>
+              <input id="pw-conf" name="password_confirmation" type="password" placeholder="password confirmation">
+              <button id="top-reg-button" name="register" type="submit" class="btn-shape top-nav__submit-button">Sign me up</button>
+            </form>
+          </div>
+          <div class="API-login visually-hidden">
+            <h2>Sign in to play</h2>
+            <form id="login">
+              <label for="login-email">Email</label>
+              <input id="login-email" name="email" type="text" placeholder="email">
+              <label for="login-pw">Password</label>
+              <input id="login-pw" name="password" type="password" placeholder="password">
+              <button id="top-login-button" name="login" type="submit" class="btn-shape top-nav__submit-button">Sign me in</button>
+            </form>
+          </div>
+      </nav>
+    </header>
 
     <main class="container" aria-label="content">
 
       <!-- API section -->
-      <div class="API-section">
-
+      <div class="API-section visually-hidden">
           <div class="API-register-login">
-            <div class="buttons-container">
             <form id="create-game">
-                <input name="create-game" type="submit" value="Create New Game"class="button-look">
-                <input class="token" name="token" type="hidden">
-              </form>
-
-              <form id="show-game">
-                <label for="show-id">Game Id:</label>
-                <input id="show-id" type="text" size="4">
-                <input name="show-game" type="submit" value="Load Saved Game" class="button-look">
-                <input class="token" name="token" type="hidden">
-             </form>
-
-             <form id="list-games">
-              <input name="list-games" type="submit" value="List Saved Games" class="button-look">
+              <button name="create-game" type="submit" class="btn-shape btn__create-game">Create New Game</button>
               <input class="token" name="token" type="hidden">
             </form>
-              <button type="submit" class="reset-score button-look">Reset player scores</button>
-            </div>
 
+            <div class="c__games-list">
+              <p class="c__games-list--title">Recent games<p>
+              <ul id="games-list" class="c__games-list--ul"></ul>
+            </div>
           </div>
       </div>
 
       <!-- game container -->
-      <div id="tic-tac-holder" class="game-container game-box">
+      <div id="tic-tac-holder" class="game-container game-box visually-hidden">
         <button type="button" data-cell="0" class="box">-</button>
         <button type="button" data-cell="1" class="box">-</button>
         <button type="button" data-cell="2" class="box">-</button>
@@ -97,7 +84,7 @@
           <p class="game-player-02-title">Player 2</p>
         </div>
 
-        <button type="submit" class="button-shape reset-game-score">Reset score</button>
+        <button type="submit" class="btn-shape reset-game-score">Reset score</button>
 
       <!-- message container -->
         <div class="message-container">
@@ -119,7 +106,7 @@
             <textarea id="result"></textarea>
         </div>
 
-        <button class="tester button-look">API tester</button>
+        <button class="btn-shape tester">API tester</button>
       </div>
 
     </main>

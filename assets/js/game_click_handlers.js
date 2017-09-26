@@ -41,6 +41,8 @@ $(function() {
       callback(null, data);
       // $('.token').val(data.user.token);
       userToken = data.user.token;
+      tttapi.listGames(userToken, listGamesCallback);
+
       $('.player-messages').text(`Welcome, user #${data.user.id}`);
     };
     e.preventDefault();
@@ -53,13 +55,11 @@ $(function() {
     tttapi.listGames(userToken, callback);
   });
 
-
   // create a new game
   $('#create-game').on('submit', function(e) {
     e.preventDefault();
     tttapi.createGame(userToken, createGameCallback);
   });
-
 
   // show a game from a particular game id
   $('#show-game').on('submit', function(e) {
@@ -104,7 +104,6 @@ $(function() {
     $('#score-player-02').html(0);
     $('.player-messages').text('Score reset');
   });
-
 
   $('#register-button').on('click', function() {
     $('.API-register').fadeIn();
