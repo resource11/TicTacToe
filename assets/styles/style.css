@@ -188,35 +188,14 @@ input{
 .container {
   height: 100vh;
   display: flex;
+  justify-content: space-around;
   background: url(../ticTac-table-photo-bak-crop.jpg);
   background-size: cover;
 }
 
-
-/* API SECTION */
-
-.API-section {
-  margin: 2em 1.5em;
-  grid-area: sidebar1;
-}
-
-.API-register-login {
-  position: relative;
-  width: 70%;
-  top:20px;
-  margin-left: 70px;
-}
-
-.buttons-container {
-  position: relative;
-  margin: 0 0 0 20px;
-  padding: 0 20px;
-  overflow: auto;
-}
-
-.button-shape {
+.btn-shape {
   height: 30px;
-  margin: 5px auto;
+  margin: 5px 0;
   padding: 5px;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -226,34 +205,75 @@ input{
   border-radius: 15px;
   border-style: solid;
   border-width: 2px;
+  cursor: pointer;
 }
 
-.button-look {
-  display: inline;
+
+/* API SECTION */
+
+.API-section {
+  margin: 4em 1.5em;
+  min-width: 12em;
+  grid-area: sidebar1;
+}
+
+.API-register-login {
+  position: relative;
+  top:20px;
+  padding: .2em .5em;
+  background-color: hsla(11, 80%, 0%, 0.6);
+}
+
+.c__games-list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+/*  background-color: hsla(0, 0%, 0%, 0.5);*/
+}
+
+.c__games-list--title {
+  margin-top: 5px;
+  font-size: 1.2em;
+  line-height: 1.5;
+  text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.c__games-list--ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.games-listitems {
+  margin: 0.25em 0;
+  padding: .125em .4em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsla(11, 80%, 0%, 0.6);
+}
+
+.btn__create-game {
   width: 100%;
-  /*min-width: 140px;*/
-  height: 30px;
-  margin: 5px auto;
-  padding: 5px;
-  border: 2px solid rgba(255,255,255,0);
-  background-color: rgba(170,21,5,.5);
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  font-size: .85em;
-  text-align: center;
-  line-height: .9em;
+  border-color: hsla(6, 94%, 64%, 0.5);
+  background-color: hsla(6, 94%, 34%, 0.5);
   color: #fff;
-  border-radius: 15px;
 }
 
-.button-look:hover  {
-  border: 2px solid rgba(255,255,255,0.2);
-  background-color: rgba(216,50,12,.8);
+.btn__show-game {
+  width: 5em;
+  border-color: hsla(6, 94%, 64%, 0.5);
+  background-color: hsla(6, 94%, 34%, 0.5);
+  color: #fff;
 }
 
-.button-look:active  {
-  border: 2px solid rgba(255,255,255,0.2);
-  background-color: rgba(240,180,62,.4);
+.btn__create-game:hover  {
+  border-color: hsla(356, 46%, 36%, 0.5);
+  background-color: hsla(356, 100%, 14%, 0.5);
+}
+
+.btn__create-game:active  {
+  border-color: hsla(83, 55%, 43%, 1);
+  background-color: hsla(83, 85%, 23%, 1);
 }
 
 /*GAME BOARD*/
@@ -310,13 +330,11 @@ input{
 /*PLAYER SCORE CONTAINER*/
 
 .game-score-n-messages {
-  position: relative;
-  width: 390px;
   margin: 0 1.5em;
   grid-area: sidebar2;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 50px 100px 100px 100px 1fr;
+  grid-template-columns: 100px 100px 1fr;
   grid-template-rows: 100px 100px 1fr;
 }
 
@@ -338,12 +356,12 @@ input{
 }
 
 .game-player01-box {
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 2;
 }
 
 .game-player02-box {
-  grid-column: 4;
+  grid-column: 3;
   grid-row: 2;
   border-radius: 50% 0% 50% 0%;
 }
@@ -382,8 +400,7 @@ input{
   grid-row: 2;
   width: 250px;
   height: 250px;
-  margin-top: 131px;
-  margin-left: 60px;
+  margin-top: 135px;
   font-size: 1em;
   background-color: hsla(83, 90%, 24%, 0.9);
   border-radius: 50% 0% 50% 0%;
@@ -401,9 +418,9 @@ input{
 
 .reset-game-score {
   width: 100px;
-  margin-top: 142px;
+  margin-top: 147px;
   margin-left: 20px;
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 2;
   color: #fff;
   background-color: hsla(80, 63%, 25%, 0.7);
