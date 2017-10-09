@@ -7,59 +7,50 @@
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
-  <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
+
+
+  <!-- <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe"> -->
 
   <div class="wrapper">
     <header class="header" role="banner">
-      <nav class="top-nav" aria-label="primary">
-        <!-- <ul> -->
-          <button id ="register-button" class="top-nav__button">Register</button>
-          <button id="login-button" class="top-nav__button">Log In</button>
-        <!-- </ul> -->
-          <div class="API-register visually-hidden">
-            <h2>Sign up to play</h2>
-            <form id="register">
-              <label for="register-email">Email</label>
-              <input id="register-email" name="email" type="text" placeholder="email">
-              <label for="register-pw">Password</label>
-              <input id="register-pw" name="password" type="password" placeholder="password">
-              <label for="pw-conf">Password confirmation</label>
-              <input id="pw-conf" name="password_confirmation" type="password" placeholder="password confirmation">
-              <button id="top-reg-button" name="register" type="submit" class="btn-shape top-nav__submit-button">Sign me up</button>
-            </form>
-          </div>
-          <div class="API-login visually-hidden">
-            <h2>Sign in to play</h2>
-            <form id="login">
-              <label for="login-email">Email</label>
-              <input id="login-email" name="email" type="text" placeholder="email">
-              <label for="login-pw">Password</label>
-              <input id="login-pw" name="password" type="password" placeholder="password">
-              <button id="top-login-button" name="login" type="submit" class="btn-shape top-nav__submit-button">Sign me in</button>
-            </form>
-          </div>
-      </nav>
+      <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
     </header>
 
-    <main class="container" aria-label="content">
+    <main class="container " aria-label="content">
 
       <!-- API section -->
-      <div class="API-section visually-hidden">
-          <div class="API-register-login">
+      <section class="API-section">
+          <div class="API-create-game">
+            <div class="c__games-list">
+              <p class="c__games-list--title">Recent games<p>
+              <ul id="games-list" class="c__games-list--ul">
+                <li class='games-listitems'>
+                  <span>Game ${gamesIDlist.id}</span>
+                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
+                </li>
+                <li class='games-listitems'>
+                  <span>Game ${gamesIDlist.id}</span>
+                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
+                </li>
+                <li class='games-listitems'>
+                  <span>Game ${gamesIDlist.id}</span>
+                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
+                </li>
+                <li class='games-listitems'>
+                  <span>Game ${gamesIDlist.id}</span>
+                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
+                </li>
+              </ul>
+            </div>
             <form id="create-game">
               <button name="create-game" type="submit" class="btn-shape btn__create-game">Create New Game</button>
               <input class="token" name="token" type="hidden">
             </form>
-
-            <div class="c__games-list">
-              <p class="c__games-list--title">Recent games<p>
-              <ul id="games-list" class="c__games-list--ul"></ul>
-            </div>
           </div>
-      </div>
+      </section>
 
       <!-- game container -->
-      <div id="tic-tac-holder" class="game-container game-box visually-hidden">
+      <div id="tic-tac-holder" class="game-container game-box">
         <button type="button" data-cell="0" class="box">-</button>
         <button type="button" data-cell="1" class="box">-</button>
         <button type="button" data-cell="2" class="box">-</button>
@@ -91,15 +82,12 @@
           <h2 class="player-messages">messages here</h2>
         </div>
 
-
-
       </div>
 
-
       <!-- functionality tester window -->
-      <div class="tester-area">
+      <!-- <div class="tester-area">
 
-        <div class="test-data-stuff visually-hidden">
+        <div class="test-data-stuff hidden">
           <p class="close-me"><i class="fa fa-times"></i></p>
           <h3>API under the hood</h3>
             <label for="result">Result</label>
@@ -107,7 +95,7 @@
         </div>
 
         <button class="btn-shape tester">API tester</button>
-      </div>
+      </div> -->
 
     </main>
 
@@ -115,15 +103,73 @@
       <small>copyright Kathleen McMahon</small>
     </footer>
 
-  </div>
+</div>
 
+
+<section id="API-signon__dialog"  class="API-signon__backdrop hidden">
+  <article class="API-signon" aria-label="primary">
+    <div id="API-register" class="API-form">
+      <h2>Welcome to Tic Tac Toe</h2>
+      <form id="register" action="" name="registration">
+        <fieldset>
+          <legend><h3>Sign up to play</h3></legend>
+          <label for="register-email" class="API-form__label">
+            <span>Email</span>
+            <label id="register-email-error" class="error API-form__error" for="register-email"></label>
+          </label>
+          <input id="register-email" name="email" type="email" placeholder="email">
+          <label for="register-pw" class="API-form__label">
+            <span>Password</span>
+            <label id="register-pw-error" class="error API-form__error" for="register-pw"></label>
+          </label>
+          <input id="register-pw" name="password" type="password" placeholder="choose your password" required>
+
+          <label for="password_confirmation" class="API-form__label">
+            <span>Confirm password</span>
+            <label id="password_confirmation-error" class="error API-form__error" for="password_confirmation"></label>
+          </label>
+          <input id="password_confirmation" name="password_confirmation" placeholder="confirm your password" required>
+
+          <button id="reg-button" name="register" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me up</button>
+        </fieldset>
+      </form>
+      <p class="API-form__cta">Already have an account?
+        <a id="login-link"  href="#login" class="API-form__cta--link">Sign in</a>
+      </p>
+    </div>
+
+    <div id="API-login" class="API-form hidden">
+      <h2>Welcome to Tic Tac Toe</h2>
+      <form id="login">
+        <fieldset>
+          <legend><h3>Sign in to play</h3></legend>
+          <label for="login-email" class="API-form__label">
+            <span>Email</span>
+            <label id="login-email-error" class="error API-form__error" for="login-email"></label>
+          </label>
+          <input id="login-email" name="email" type="email" placeholder="email" required>
+          <label for="login-pw" class="API-form__label">
+            <span>Password</span>
+            <label id="login-pw-error" class="error API-form__error" for="login-pw"></label></label>
+          <input id="login-pw" name="password" type="password" placeholder="password" required>
+          <button id="login-button" name="login" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me in</button>
+        </fieldset>
+      </form>
+      <p class="API-form__cta">Need an account?
+        <a id ="register-link" href="#login" class="API-form__cta--link">Sign up</a>
+      </p>
+    </div>
+  </article>
+</section>
 
 <!--  left off src type of jquery library script purposefully -->
   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-  <script src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/tttapi.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/game_click_handlers.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/game_callbacks.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/game_logic.js" type="text/javascript" defer charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js" type="text/javascript"></script>
+  <script src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" type="text/javascript"></script>
+  <script src="assets/js/tttapi.js" type="text/javascript"></script>
+  <script src="assets/js/game_click_handlers.js" type="text/javascript"></script>
+  <script src="assets/js/game_callbacks.js" type="text/javascript"></script>
+  <script src="assets/js/game_logic.js" type="text/javascript"></script>
+  <script src="assets/js/game_form_validation.js" type="text/javascript"></script>
 </body>
 </html>

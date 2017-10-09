@@ -44,6 +44,9 @@ $(function() {
       tttapi.listGames(userToken, listGamesCallback);
 
       $('.player-messages').text(`Welcome, user #${data.user.id}`);
+      $('#API-signon__dialog').fadeOut();
+      $('#API-signon__dialog').addClass('hidden');
+      $('.container').removeClass('hidden');
     };
     e.preventDefault();
     tttapi.login(credentials, cb);
@@ -105,27 +108,53 @@ $(function() {
     $('.player-messages').text('Score reset');
   });
 
-  $('#register-button').on('click', function() {
-    $('.API-register').fadeIn();
-    $('.API-register').removeClass('visually-hidden');
+  $('#register-link').on('click', function() {
+    $('#API-login').fadeOut();
+    $('#API-login').addClass('hidden');
+    $('#API-register').fadeIn();
+    $('#API-register').removeClass('hidden');
+
+  });
+
+  $('#login-link').on('click', function() {
+    $('#API-register').fadeOut();
+    $('#API-register').addClass('hidden');
+    $('#API-login').fadeIn();
+    $('#API-login').removeClass('hidden');
+  });
+
+  $('#reg-button').on('click', function() {
+      // $('.API-register').fadeOut();
+      // $('#API-signon__dialog').fadeOut();
+      // $('#API-signon__dialog').addClass('hidden');
   });
 
   $('#login-button').on('click', function() {
-    $('.API-login').fadeIn();
-    $('.API-login').removeClass('visually-hidden');
+      // $('.API-register').fadeOut();
+      // $('#API-signon__dialog').fadeOut();
+      // $('#API-signon__dialog').addClass('hidden');
   });
 
-  $('#top-reg-button').on('click', function() {
-      $('.API-register').fadeOut();
+  $('#login-button').on('click', function() {
+    $('#API-signon__dialog').fadeIn();
+    $('#API-signon__dialog').removeClass('hidden');
+    $('#API-register').fadeOut();
+    $('#API-register').addClass('hidden');
+    $('#API-login').fadeIn();
+    $('#API-login').removeClass('hidden');
   });
 
-  $('#top-login-button').on('click', function() {
-    $('.API-login').fadeOut();
+  $('#register-button').on('click', function() {
+    console.log('clicked');
+      $('#API-signon__dialog').fadeIn();
+      $('#API-signon__dialog').removeClass('hidden');
+
+      // $('.API-signon').dialog.open();
   });
 
   $('.tester').on('click', function() {
     $('.test-data-stuff').fadeIn();
-    $('.test-data-stuff').removeClass('visually-hidden');
+    $('.test-data-stuff').removeClass('hidden');
   });
 
   $('.close-me').on('click', function() {

@@ -1,5 +1,5 @@
 @import 'reset.css';
-@import 'responsive.css';
+/*@import 'responsive.css';*/
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,900);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 
@@ -12,6 +12,7 @@
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
+  font-size: 16px;
 }
 
 h1 {
@@ -34,11 +35,11 @@ h3 {
 }
 
 input{
-  width: 90%;
-  margin: 5px 7px 8px;
+  width: 97%;
+  margin: 5px 7px 15px;
   padding: 5px;
   display: block;
-  border: none;
+  border: 1px solid hsla(100, 0%, 0%, 0);
   border-radius: 3px;
   font-size: .7em;
   line-height: 1.5;
@@ -47,7 +48,7 @@ input{
 
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .visually-hidden {
@@ -79,6 +80,8 @@ input{
   flex-direction: column;
   justify-content: space-between;
   color: #fff;
+  background: url(../ticTac-table-photo-bak-crop.jpg);
+  background-size: cover;
 }
 
 .header {
@@ -90,7 +93,8 @@ input{
 
 .footer {
   height: 3.31em;
-  padding: .5em .625em;
+  padding: .5em 1.5em;
+  font-size: .875em;
   color: #555;
   background-color: #fff;
 }
@@ -153,44 +157,154 @@ input{
   justify-content: flex-start;
 }
 
-.API-register,
-.API-login {
-  position: absolute;
-  width: 11em;
+
+.API-top-nav__btn-submit {
+  width: 100px;
+  margin-left: 7px;
+  background-color: hsla(6, 98%, 36%, 1);
+  border: 2px solid hsla(6, 70%, 48%, 1);
+  color: #fff;
+  outline: 0;
+}
+
+.API-top-nav__btn-submit:hover {
+  background-color: hsla(6, 70%, 48%, 1);
+  border-color: hsla(6, 70%, 48%, 1);
+}
+
+.API-top-nav__btn-submit:focus {
+  background-color: hsla(6, 70%, 40%, 1);
+  border-color: hsla(6, 70%, 100%, 1);
+}
+
+.API-top-nav__btn-submit:active {
+  background-color: hsla(6, 98%, 36%, 1);
+  border: 2px solid hsla(6, 70%, 48%, 1);
+}
+
+
+.API-signon {
+  width: 50vw;
+  min-width: 400px;
+  max-width: 500px;
+  top: 24vh;
+  background-color: hsla(1, 86%, 14%, 1);
+  border: 2px solid #8a2f2e;
+  border-radius: 10px;
+  box-shadow: 6px 4px 3px rgba(0, 0, 0, 0.2);
+}
+
+.API-signon__backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(1, 86%, 14%, 0.25);
+  z-index: 28;
+}
+
+.API-form {
   margin: 11px 0 0 10px;
   padding: .331em;
-  background-color: rgba(0, 0, 0, .8);
+  color: #fff;
 }
 
-.API-register {
-  top: 2.915em;
-  right: 13.35em;
+.API-form h2 {
+  padding-top: 0;
+  font-size: 2em;
 }
 
-.API-login {
-  top: 2.915em;
-  right: 1.75em;
+.API-form h3 {
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  font-size: 1.5em;
 }
 
-.API-register label,
-.API-login label {
-  margin-left: 10px;
-  color: hsl(0, 0%, 75%);
+.API-form form {
+  margin: 0 5px;
+}
+
+.API-form__label {
+  /*margin-top: 20px;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 5px 2px;
+  color: #fff;
   font-weight: 400;
+  font-size: .9em;
+}
+
+.API-form input {
+  margin-bottom: 16px;
+}
+
+.reg-email {
+  margin-bottom: 20px;
+}
+
+.API-form input:focus {
+  outline: 2px solid hsla(17, 35%, 54%, 1);
+  outline-offset: 0.25em;
+}
+
+.API-form input:required {
+  border-color: hsla(1, 86%, 14%, 1);
+  border-width: 1px;
+}
+
+.API-form input:required:invalid {
+  border-color: hsla(17, 35%, 44%, 1);
+}
+
+.API-form__error {
+  font-size: 0.75em;
+  color: hsla(17, 35%, 54%, 1);
+}
+
+.API-form__cta {
+  margin: 24px 10px 16px;
   font-size: .875em;
 }
 
-.API-register h2,
-.API-login h2 {
-  margin-bottom: 10px;
+.API-form__cta--link {
+  margin-left: 0.5em;
+  padding-bottom: 2px;
+  color: #ffb99c;
+  text-decoration: none;
+  border-bottom: 3px solid hsla(17, 35%, 44%, 1);
+  outline: 0;
+}
+
+.API-form__cta--link:focus {
+  color: #fff;
+  border-bottom: 3px solid hsla(6, 70%, 48%, 1);
+  outline: 2px solid hsla(17, 35%, 54%, 1);
+  outline-offset: 0.25em;
+}
+
+.API-form__cta--link:hover {
+  color: #fff;
+  border-bottom: 3px solid hsla(6, 70%, 48%, 1);
+}
+
+.API-form__cta--link:active {
+  color: #fff;
+  border-bottom: 3px solid #ff976b;
+  outline-color: hsla(17, 35%, 54%, 0);
 }
 
 .container {
   height: 100vh;
   display: flex;
   justify-content: space-around;
-  background: url(../ticTac-table-photo-bak-crop.jpg);
-  background-size: cover;
+  /*background: url(../ticTac-table-photo-bak-crop.jpg);
+  background-size: cover;*/
 }
 
 .btn-shape {
@@ -214,14 +328,15 @@ input{
 .API-section {
   margin: 4em 1.5em;
   min-width: 12em;
-  grid-area: sidebar1;
+  /*grid-area: sidebar1;*/
 }
 
-.API-register-login {
+.API-create-game {
   position: relative;
   top:20px;
   padding: .2em .5em;
   background-color: hsla(11, 80%, 0%, 0.6);
+  box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .c__games-list {
@@ -252,26 +367,36 @@ input{
   background-color: hsla(11, 80%, 0%, 0.6);
 }
 
-.btn__create-game {
-  width: 100%;
+.btn__create-game,
+.btn__show-game {
   border-color: hsla(6, 94%, 64%, 0.5);
   background-color: hsla(6, 94%, 34%, 0.5);
   color: #fff;
+  outline: 0;
+}
+
+.btn__create-game {
+  width: 100%;
 }
 
 .btn__show-game {
   width: 5em;
-  border-color: hsla(6, 94%, 64%, 0.5);
-  background-color: hsla(6, 94%, 34%, 0.5);
-  color: #fff;
 }
 
-.btn__create-game:hover  {
-  border-color: hsla(356, 46%, 36%, 0.5);
+.btn__create-game:focus,
+.btn__show-game:focus  {
+  border-color: hsla(83, 55%, 63%, 1);
+  background-color: hsla(83, 85%, 23%, 1);
+}
+
+.btn__create-game:hover,
+.btn__show-game:hover  {
+  border-color: hsla(6, 94%, 64%, 0.5);
   background-color: hsla(356, 100%, 14%, 0.5);
 }
 
-.btn__create-game:active  {
+.btn__create-game:active,
+.btn__show-game:active  {
   border-color: hsla(83, 55%, 43%, 1);
   background-color: hsla(83, 85%, 23%, 1);
 }
@@ -280,7 +405,7 @@ input{
 .game-container {
   margin: 2em 1.5em;
 /*  padding-left: 20px;*/
-  grid-area: content;
+  /*grid-area: content;*/
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(3, 170px);
@@ -331,7 +456,7 @@ input{
 
 .game-score-n-messages {
   margin: 0 1.5em;
-  grid-area: sidebar2;
+  /*grid-area: sidebar2;*/
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 100px 100px 1fr;
@@ -358,11 +483,13 @@ input{
 .game-player01-box {
   grid-column: 2;
   grid-row: 2;
+  color: #fff;
 }
 
 .game-player02-box {
   grid-column: 3;
   grid-row: 2;
+  color: #fff;
   border-radius: 50% 0% 50% 0%;
 }
 
@@ -444,15 +571,6 @@ input{
   border-color: hsla(23, 43%, 57%, 1);
 }
 
-
-.top-nav__submit-button {
-  width: 100px;
-  margin-left: 7px;
-  background-color: rgba(240, 80, 62, 1);
-  border-color: rgba(240, 80, 62, 1);
-  color: #fff;
-}
-
 .clear-left {
   clear: left;
 }
@@ -480,17 +598,10 @@ input{
   width: 50%;
 }
 
-form {
+/*form {
   border: none;
   display: block;
-}
-
-
-/*#result {
-  height: 25ex;
-  min-width: 250px;
-}
-*/
+}*/
 
 
 .close-me {
@@ -515,20 +626,22 @@ form {
 
 /* z-index structure */
 
-.header {
-  z-index: 30;
-}
 
-.API-register {
-  z-index: 10;
-}
-
-.API-login {
-  z-index: 15;
-}
 
 .reset-game-score {
   z-index: 20;
+}
+
+.API-signon__backdrop {
+  z-index: 25;
+}
+
+.API-signon {
+  z-index: 26;
+}
+
+.header {
+  z-index: 30;
 }
 
 .header-title-banner {
@@ -538,4 +651,9 @@ form {
 .top-nav {
   z-index: 50;
 }
+
+.footer {
+  z-index: 60;
+}
+
 
