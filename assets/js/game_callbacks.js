@@ -28,6 +28,9 @@ if (error) {
 }
   $('#result').val(JSON.stringify(data, null, 4));
   $('.player-messages').text(`Registration success!`);
+  $('#API-signon__dialog').fadeOut();
+  $('#API-signon__dialog').addClass('hidden');
+  $('.container').removeClass('hidden');
 };
 
 
@@ -106,12 +109,12 @@ var listGamesCallback = function listGamesCallback(error, data) {
       tttapi.showGame(id, userToken, showGameCallback);
     });
   });
-  $('.API-section').fadeIn();
-  $('.API-section').removeClass('visually-hidden');
+  $('.container').fadeIn();
+  $('.container').removeClass('hidden');
   $('.game-container').fadeIn();
-  $('.game-container').removeClass('visually-hidden');
+  $('.game-container').removeClass('hidden');
   // $('.game-score-n-messages').fadeIn();
-  // $('.game-score-n-messages').removeClass('visually-hidden');
+  // $('.game-score-n-messages').removeClass('hidden');
 };
 
 
