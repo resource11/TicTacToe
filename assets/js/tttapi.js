@@ -4,7 +4,7 @@
 
 var tttapi = {
   gameWatcher: null,
-  ttt: 'http://ttt.wdibos.com',
+  ttt: 'http://tic-tac-toe.wdibos.com',
 
   ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {
