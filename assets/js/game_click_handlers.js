@@ -123,17 +123,17 @@ $(function() {
     $('#API-login').removeClass('hidden');
   });
 
-  $('#reg-button').on('click', function() {
+  // $('#reg-button').on('click', function() {
       // $('.API-register').fadeOut();
       // $('#API-signon__dialog').fadeOut();
       // $('#API-signon__dialog').addClass('hidden');
-  });
+  // });
 
-  $('#login-button').on('click', function() {
+  // $('#login-button').on('click', function() {
       // $('.API-register').fadeOut();
       // $('#API-signon__dialog').fadeOut();
       // $('#API-signon__dialog').addClass('hidden');
-  });
+  // });
 
   $('#login-button').on('click', function() {
 
@@ -146,7 +146,7 @@ $(function() {
   });
 
   $('#register-button').on('click', function() {
-    console.log('clicked');
+    // console.log('clicked');
       $('#API-signon__dialog').fadeIn();
       $('#API-signon__dialog').removeClass('hidden');
 
