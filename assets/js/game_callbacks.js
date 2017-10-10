@@ -93,7 +93,7 @@ var listGamesCallback = function listGamesCallback(error, data) {
   const mappedIDs = gamesIDlist.map(gamesIDlist => (
     `<li class='games-listitems'>
       <span>Game ${gamesIDlist.id}</span>
-      <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
+      <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game' aria-label='Show Game ${gamesIDlist.id}'>Show</button>
     </li>`
     )).join('');
 
@@ -111,10 +111,6 @@ var listGamesCallback = function listGamesCallback(error, data) {
   });
   $('.container').fadeIn();
   $('.container').removeClass('hidden');
-  $('.game-container').fadeIn();
-  $('.game-container').removeClass('hidden');
-  // $('.game-score-n-messages').fadeIn();
-  // $('.game-score-n-messages').removeClass('hidden');
 };
 
 
