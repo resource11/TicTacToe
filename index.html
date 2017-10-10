@@ -1,129 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="assets/styles/reset.css">
-  <link rel="stylesheet" href="assets/styles/responsive.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <title>Tic Tac Toe | Kathleen McMahon</title>
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
 
 
-  <header class="span_12_of_12">
-    <nav class="span_4_of_12 top-nav">
-      <ul>
-        <li id ="register-button" class="span_6_of_12">Register</li>
-        <li id="login-button" class="span_6_of_12">Log In</li>
-      </ul>
-    </nav>
-      <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
+  <!-- <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe"> -->
 
-  </header>
-
-  <div class="API-register span_2_of_12 hidden">
-    <h2>Sign up</h2>
-    <form id="register">
-      <input name="email" type="text" placeholder="email">
-      <input name="password" type="password" placeholder="password">
-      <input name="password_confirmation" type="password" placeholder="pw confirmation">
-      <input name="register" type="submit" value="submit" class="top-reg-button button-look">
-    </form>
-  </div>
-  <div class="API-login span_2_of_12 hidden">
-    <h2>Sign in</h2>
-    <form id="login">
-      <input name="email" type="text" placeholder="email">
-      <input name="password" type="password" placeholder="password">
-      <input name="login" type="submit" value="submit" class="top-login-button button-look">
-    </form>
-  </div>
-
-
-
-
-
-<!-- begin wrapper -->
   <div class="wrapper">
+    <header class="header" role="banner">
+      <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
+      <nav aria-labelledby="create-game" class="top-nav">
+        <form id="create-game">
+          <button id="create-game" name="create-game" type="submit" class="top-nav__button">Create New Game</button>
+          <input class="token" name="token" type="hidden">
+        </form>
+      </nav>
+    </header>
 
-<!-- begin container -->
-    <div class="container span_12_of_12">
+    <main class="container hidden" aria-label="content">
 
-      <!-- begin API section -->
-      <div class="col span_3_of_12 API-section">
-
-          <div class="API-register-login">
-            <div class="buttons-container">
-            <form id="create-game">
-                <input name="create-game" type="submit" value="Create New Game"class="button-look">
-                <input class="token" name="token" type="hidden">
-              </form>
-
-              <form id="show-game">
-                <label for="show-id">Game Id:</label>
-                <input id="show-id" type="text" size="4">
-                <input name="show-game" type="submit" value="Load Saved Game" class="button-look">
-                <input class="token" name="token" type="hidden">
-             </form>
-
-             <form id="list-games">
-              <input name="list-games" type="submit" value="List Saved Games" class="button-look">
-              <input class="token" name="token" type="hidden">
-            </form>
-
-
-              <button type="submit" class="reset-score">Reset score</button>
+      <!-- API section -->
+      <section class="API-section" aria-labelledby="recent-games">
+          <div class="API-create-game">
+            <div class="c__games-list">
+              <h2 id="recent-games" class="c__games-list--title">Recent games</h2>
+              <ul id="games-list" class="c__games-list--ul">
+              </ul>
             </div>
-
           </div>
-      </div>
+      </section>
 
-      <!-- end API section -->
-
-
-      <div id="tic-tac-holder" class="col span_5_of_12 game-container game-box">
-        <div data-cell="0" class="box">-</div>
-        <div data-cell="1" class="box">-</div>
-        <div data-cell="2" class="box">-</div>
-        <div data-cell="3" class="box clear-left">-</div>
-        <div data-cell="4" class="box">-</div>
-        <div data-cell="5" class="box">-</div>
-        <div data-cell="6" class="box clear-left">-</div>
-        <div data-cell="7" class="box">-</div>
-        <div data-cell="8" class="box">-</div>
-      </div>
-<!-- end game container -->
+      <!-- game container -->
+      <section id="tic-tac-holder" class="game-container game-box" aria-label="game board">
+        <button type="button" data-cell="0" class="box">-</button>
+        <button type="button" data-cell="1" class="box">X</button>
+        <button type="button" data-cell="2" class="box">O</button>
+        <button type="button" data-cell="3" class="box">-</button>
+        <button type="button" data-cell="4" class="box">-</button>
+        <button type="button" data-cell="5" class="box">-</button>
+        <button type="button" data-cell="6" class="box">-</button>
+        <button type="button" data-cell="7" class="box">-</button>
+        <button type="button" data-cell="8" class="box">-</button>
+      </section>
 
 
-      <div class="col span_4_of_12 score-n-messages">
-        <!-- begin score box section -->
-        <div class="player01-box">
-          <p id="score-player-01" class="score-box">0</p>
-          <p class="score-player-01-title">Player 1<p>
+      <section class="game-score-n-messages" aria-label="player score, player messages" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
+        <!-- score box -->
+        <div class="game-player01-box">
+          <p id="score-player-01" class="game-score-box">0</p>
+          <p class="game-player-01-title">Player 1<p>
         </div>
 
-        <div class="player02-box">
-          <p id="score-player-02" class="score-box">0</p>
-          <p class="score-player-02-title">Player 2</p>
+        <div class="game-player02-box">
+          <p id="score-player-02" class="game-score-box">0</p>
+          <p class="game-player-02-title">Player 2</p>
         </div>
-        <!-- end score box section -->
 
-      <!-- begin message container -->
-        <div class="message-container">
+        <button type="submit" class="btn-shape reset-game-score">Reset score</button>
+
+      <!-- message container -->
+        <div class="message-container" aria-label="player messages">
           <h2 class="player-messages">messages here</h2>
         </div>
-      <!-- end message container -->
-      </div>
 
+      </section>
 
-
-
-
-      <!-- functionality tester window below -->
-
-      <div class="tester-area">
+      <!-- functionality tester window -->
+      <!-- <div class="tester-area">
 
         <div class="test-data-stuff hidden">
           <p class="close-me"><i class="fa fa-times"></i></p>
@@ -132,29 +80,82 @@
             <textarea id="result"></textarea>
         </div>
 
-        <button class="tester">API tester</button>
-      </div>
+        <button class="btn-shape tester">API tester</button>
+      </div> -->
+
+    </main>
+
+    <footer class="footer">
+      <small>&#169; copyright Kathleen McMahon</small>
+    </footer>
+
+</div>
 
 
+<section id="API-signon__dialog"  class="API-signon__backdrop">
+  <article class="API-signon" aria-label="primary">
+    <div id="API-register" class="API-form">
+      <h2>Welcome to Tic Tac Toe</h2>
+      <form id="register" action="" name="registration">
+        <fieldset>
+          <legend><h3>Sign up to play</h3></legend>
+          <label for="register-email" class="API-form__label">
+            <span>Email</span>
+            <label id="register-email-error" class="error API-form__error" for="register-email"></label>
+          </label>
+          <input id="register-email" name="email" type="text" placeholder="email">
+          <label for="register-pw" class="API-form__label">
+            <span>Password</span>
+            <label id="register-pw-error" class="error API-form__error" for="register-pw"></label>
+          </label>
+          <input id="register-pw" name="password" type="password" placeholder="choose your password">
 
+          <label for="password_confirmation" class="API-form__label">
+            <span>Confirm password</span>
+            <label id="password_confirmation-error" class="error API-form__error" for="password_confirmation"></label>
+          </label>
+          <input id="password_confirmation" name="password_confirmation" type="password" placeholder="confirm your password">
+
+          <button id="reg-button" name="register" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me up</button>
+        </fieldset>
+      </form>
+      <p class="API-form__cta">Already have an account?
+        <a id="login-link"  href="#login" class="API-form__cta--link">Sign in</a>
+      </p>
     </div>
 
-  <!-- end container -->
+    <div id="API-login" class="API-form hidden">
+      <h2>Welcome to Tic Tac Toe</h2>
+      <form id="login">
+        <fieldset>
+          <legend><h3>Sign in to play</h3></legend>
+          <label for="login-email" class="API-form__label">
+            <span>Email</span>
+            <label id="login-email-error" class="error API-form__error" for="login-email"></label>
+          </label>
+          <input id="login-email" name="email" type="text" placeholder="email">
+          <label for="login-pw" class="API-form__label">
+            <span>Password</span>
+            <label id="login-pw-error" class="error API-form__error" for="login-pw"></label></label>
+          <input id="login-pw" name="password" type="password" placeholder="password">
+          <button id="login-button" name="login" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me in</button>
+        </fieldset>
+      </form>
+      <p class="API-form__cta">Need an account?
+        <a id ="register-link" href="#login" class="API-form__cta--link">Sign up</a>
+      </p>
+    </div>
+  </article>
+</section>
 
-  </div>
-  <!--   end wrapper -->
-
-  <footer>
-    <small>copyright 2015 Kathleen McMahon</small>
-  </footer>
-
-<!-- script links below here -->
 <!--  left off src type of jquery library script purposefully -->
   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-  <script src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/tttapi.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/game_click_handlers.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/game_callbacks.js" type="text/javascript" defer charset="utf-8"></script>
-  <script src="assets/js/game_logic.js" type="text/javascript" defer charset="utf-8"></script>
+  <!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js" type="text/javascript"></script>-->
+  <script src="http://ttt.wdibos.com/js/resource-watcher-0.1.0.js" type="text/javascript"></script>
+  <script src="assets/js/tttapi.js" type="text/javascript"></script>
+  <script src="assets/js/game_click_handlers.js" type="text/javascript"></script>
+  <script src="assets/js/game_callbacks.js" type="text/javascript"></script>
+  <script src="assets/js/game_logic.js" type="text/javascript"></script>
+  <!--<script src="assets/js/game_form_validation.js" type="text/javascript"></script>-->
 </body>
 </html>
