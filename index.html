@@ -14,56 +14,42 @@
   <div class="wrapper">
     <header class="header" role="banner">
       <img class="header-title-banner" src="assets/lets-play-ticTacToe-header.svg" alt="lets-play-tic-tac-toe">
+      <nav aria-labelledby="create-game" class="top-nav">
+        <form id="create-game">
+          <button id="create-game" name="create-game" type="submit" class="top-nav__button">Create New Game</button>
+          <input class="token" name="token" type="hidden">
+        </form>
+      </nav>
     </header>
 
-    <main class="container " aria-label="content">
+    <main class="container hidden" aria-label="content">
 
       <!-- API section -->
-      <section class="API-section">
+      <section class="API-section" aria-labelledby="recent-games">
           <div class="API-create-game">
             <div class="c__games-list">
-              <p class="c__games-list--title">Recent games<p>
+              <h2 id="recent-games" class="c__games-list--title">Recent games</h2>
               <ul id="games-list" class="c__games-list--ul">
-                <li class='games-listitems'>
-                  <span>Game ${gamesIDlist.id}</span>
-                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
-                </li>
-                <li class='games-listitems'>
-                  <span>Game ${gamesIDlist.id}</span>
-                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
-                </li>
-                <li class='games-listitems'>
-                  <span>Game ${gamesIDlist.id}</span>
-                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
-                </li>
-                <li class='games-listitems'>
-                  <span>Game ${gamesIDlist.id}</span>
-                  <button data-game='${gamesIDlist.id}' class='btn-shape btn__show-game'>Show</button>
-                </li>
               </ul>
             </div>
-            <form id="create-game">
-              <button name="create-game" type="submit" class="btn-shape btn__create-game">Create New Game</button>
-              <input class="token" name="token" type="hidden">
-            </form>
           </div>
       </section>
 
       <!-- game container -->
-      <div id="tic-tac-holder" class="game-container game-box">
+      <section id="tic-tac-holder" class="game-container game-box" aria-label="game board">
         <button type="button" data-cell="0" class="box">-</button>
-        <button type="button" data-cell="1" class="box">-</button>
-        <button type="button" data-cell="2" class="box">-</button>
+        <button type="button" data-cell="1" class="box">X</button>
+        <button type="button" data-cell="2" class="box">O</button>
         <button type="button" data-cell="3" class="box">-</button>
         <button type="button" data-cell="4" class="box">-</button>
         <button type="button" data-cell="5" class="box">-</button>
-        <button data-cell="6" class="box">-</button>
+        <button type="button" data-cell="6" class="box">-</button>
         <button type="button" data-cell="7" class="box">-</button>
         <button type="button" data-cell="8" class="box">-</button>
-      </div>
+      </section>
 
 
-      <div class="game-score-n-messages">
+      <section class="game-score-n-messages" aria-label="player score, player messages" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
         <!-- score box -->
         <div class="game-player01-box">
           <p id="score-player-01" class="game-score-box">0</p>
@@ -78,11 +64,11 @@
         <button type="submit" class="btn-shape reset-game-score">Reset score</button>
 
       <!-- message container -->
-        <div class="message-container">
+        <div class="message-container" aria-label="player messages">
           <h2 class="player-messages">messages here</h2>
         </div>
 
-      </div>
+      </section>
 
       <!-- functionality tester window -->
       <!-- <div class="tester-area">
@@ -100,13 +86,13 @@
     </main>
 
     <footer class="footer">
-      <small>copyright Kathleen McMahon</small>
+      <small>&#169; copyright Kathleen McMahon</small>
     </footer>
 
 </div>
 
 
-<section id="API-signon__dialog"  class="API-signon__backdrop hidden">
+<section id="API-signon__dialog"  class="API-signon__backdrop">
   <article class="API-signon" aria-label="primary">
     <div id="API-register" class="API-form">
       <h2>Welcome to Tic Tac Toe</h2>

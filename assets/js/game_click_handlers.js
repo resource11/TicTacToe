@@ -136,10 +136,11 @@ $(function() {
   });
 
   $('#login-button').on('click', function() {
-    $('#API-signon__dialog').fadeIn();
-    $('#API-signon__dialog').removeClass('hidden');
+
     $('#API-register').fadeOut();
     $('#API-register').addClass('hidden');
+    $('#API-signon__dialog').fadeIn();
+    $('#API-signon__dialog').removeClass('hidden');
     $('#API-login').fadeIn();
     $('#API-login').removeClass('hidden');
   });
