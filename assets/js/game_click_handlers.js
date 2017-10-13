@@ -16,22 +16,40 @@ var data = {
               }
             };
 
-
+// API endpoint
+const myApp = {
+baseUrl: 'http://tic-tac-toe.wdibos.com',
+};
 
 //$(document).ready(...
 $(function() {
 
   // register a user
   $('#register').on('submit', function(e) {
-    var credentials = wrap('credentials', form2object(this));
-    tttapi.register(credentials, callback);
+    // var credentials = wrap('credentials', form2object(this));
+    // tttapi.register(credentials, callback);
     e.preventDefault();
+    var credentials = new FormData($("API-register")[0]);
+    tttapi.register(credentials, callback);
+    // $.ajax({
+    //   url: myApp.baseUrl + '/sign-up',
+    //   method: 'POST',
+    //   contentType: false,
+    //   processData: false,
+    //   data: formData,
+    // }).done(function(data) {
+    //   console.log(data);
+    //   callback;
+    // }).fail(function(jqxhr) {
+    //   console.error(jqxhr);
+    // });
   });
 
 
   // login a user
   $('#login').on('submit', function(e) {
-    var credentials = wrap('credentials', form2object(this));
+    // var credentials = wrap('credentials', form2object(this));
+    var credentials = new FormData($("API-login")[0]);
     var cb = function cb(error, data) {
       if (error) {
         callback(error);
