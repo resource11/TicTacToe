@@ -4,6 +4,7 @@
 
 var tttapi = {
   gameWatcher: null,
+  // ttt: 'http://tic-tac-toe.wdibos.com',
   ttt: 'https://aqueous-atoll-85096.herokuapp.com',
 
   ajax: function(config, cb) {
@@ -18,7 +19,7 @@ var tttapi = {
     this.ajax({
       method: 'POST',
       // url: 'http://httpbin.org/post',
-      url: this.ttt + '/users',
+      url: this.ttt + '/sign-up',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'
@@ -29,7 +30,7 @@ var tttapi = {
     this.ajax({
       method: 'POST',
       // url: 'http://httpbin.org/post',
-      url: this.ttt + '/login',
+      url: this.ttt + '/sign-in',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'

@@ -103,18 +103,18 @@
             <span>Email</span>
             <label id="register-email-error" class="error API-form__error" for="register-email"></label>
           </label>
-          <input id="register-email" name="email" type="text" placeholder="email">
+          <input id="register-email" name="credentials[email]" type="text" placeholder="email">
           <label for="register-pw" class="API-form__label">
             <span>Password</span>
             <label id="register-pw-error" class="error API-form__error" for="register-pw"></label>
           </label>
-          <input id="register-pw" name="password" type="password" placeholder="choose your password">
+          <input id="register-pw" name="credentials[password]" type="password" placeholder="choose your password">
 
           <label for="password_confirmation" class="API-form__label">
             <span>Confirm password</span>
             <label id="password_confirmation-error" class="error API-form__error" for="password_confirmation"></label>
           </label>
-          <input id="password_confirmation" name="password_confirmation" type="password" placeholder="confirm your password">
+          <input id="password_confirmation" name="credentials[password_confirmation]" type="password" placeholder="confirm your password">
 
           <button id="reg-button" name="register" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me up</button>
         </fieldset>
@@ -133,11 +133,11 @@
             <span>Email</span>
             <label id="login-email-error" class="error API-form__error" for="login-email"></label>
           </label>
-          <input id="login-email" name="email" type="text" placeholder="email">
+          <input id="login-email" name="credentials[email]" type="text" placeholder="email">
           <label for="login-pw" class="API-form__label">
             <span>Password</span>
             <label id="login-pw-error" class="error API-form__error" for="login-pw"></label></label>
-          <input id="login-pw" name="password" type="password" placeholder="password">
+          <input id="login-pw" name="credentials[password]" type="password" placeholder="password">
           <button id="login-button" name="login" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me in</button>
         </fieldset>
       </form>
