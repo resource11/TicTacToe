@@ -4,7 +4,7 @@
 
 var tttapi = {
   gameWatcher: null,
-  ttt: 'http://ttt.wdibos.com',
+  ttt: 'https://aqueous-atoll-85096.herokuapp.com',
 
   ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {
