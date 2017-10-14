@@ -26,30 +26,16 @@ $(function() {
 
   // register a user
   $('#register').on('submit', function(e) {
-    // var credentials = wrap('credentials', form2object(this));
-    // tttapi.register(credentials, callback);
     e.preventDefault();
-    var credentials = new FormData($("API-register")[0]);
+    var credentials = wrap('credentials', form2object(this));
     tttapi.register(credentials, callback);
-    // $.ajax({
-    //   url: myApp.baseUrl + '/sign-up',
-    //   method: 'POST',
-    //   contentType: false,
-    //   processData: false,
-    //   data: formData,
-    // }).done(function(data) {
-    //   console.log(data);
-    //   callback;
-    // }).fail(function(jqxhr) {
-    //   console.error(jqxhr);
-    // });
   });
 
 
   // login a user
   $('#login').on('submit', function(e) {
-    // var credentials = wrap('credentials', form2object(this));
-    var credentials = new FormData($("API-login")[0]);
+    e.preventDefault();
+    var credentials = wrap('credentials', form2object(this));
     var cb = function cb(error, data) {
       if (error) {
         callback(error);
@@ -66,7 +52,6 @@ $(function() {
       $('#API-signon__dialog').addClass('hidden');
       $('.container').removeClass('hidden');
     };
-    e.preventDefault();
     tttapi.login(credentials, cb);
   });
 
