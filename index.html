@@ -22,7 +22,7 @@
       </nav>
     </header>
 
-    <main class="container hidden" aria-label="content">
+    <main class="container" aria-label="content">
 
       <!-- API section -->
       <section class="API-section" aria-labelledby="recent-games">
@@ -38,8 +38,8 @@
       <!-- game container -->
       <section id="tic-tac-holder" class="game-container game-box" aria-label="game board">
         <button type="button" data-cell="0" class="box">-</button>
-        <button type="button" data-cell="1" class="box">X</button>
-        <button type="button" data-cell="2" class="box">O</button>
+        <button type="button" data-cell="1" class="box">-</button>
+        <button type="button" data-cell="2" class="box">-</button>
         <button type="button" data-cell="3" class="box">-</button>
         <button type="button" data-cell="4" class="box">-</button>
         <button type="button" data-cell="5" class="box">-</button>
@@ -115,7 +115,7 @@
           </label>
           <input id="password_confirmation" name="credentials[password_confirmation]" type="password" placeholder="confirm your password">
 
-          <button id="reg-button" name="register" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me up</button>
+          <button id="reg-button" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me up</button>
         </fieldset>
       </form>
       <p class="API-form__cta">Already have an account?
@@ -137,7 +137,7 @@
             <span>Password</span>
             <label id="login-pw-error" class="error API-form__error" for="login-pw"></label></label>
           <input id="login-pw" name="credentials[password]" type="password" placeholder="password">
-          <button id="login-button" name="login" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me in</button>
+          <button id="login-button" type="submit" class="btn-shape API-top-nav__btn-submit">Sign me in</button>
         </fieldset>
       </form>
       <p class="API-form__cta">Need an account?
